@@ -5,10 +5,11 @@
 Дерево: u16 n, далі n × (u16 символ, u8 довжина коду).
 """
 import struct
+from collections import Counter
 
-from .bitio import BitReader
+from .bitio import BitReader, BitWriter
 from .errors import E_PAYLOAD, ArchiveError
-from .huffman import Decoder
+from .huffman import Decoder, build_lengths, canonical_codes
 
 MATCH_SYMBOL = 256   # у дереві LIT означає «далі посилання»
 MIN_MATCH = 3
@@ -81,3 +82,58 @@ def decode_block(buf: bytes, raw_len: int) -> bytes:
     if len(out) != raw_len:
         raise ArchiveError(E_PAYLOAD, "розмір розкодованого блоку != raw_len")
     return bytes(out)
+
+
+# ---------- кодування (архіватор) ----------
+
+def _write_tree(lengths: dict[int, int]) -> bytes:
+    out = bytearray(struct.pack(">H", len(lengths)))
+    for sym in sorted(lengths):
+        out += struct.pack(">HB", sym, lengths[sym])
+    return bytes(out)
+
+
+def encode_tokens(tokens: list) -> bytes:
+    """Токени -> байти блоку method 0.
+
+    Токен — або int (літерал 0..255), або кортеж (довжина, відстань) для посилання.
+    Частоти рахуються окремо для трьох алфавітів, і для кожного будується свій код Гаффмана.
+    """
+    lit_f, len_f, dist_f = Counter(), Counter(), Counter()
+    for t in tokens:
+        if isinstance(t, int):
+            lit_f[t] += 1
+        else:
+            n, d = t
+            lit_f[MATCH_SYMBOL] += 1
+            len_f[n - MIN_MATCH] += 1
+            dist_f[dist_symbol(d)[0]] += 1
+    lit_l, len_l, dist_l = build_lengths(lit_f), build_lengths(len_f), build_lengths(dist_f)
+    lit_c, len_c, dist_c = canonical_codes(lit_l), canonical_codes(len_l), canonical_codes(dist_l)
+
+    bw = BitWriter()
+    for t in tokens:
+        if isinstance(t, int):
+            bw.write(*lit_c[t])
+        else:
+            n, d = t
+            bw.write(*lit_c[MATCH_SYMBOL])
+            bw.write(*len_c[n - MIN_MATCH])
+            b, nextra, extra = dist_symbol(d)
+            bw.write(*dist_c[b])
+            if nextra:
+                bw.write(extra, nextra)
+    bits = bw.getvalue()
+    return (_write_tree(lit_l) + _write_tree(len_l) + _write_tree(dist_l)
+            + struct.pack(">II", len(tokens), len(bits)) + bits)
+
+
+def token_cost_bits(tokens: list) -> int:
+    """Вартість за фіксованою таблицею з team_config (для порівняння розборів і ДП)."""
+    total = 0
+    for t in tokens:
+        if isinstance(t, int):
+            total += 9
+        else:
+            total += 17 + max(0, (t[1] - 1).bit_length() - 1)
+    return total

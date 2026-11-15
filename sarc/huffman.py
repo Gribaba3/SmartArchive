@@ -1,8 +1,9 @@
 """Канонічні коди Гаффмана: з довжин кодів відновлюються самі коди.
 
-Тут — спільна частина для архіватора і розархіватора. Побудова довжин за частотами
-(черга з пріоритетами) — зона «Стиснення», додається окремим модулем.
+Побудова довжин за частотами (черга з пріоритетами) — build_lengths; декодування — Decoder.
 """
+import heapq
+
 from .bitio import BitReader
 from .errors import E_PAYLOAD, ArchiveError
 
@@ -70,3 +71,49 @@ class Decoder:
             if sym is not None:
                 return sym
         raise ArchiveError(E_PAYLOAD, "невідомий код Гаффмана")
+
+
+# ---------- побудова кодів (архіватор) ----------
+
+def _huffman_lengths(freqs: dict[int, int]) -> dict[int, int]:
+    """Класичний Гаффман: двічі беремо з черги два найрідші вузли і зливаємо їх.
+
+    Жадібний вибір оптимальний: два найрідші символи в оптимальному дереві можна зробити
+    братами на найглибшому рівні (обмін не збільшує сумарну довжину), після злиття задача
+    зводиться до такої самої з алфавітом на один символ менше.
+    Вузол у черзі: (частота, порядковий номер для стабільності, список символів піддерева).
+    """
+    heap = [(f, i, [s]) for i, (s, f) in enumerate(sorted(freqs.items()))]
+    heapq.heapify(heap)
+    depth = dict.fromkeys(freqs, 0)
+    counter = len(heap)
+    while len(heap) > 1:
+        f1, _, syms1 = heapq.heappop(heap)
+        f2, _, syms2 = heapq.heappop(heap)
+        for s in syms1 + syms2:          # кожне злиття додає всім символам піддерева 1 біт
+            depth[s] += 1
+        heapq.heappush(heap, (f1 + f2, counter, syms1 + syms2))
+        counter += 1
+    return depth
+
+
+def build_lengths(freqs: dict[int, int], max_len: int = MAX_CODE_LEN) -> dict[int, int]:
+    """{символ: частота} -> {символ: довжина коду} з обмеженням довжини max_len.
+
+    Один символ -> довжина 1 (код "0"), бо код нульової довжини записати неможливо.
+    Якщо найдовший код перевищує ліміт, частоти «сплющуються» (f -> f//2 + 1) і дерево
+    будується заново: рідкісні символи наближаються до частих, дерево стає нижчим.
+    Це не оптимально в точності (точний метод — package-merge), але втрата мізерна.
+    """
+    freqs = {s: f for s, f in freqs.items() if f > 0}
+    if not freqs:
+        return {}
+    if len(freqs) == 1:
+        return {next(iter(freqs)): 1}
+    if len(freqs) > (1 << max_len):
+        raise ValueError("алфавіт завеликий для такого ліміту довжини")
+    while True:
+        lengths = _huffman_lengths(freqs)
+        if max(lengths.values()) <= max_len:
+            return lengths
+        freqs = {s: f // 2 + 1 for s, f in freqs.items()}
