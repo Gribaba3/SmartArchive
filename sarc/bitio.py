@@ -23,20 +23,43 @@ class BitWriter:
 
 
 class BitReader:
+    """Читає через буфер acc: байти докладаються, поки в буфері менше потрібної кількості бітів.
+    peek(n) дивиться наперед без зсуву позиції — це потрібно табличному декодеру Гаффмана."""
+
     def __init__(self, data: bytes):
         self.data = data
-        self.pos = 0  # номер біта
-        self.total = len(data) * 8
+        self.byte_pos = 0
+        self.acc = 0
+        self.nbits = 0
+        self.remaining = len(data) * 8  # непрочитані біти потоку
+
+    def _fill(self, n: int) -> None:
+        while self.nbits < n and self.byte_pos < len(self.data):
+            self.acc = (self.acc << 8) | self.data[self.byte_pos]
+            self.byte_pos += 1
+            self.nbits += 8
+
+    def peek(self, n: int) -> int:
+        """n наступних бітів; за кінцем потоку доповнюється нулями (вихід за кінець ловить skip)."""
+        self._fill(n)
+        if self.nbits >= n:
+            return (self.acc >> (self.nbits - n)) & ((1 << n) - 1)
+        return (self.acc << (n - self.nbits)) & ((1 << n) - 1)
+
+    def skip(self, n: int) -> None:
+        if n > self.remaining:
+            raise ArchiveError(E_PAYLOAD, "бітовий потік закінчився")
+        self._fill(n)
+        self.nbits -= n
+        self.remaining -= n
+        self.acc &= (1 << self.nbits) - 1
+
+    def read(self, n: int) -> int:
+        if n == 0:
+            return 0
+        v = self.peek(n)
+        self.skip(n)
+        return v
 
     def bit(self) -> int:
-        if self.pos >= self.total:
-            raise ArchiveError(E_PAYLOAD, "бітовий потік закінчився")
-        b = (self.data[self.pos >> 3] >> (7 - (self.pos & 7))) & 1
-        self.pos += 1
-        return b
-
-    def read(self, nbits: int) -> int:
-        v = 0
-        for _ in range(nbits):
-            v = (v << 1) | self.bit()
-        return v
+        return self.read(1)

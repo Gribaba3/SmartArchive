@@ -59,3 +59,18 @@ def test_kraft_violation_rejected():
                                            (4, (2, 1, 1)), (12, (4, 3, 3)), (16384, (14, 13, 8191))])
 def test_dist_symbol(dist, expected):
     assert dist_symbol(dist) == expected
+
+
+def test_long_codes_fallback_decoder():
+    """Коди довші за TABLE_MAX_LEN декодуються по бітах (сумісність з іншими командами)."""
+    lengths = {i: i for i in range(1, 17)}
+    lengths[17] = 16                       # тепер сума 2^-l рівно 1
+    codes = canonical_codes(lengths)
+    msg = list(lengths) * 3
+    w = BitWriter()
+    for s in msg:
+        w.write(*codes[s])
+    d = Decoder(lengths)
+    assert d.table is None
+    r = BitReader(w.getvalue())
+    assert [d.read(r) for _ in msg] == msg

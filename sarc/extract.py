@@ -1,97 +1,155 @@
 """Розархіватор: читає томи в будь-якому порядку, перевіряє все і лише потім пише файли.
 
-Порядок перевірок кожного тому: magic/версія -> довжина -> HMAC -> payload.
-Потім: набір томів повний і без дублів -> зібрати блоки -> CRC32 кожного файлу.
+Порядок перевірок:
+  1. заголовки ВСІХ томів (magic/версія -> довжина) і набір томів: повний, без дублів,
+     з одного архіву, nonce не повторюється;
+  2. кожен том окремо: HMAC -> payload -> декодування блоків;
+  3. кожен файл: блоки без пропусків, розмір, CRC32.
+
+Потокова обробка: у пам'яті одночасно лише один том. Розкодовані блоки одразу пишуться
+в тимчасову папку, файли збираються з них шматками, CRC32 рахується на льоту.
 """
 import os
 import shutil
 import tempfile
 import zlib
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from .codec import decode_block
-from .container import METHOD_STORED, FileEntry, read_header, unpack_volume
+from .container import HEADER_LEN, METHOD_STORED, FileEntry, read_header, unpack_volume
 from .crypto import derive_keys
-from .errors import E_CRC, E_INPUT, E_PAYLOAD, E_VOLUME, ArchiveError
+from .errors import E_CRC, E_EXISTS, E_INPUT, E_PAYLOAD, E_VOLUME, ArchiveError
+
+COPY_CHUNK = 1 << 20
 
 
 @dataclass
-class _Collected:
+class _VolumeInfo:
+    path: str
+    index: int
+    count: int
+    salt: bytes
+    nonce: bytes
+
+
+@dataclass
+class _FileState:
+    file_id: int
     meta: FileEntry
-    parts: dict  # block_index -> bytes
+    blocks: set = field(default_factory=set)
 
 
-def _read_volumes(paths: list[str], password: str):
+def _scan_volumes(paths: list[str]) -> list[_VolumeInfo]:
+    """Читаємо лише заголовки — це дешево і ловить більшість проблем до розшифрування."""
     if not paths:
         raise ArchiveError(E_INPUT, "не задано жодного тому")
-    raw = []
+    infos = []
     for p in paths:
         try:
             with open(p, "rb") as fh:
-                raw.append((p, fh.read()))
+                head = fh.read(HEADER_LEN)
+                size = os.fstat(fh.fileno()).st_size
         except OSError as e:
             raise ArchiveError(E_INPUT, f"не вдалося прочитати {p}: {e.strerror}") from None
+        index, count, salt, nonce, _ = read_header(head, size)
+        infos.append(_VolumeInfo(p, index, count, salt, nonce))
 
-    headers = [read_header(data) for _, data in raw]  # спершу дешеві перевірки всіх томів
-    salts = {h[2] for h in headers}
-    counts = {h[1] for h in headers}
-    if len(salts) != 1 or len(counts) != 1:
+    if len({v.salt for v in infos}) != 1 or len({v.count for v in infos}) != 1:
         raise ArchiveError(E_VOLUME, "томи з різних архівів")
-    count = counts.pop()
-    indices = [h[0] for h in headers]
+    indices = [v.index for v in infos]
     if len(set(indices)) != len(indices):
         raise ArchiveError(E_VOLUME, "дубльований том")
-    if len(indices) != count:
-        missing = sorted(set(range(count)) - set(indices))
+    if len(indices) != infos[0].count:
+        missing = sorted(set(range(infos[0].count)) - set(indices))
         raise ArchiveError(E_VOLUME, f"відсутні томи: {missing}")
+    # Ключ один на весь архів, тому повтор nonce у CTR = однаковий гамма-потік у двох томах:
+    # XOR двох шифротекстів дав би XOR відкритих текстів. Такий архів не приймаємо.
+    if len({v.nonce for v in infos}) != len(infos):
+        raise ArchiveError(E_VOLUME, "nonce повторюється в різних томах")
+    return sorted(infos, key=lambda v: v.index)
 
-    k_enc, k_mac = derive_keys(password, salts.pop())  # PBKDF2 один раз на архів
-    return [unpack_volume(data, k_enc, k_mac) for _, data in raw]
+
+def _register(files: dict, meta: FileEntry) -> "_FileState":
+    state = files.get(meta.name)
+    if state is None:
+        folded = meta.name.casefold()
+        if any(name.casefold() == folded for name in files):
+            # на Windows/macOS A.txt і a.txt — той самий файл, один перезаписав би інший
+            raise ArchiveError(E_PAYLOAD, f"{meta.name}: ім'я відрізняється лише регістром")
+        state = files[meta.name] = _FileState(len(files), meta)
+    elif (state.meta.size, state.meta.crc32) != (meta.size, meta.crc32):
+        raise ArchiveError(E_PAYLOAD, f"{meta.name}: різні метадані в томах")
+    return state
 
 
-def read_archive(paths: list[str], password: str) -> dict[str, bytes]:
-    """Повертає {ім'я: вміст}. Будь-яка проблема -> ArchiveError з кодом."""
-    volumes = _read_volumes(paths, password)
-    files: dict[str, _Collected] = {}
-    for vol in volumes:
-        for blk in vol.blocks:
-            meta = vol.files[blk.file_index]
-            entry = files.setdefault(meta.name, _Collected(meta, {}))
-            if (entry.meta.size, entry.meta.crc32) != (meta.size, meta.crc32):
-                raise ArchiveError(E_PAYLOAD, f"{meta.name}: різні метадані в томах")
-            if blk.block_index in entry.parts:
-                raise ArchiveError(E_PAYLOAD, f"{meta.name}: блок {blk.block_index} повторюється")
-            data = blk.data if blk.method == METHOD_STORED else decode_block(blk.data, blk.raw_len)
-            entry.parts[blk.block_index] = data
-        # файл може бути в таблиці тому без жодного блоку — його блоки в інших томах
+def _decode_to(paths: list[str], password: str, workdir: str) -> dict[str, str]:
+    """Розкодовує архів у workdir. Повертає {ім'я файлу: шлях до відновленого файлу}."""
+    volumes = _scan_volumes(paths)
+    k_enc, k_mac = derive_keys(password, volumes[0].salt)  # PBKDF2 один раз на архів
+    files: dict[str, _FileState] = {}
+
+    for info in volumes:
+        with open(info.path, "rb") as fh:
+            vol = unpack_volume(fh.read(), k_enc, k_mac)
         for meta in vol.files:
-            files.setdefault(meta.name, _Collected(meta, {}))
+            _register(files, meta)
+        for blk in vol.blocks:
+            state = files[vol.files[blk.file_index].name]
+            if blk.block_index in state.blocks:
+                raise ArchiveError(E_PAYLOAD, f"{state.meta.name}: блок {blk.block_index} повторюється")
+            data = blk.data if blk.method == METHOD_STORED else decode_block(blk.data, blk.raw_len)
+            with open(os.path.join(workdir, f"{state.file_id}.{blk.block_index}"), "wb") as out:
+                out.write(data)
+            state.blocks.add(blk.block_index)
 
     result = {}
-    for name, entry in files.items():
-        if sorted(entry.parts) != list(range(len(entry.parts))):
+    for name, st in files.items():
+        if not st.blocks or sorted(st.blocks) != list(range(len(st.blocks))):
             raise ArchiveError(E_PAYLOAD, f"{name}: пропущені блоки")
-        content = b"".join(entry.parts[i] for i in range(len(entry.parts)))
-        if len(content) != entry.meta.size:
+        target = os.path.join(workdir, f"{st.file_id}.out")
+        size = crc = 0
+        with open(target, "wb") as out:
+            for i in range(len(st.blocks)):
+                part = os.path.join(workdir, f"{st.file_id}.{i}")
+                with open(part, "rb") as src:
+                    while chunk := src.read(COPY_CHUNK):
+                        crc = zlib.crc32(chunk, crc)
+                        size += len(chunk)
+                        out.write(chunk)
+                os.remove(part)
+        if size != st.meta.size:
             raise ArchiveError(E_PAYLOAD, f"{name}: розмір не збігається")
-        if zlib.crc32(content) != entry.meta.crc32:
+        if crc != st.meta.crc32:
             raise ArchiveError(E_CRC, f"{name}: CRC32 не збігається")
-        result[name] = content
+        result[name] = target
     return result
 
 
-def extract(paths: list[str], password: str, out_dir: str) -> list[str]:
-    """Атомарне розпакування: спершу все перевіряється в пам'яті й пишеться в тимчасову
-    папку; лише після повного успіху файли переносяться в out_dir."""
-    contents = read_archive(paths, password)
+def read_archive(paths: list[str], password: str) -> dict[str, bytes]:
+    """{ім'я: вміст} — зручно для тестів і невеликих архівів."""
+    with tempfile.TemporaryDirectory(prefix="sarc-") as tmp:
+        restored = _decode_to(paths, password, tmp)
+        result = {}
+        for name, path in restored.items():
+            with open(path, "rb") as fh:
+                result[name] = fh.read()
+        return result
+
+
+def extract(paths: list[str], password: str, out_dir: str, overwrite: bool = False) -> list[str]:
+    """Атомарне розпакування: усе розкодовується й перевіряється в тимчасовій папці всередині
+    out_dir; лише після повного успіху файли переносяться на місце. Наявні файли без
+    overwrite=True не перезаписуються."""
     os.makedirs(out_dir, exist_ok=True)
     tmp = tempfile.mkdtemp(prefix=".sarc-", dir=out_dir)
     try:
-        for name, data in contents.items():
-            with open(os.path.join(tmp, name), "wb") as fh:
-                fh.write(data)
-        for name in contents:
-            os.replace(os.path.join(tmp, name), os.path.join(out_dir, name))
+        restored = _decode_to(paths, password, tmp)
+        if not overwrite:
+            existing = [n for n in restored if os.path.exists(os.path.join(out_dir, n))]
+            if existing:
+                raise ArchiveError(E_EXISTS, f"файли вже існують (додайте --force): {existing}")
+        for name, path in restored.items():
+            os.replace(path, os.path.join(out_dir, name))
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
-    return sorted(contents)
+    return sorted(restored)

@@ -51,9 +51,23 @@ class Volume:
     blocks: list[BlockEntry] = field(default_factory=list)
 
 
+# Імена, які Windows не дозволяє створити (незалежно від розширення: "nul.txt" теж не можна)
+WINDOWS_RESERVED = {"CON", "PRN", "AUX", "NUL"} | {f"COM{i}" for i in range(1, 10)} \
+    | {f"LPT{i}" for i in range(1, 10)}
+MAX_NAME_BYTES = 255
+
+
 def check_name(name: str) -> None:
-    """Захист від path traversal: лише ім'я без шляху."""
-    if (not name or name in (".", "..") or any(ch in FORBIDDEN_NAME_CHARS for ch in name)):
+    """Захист від path traversal і від імен, які зламають розпакування на Windows."""
+    bad = (
+        not name
+        or name in (".", "..")
+        or any(ch in FORBIDDEN_NAME_CHARS or ord(ch) < 32 for ch in name)
+        or name[-1] in " ."                                   # Windows мовчки обрізає
+        or name.split(".")[0].upper() in WINDOWS_RESERVED
+        or len(name.encode("utf-8")) > MAX_NAME_BYTES
+    )
+    if bad:
         raise ArchiveError(E_PAYLOAD, f"небезпечне ім'я файлу: {name!r}")
 
 
@@ -109,6 +123,8 @@ def unpack_payload(pt: bytes) -> tuple[list[FileEntry], list[BlockEntry]]:
         except UnicodeDecodeError:
             raise ArchiveError(E_PAYLOAD, "ім'я не в UTF-8") from None
         check_name(name)
+        if any(f.name == name for f in files):
+            raise ArchiveError(E_PAYLOAD, f"ім'я {name!r} двічі в таблиці файлів")
         size, crc, ftype, strategy = r.unpack(">IIBB")
         files.append(FileEntry(name, size, crc, ftype, strategy))
     (n_blocks,) = r.unpack(">H")
@@ -136,14 +152,18 @@ def pack_volume(vol: Volume, k_enc: bytes, k_mac: bytes) -> bytes:
     return body + mac(k_mac, body)  # Encrypt-then-MAC: тег над заголовком і шифротекстом
 
 
-def read_header(data: bytes) -> tuple[int, int, bytes, bytes, int]:
-    """Перевірки ДО розшифрування: magic/версія, потім довжини."""
-    if len(data) < 5 or data[:4] != MAGIC or data[4] != VERSION:
+def read_header(head: bytes, total_size: int) -> tuple[int, int, bytes, bytes, int]:
+    """Перевірки ДО розшифрування: magic/версія, потім довжини.
+
+    head — перші байти тому (досить HEADER_LEN), total_size — повний розмір файлу тому.
+    Так заголовки всіх томів перевіряються без читання томів цілком.
+    """
+    if len(head) < 5 or head[:4] != MAGIC or head[4] != VERSION:
         raise ArchiveError(E_MAGIC, "не архів SARC v1")
-    if len(data) < HEADER_LEN:
+    if len(head) < HEADER_LEN:
         raise ArchiveError(E_LENGTH, "том коротший за заголовок")
-    _, _, index, count, salt, nonce, ct_len = HEADER.unpack(data[:HEADER_LEN])
-    if len(data) != HEADER_LEN + ct_len + TAG_LEN:
+    _, _, index, count, salt, nonce, ct_len = HEADER.unpack(head[:HEADER_LEN])
+    if total_size != HEADER_LEN + ct_len + TAG_LEN:
         raise ArchiveError(E_LENGTH, "розмір тому не відповідає ciphertext_len")
     if count == 0 or index >= count:
         raise ArchiveError(E_PAYLOAD, "некоректний номер тому")
@@ -151,7 +171,7 @@ def read_header(data: bytes) -> tuple[int, int, bytes, bytes, int]:
 
 
 def unpack_volume(data: bytes, k_enc: bytes, k_mac: bytes) -> Volume:
-    index, count, salt, nonce, ct_len = read_header(data)
+    index, count, salt, nonce, ct_len = read_header(data[:HEADER_LEN], len(data))
     body_end = HEADER_LEN + ct_len
     if not mac_ok(k_mac, data[:body_end], data[body_end:]):
         raise ArchiveError(E_HMAC, "HMAC не збігся (змінені дані або невірний пароль)")

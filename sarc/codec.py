@@ -34,6 +34,8 @@ def _read_tree(buf: bytes, pos: int) -> tuple[dict[int, int], int]:
     for _ in range(n):
         sym, ln = struct.unpack_from(">HB", buf, pos)
         pos += 3
+        if sym in lengths:
+            raise ArchiveError(E_PAYLOAD, f"символ {sym} у дереві двічі")
         lengths[sym] = ln
     return lengths, pos
 
@@ -48,6 +50,8 @@ def decode_block(buf: bytes, raw_len: int) -> bytes:
     pos += 8
     if pos + bits_len != len(buf):
         raise ArchiveError(E_PAYLOAD, "bitstream_len не збігається з розміром блоку")
+    if token_count > raw_len:  # кожен токен дає щонайменше 1 байт
+        raise ArchiveError(E_PAYLOAD, "token_count більший за raw_len")
 
     lit, length, dist = Decoder(lit_l), Decoder(len_l), Decoder(dist_l)
     br = BitReader(buf[pos:])
@@ -65,8 +69,13 @@ def decode_block(buf: bytes, raw_len: int) -> bytes:
         if d > len(out) or n > MAX_MATCH:
             raise ArchiveError(E_PAYLOAD, "посилання за межі вже декодованих даних")
         start = len(out) - d
-        for i in range(n):          # побайтово: збіг може перекривати сам себе (d < n)
-            out.append(out[start + i])
+        if d >= n:
+            out += out[start:start + n]
+        else:
+            # збіг перекриває сам себе (наприклад, d=1 — повтор одного байта):
+            # це повторення шматка довжини d, тому множимо його і обрізаємо до n
+            chunk = out[start:]
+            out += (chunk * (n // d + 1))[:n]
         if len(out) > raw_len:
             break
     if len(out) != raw_len:

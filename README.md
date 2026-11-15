@@ -18,15 +18,35 @@ source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -e ".[dev]"
 ```
 
-Розпакувати архів (томи можна подавати в будь-якому порядку):
+Пароль задається змінною середовища `SARC_PASSWORD` або вводиться за запитом.
+Прапорець `-p` теж є, але лише для тестів: так пароль потрапляє в історію командного рядка.
 
 ```bash
-python -m sarc extract -p algo2026 -o out data/reference/ref_04_seven_groups.arc
-python -m sarc extract -p algo2026 -o out data/reference/ref_06_two_volumes.part*.arc
+# Linux / macOS
+export SARC_PASSWORD=algo2026
+# Windows PowerShell:  $env:SARC_PASSWORD = "algo2026"
+# Windows cmd:         set SARC_PASSWORD=algo2026
+
+python -m sarc extract -o out data/reference/ref_04_seven_groups.arc
+python -m sarc extract -o out "data/reference/ref_06_two_volumes.part*.arc"   # шаблон розгортає програма
+python -m sarc extract -o out data/reference/                                  # або всі *.arc у папці
 ```
 
-Якщо архів пошкоджений, програма не падає: друкує код відмови (`E_MAGIC`, `E_LENGTH`,
-`E_HMAC`, `E_PAYLOAD`, `E_CRC`, `E_VOLUME`) і повертає код виходу 2.
+Томи можна подавати в будь-якому порядку. Наявні файли в папці не перезаписуються,
+поки не додано `--force`.
+
+Якщо архів пошкоджений, програма не падає: друкує код відмови і повертає код виходу 2.
+
+| Код | Коли |
+|---|---|
+| `E_MAGIC` | не архів SARC або не та версія |
+| `E_LENGTH` | том обрізаний або довший, ніж має бути |
+| `E_HMAC` | змінено хоч один байт або невірний пароль |
+| `E_PAYLOAD` | структурно некоректний вміст, небезпечне ім'я файлу |
+| `E_CRC` | контрольна сума відновленого файлу не збіглася |
+| `E_VOLUME` | відсутній / дубльований / чужий том, повтор nonce |
+| `E_INPUT` | вхідний файл не знайдено або немає доступу |
+| `E_EXISTS` | файл уже є в папці розпакування, а `--force` не задано |
 
 Тести, покриття і лінтер (те саме запускає CI):
 
@@ -44,7 +64,7 @@ ruff check .
 | `sarc/bitio.py` | бітовий потік MSB-first | Стиснення |
 | `sarc/huffman.py` | канонічні коди, декодер | Стиснення |
 | `sarc/codec.py` | кодек блоку: токени LZ77 + три дерева | Стиснення / Розбір потоку |
-| `sarc/extract.py` | розархіватор, атомарне розпакування | Інтеграція |
+| `sarc/extract.py` | розархіватор: потоково, атомарно, перевірки томів | Інтеграція |
 | `sarc/cli.py` | командний рядок | Інтеграція |
 | `tests/` | тести на еталонних архівах викладача і на примітивах | усі |
 | `data/` | матеріали викладача: конфіг, корпус, train/valid, reference | — |
