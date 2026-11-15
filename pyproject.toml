@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sarc"
+version = "0.1.0"
+description = "Розумний захищений архіватор (проєкт 2, команда T01)"
+requires-python = ">=3.10"
+dependencies = ["cryptography>=41"]
+
+[tool.setuptools]
+packages = ["sarc"]   # у корені лише цей пакет; data/, docs/, tests/ — не пакети
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov", "ruff"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+omit = ["sarc/__main__.py"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+extend-exclude = ["data"]   # дані викладача не чіпати
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "I"]
