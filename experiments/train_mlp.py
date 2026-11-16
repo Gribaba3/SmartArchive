@@ -26,22 +26,25 @@ K = 7
 SEEDS = (1, 2, 3)            # три незалежні ініціалізації
 HIDDEN = 16
 EPOCHS = 300
+STAT_ONLY_NAME = "лише 5 статистичних: entropy, chi_square, distinct, zeros, high_bytes"
 MAGIC = [FEATURE_NAMES.index("compressed_magic"), FEATURE_NAMES.index("exec_magic")]
 
 
-def load(part: str) -> tuple[np.ndarray, np.ndarray]:
+def load(part: str, cut: int = None) -> tuple[np.ndarray, np.ndarray]:
+    """Ознаки і мітки; cut — рахувати ознаки лише за першими cut байтами (перевірка стійкості)."""
     rows = list(csv.DictReader(open(ROOT / "data" / part / "labels.csv", encoding="utf-8")))
-    X = np.array([extract((ROOT / "data" / part / r["file"]).read_bytes()) for r in rows])
+    X = np.array([extract((ROOT / "data" / part / r["file"]).read_bytes()[:cut]) for r in rows])
     y = np.array([int(r["type"]) for r in rows])
     return X, y
 
 
-def train_runs(Xtr, ytr, Xva, yva, cols=None):
-    """Три ініціалізації; повертає список результатів і найкращу модель за macro-F1 на valid."""
+def train_runs(Xtr, ytr, Xva, yva, cols=None, hidden=HIDDEN):
+    """Три ініціалізації; повертає список результатів і найкращу модель за macro-F1 на valid.
+    За рівного macro-F1 лишається перший seed (порівняння строге: >)."""
     cols = list(range(Xtr.shape[1])) if cols is None else cols
     runs, best = [], None
     for seed in SEEDS:
-        model = MLP(len(cols), HIDDEN, K, seed=seed)
+        model = MLP(len(cols), hidden, K, seed=seed)
         t0 = time.perf_counter()
         hist = model.fit(Xtr[:, cols], ytr, epochs=EPOCHS, seed=seed)
         run = {
@@ -86,6 +89,15 @@ def main():
     no_magic_cols = [i for i in range(len(FEATURE_NAMES)) if i not in MAGIC]
     runs_nm, (best_nm, _) = train_runs(Xtr, ytr, Xva, yva, no_magic_cols)
 
+    # Стійкість (рев'ю #5): та сама модель на коротких зразках; менша мережа; менше ознак
+    short_f1 = {cut: macro_f1(load("valid", cut)[1], model.predict(load("valid", cut)[0]), K)
+             for cut in (64, 256, 1024, 4096)}
+    tiny = train_runs(Xtr, ytr, Xva, yva, hidden=2)[1][0]["valid_f1"]
+    no_ac = [i for i in range(len(FEATURE_NAMES)) if FEATURE_NAMES[i] != "autocorrelation"]
+    stat_only = [FEATURE_NAMES.index(n) for n in ("entropy", "chi_square", "distinct", "zeros", "high_bytes")]
+    abl = {name: train_runs(Xtr, ytr, Xva, yva, cols)[1][0]["valid_f1"]
+           for name, cols in (("без autocorrelation", no_ac),
+                              (STAT_ONLY_NAME, stat_only))}
     Xco, yco = load("corpus")
     corpus_f1 = macro_f1(yco, model.predict(Xco), K)
     pred = model.predict(Xva)
@@ -95,7 +107,8 @@ def main():
                             "valid_macro_f1": best_run["valid_f1"]})
 
     Path(args.raw).parent.mkdir(parents=True, exist_ok=True)
-    raw = {"corpus_macro_f1": corpus_f1, "baselines": base, "runs": runs, "runs_without_magic": runs_nm}
+    raw = {"short_samples": short_f1, "hidden_2": tiny, "ablation": abl, "corpus_macro_f1": corpus_f1,
+           "baselines": base, "runs": runs, "runs_without_magic": runs_nm}
     Path(args.raw).write_text(json.dumps(raw, ensure_ascii=False, indent=1), encoding="utf-8")
 
     short = [TYPE_NAMES[i].split()[0][:8] for i in range(K)]
@@ -128,7 +141,28 @@ def main():
               [["усі ознаки", f"{best_run['valid_f1']:.3f}"],
                ["без сигнатур", f"{best_nm['valid_f1']:.3f}"]]),
         "",
-        "## 5. Додаткова перевірка на corpus/\n",
+        "## 5. Стійкість моделі\n",
+        "Усі три ініціалізації дали однаковий macro-F1 на valid, тож «вибір моделі за valid» тут фактично "
+        "нічого не вирішує: за рівності лишається перший seed. Причина — дані легко розділяються "
+        "(вони синтетичні, і класи сильно відрізняються за ознаками). Щоб оцінити запас міцності, "
+        "модель перевірено в гірших умовах.\n",
+        "**Короткі зразки** (обрана модель, ознаки лише з перших N байтів кожного файлу valid):\n",
+        table(["N, байтів"] + [str(c) for c in short_f1] + ["повний (до 16 КБ)"],
+              [["macro-F1 valid"] + [f"{v:.3f}" for v in short_f1.values()]
+               + [f"{best_run['valid_f1']:.3f}"]]),
+        "",
+        "**Слабша модель і менше ознак** (найкращий із трьох seed):\n",
+        table(["Варіант", "macro-F1 valid"],
+              [["повна: 18 ознак, 16 нейронів", f"{best_run['valid_f1']:.3f}"],
+               ["лише 2 приховані нейрони", f"{tiny:.3f}"]]
+              + [[k, f"{v:.3f}"] for k, v in abl.items()]),
+        "",
+        f"Висновок. Ознак з перших 256 байтів уже досить (macro-F1 {short_f1[256]:.3f}); на 64 байтах "
+        f"якість падає до {short_f1[64]:.3f}. Прихованого шару з 2 нейронів замало ({tiny:.3f}): "
+        f"мережі потрібна певна ширина. Самих статистичних ознак мало "
+        f"({abl[STAT_ONLY_NAME]:.3f}): ознаки тексту й рядків додають решту. 1.000 на valid — це "
+        f"наслідок легких синтетичних даних; на прихованій вибірці викладача число може бути нижчим.\n",
+        "## 6. Додаткова перевірка на corpus/\n",
         f"macro-F1 обраної моделі на corpus/ (21 файл, у навчанні і виборі моделі не брав участі): "
         f"**{corpus_f1:.3f}**.\n",
         "Чесне застереження: першу версію ознак перевіряли на corpus/ і через одну помилку (періодичний "
