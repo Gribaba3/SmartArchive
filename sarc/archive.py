@@ -207,6 +207,10 @@ def create_archive(paths: list[str], out_path: str, password: str, opts: Options
         k_enc, k_mac = derive_keys(password, salt)        # PBKDF2 один раз на архів
 
         out_dir = os.path.dirname(os.path.abspath(out_path))
+        try:
+            os.makedirs(out_dir, exist_ok=True)       # як і розархіватор: папку створюємо
+        except OSError as e:
+            raise ArchiveError(E_OUTPUT, f"не вдалося створити папку {out_dir}: {e.strerror}") from None
         for vol_index, plan in enumerate(layout):
             idx = {f.name: i for i, f in enumerate(plan.files)}
             blocks = []

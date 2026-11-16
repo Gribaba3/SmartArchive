@@ -281,3 +281,9 @@ def test_unknown_packer(tmp_path):
     (tmp_path / "f.txt").write_bytes(b"1")
     with pytest.raises(ArchiveError):
         create_archive([str(tmp_path / "f.txt")], str(tmp_path / "a.arc"), PW, Options(packer="magic"))
+
+
+def test_archive_creates_output_dir(tmp_path):
+    (tmp_path / "f.txt").write_bytes(b"data")
+    res = create_archive([str(tmp_path / "f.txt")], str(tmp_path / "new" / "dir" / "a.arc"), PW)
+    assert read_archive(res.volumes, PW) == {"f.txt": b"data"}
