@@ -81,7 +81,8 @@ def main(argv=None) -> int:
     ar.add_argument("--volume-size", type=int, default=65536, help="максимальний розмір тому, байт")
     ar.add_argument("--block-size", type=int, default=16384, help="розмір блоку, байт")
     ar.add_argument("--parser", choices=["lazy", "greedy"], default="lazy", help="розбір LZ77")
-    ar.add_argument("--packer", choices=["dp", "greedy"], default="dp", help="рюкзак для томів")
+    ar.add_argument("--packer", choices=["dp", "dp-weight", "greedy"], default="dp",
+                    help="рюкзак: ДП за цінністю, ДП за вагою або жадібний")
     ar.add_argument("--window", type=int, default=16384, help="вікно пошуку збігів")
     ar.add_argument("--min-match", type=int, default=3, help="мінімальна довжина збігу (>= 3)")
     ar.add_argument("--max-chain", type=int, default=64, help="глибина пошуку збігів")

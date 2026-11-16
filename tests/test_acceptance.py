@@ -2,6 +2,7 @@
 import os
 import random
 import zlib
+from itertools import combinations
 from pathlib import Path
 
 import pytest
@@ -14,7 +15,7 @@ from sarc.errors import ArchiveError
 from sarc.extract import read_archive
 from sarc.huffman import Decoder, build_lengths, canonical_codes
 from sarc.lz77 import greedy_parse, lazy_parse, tokens_to_bytes
-from sarc.packing import Item, knapsack_dp, knapsack_greedy
+from sarc.packing import Item, knapsack_dp_value, knapsack_dp_weight, knapsack_greedy
 
 ROOT = Path(__file__).resolve().parent.parent
 CORPUS = ROOT / "data" / "corpus"
@@ -108,21 +109,41 @@ def test_c09_greedy_and_lazy_both_work_and_are_measured():
     assert sizes["lazy"] <= sizes["greedy"]            # на тексті й коді лінивий не гірший
 
 
-@pytest.mark.parametrize("seed", range(30))
-def test_c10_knapsack_dp_not_worse_than_greedy(seed):
+def value_of(items, chosen):
+    return sum(items[i].value for i in chosen)
+
+
+def brute_force(items, cap):
+    best = 0
+    for r in range(len(items) + 1):
+        for combo in combinations(range(len(items)), r):
+            if sum(items[i].weight for i in combo) <= cap:
+                best = max(best, value_of(items, combo))
+    return best
+
+
+@pytest.mark.parametrize("seed", range(40))
+def test_c10_both_dp_are_optimal_and_not_worse_than_greedy(seed):
     rng = random.Random(seed)
-    items = [Item(i, rng.randint(15, 3000), rng.randint(1, 3)) for i in range(rng.randint(1, 25))]
-    cap = rng.randint(100, 20000)
-    dp, gr = knapsack_dp(items, cap), knapsack_greedy(items, cap)
-    assert sum(i.weight for i in dp) <= cap
-    assert sum(i.value for i in dp) >= sum(i.value for i in gr)
+    items = [Item(i, rng.randint(15, 3000), rng.randint(1, 3)) for i in range(rng.randint(1, 12))]
+    cap = rng.randint(100, 12000)
+    by_value, by_weight, greedy = (knapsack_dp_value(items, cap), knapsack_dp_weight(items, cap),
+                                   knapsack_greedy(items, cap))
+    optimum = brute_force(items, cap)                     # перебір усіх 2^n підмножин
+    for chosen in (by_value, by_weight, greedy):
+        assert sum(items[i].weight for i in chosen) <= cap
+        assert len(set(chosen)) == len(chosen)
+    assert value_of(items, by_value) == optimum
+    assert value_of(items, by_weight) == optimum
+    assert value_of(items, greedy) <= optimum
 
 
 def test_c10_knapsack_dp_beats_greedy_on_classic_case():
     # жадібний за v/w бере легкий «вигідний» предмет і вже не влазить важкий
     items = [Item("a", 1, 2), Item("b", 10, 10)]
-    assert sum(i.value for i in knapsack_greedy(items, 10)) == 2
-    assert sum(i.value for i in knapsack_dp(items, 10)) == 10
+    assert value_of(items, knapsack_greedy(items, 10)) == 2
+    assert value_of(items, knapsack_dp_value(items, 10)) == 10
+    assert value_of(items, knapsack_dp_weight(items, 10)) == 10
 
 
 def test_c11_tamper_wrong_password_truncated(tmp_path):
@@ -222,3 +243,41 @@ def test_crc_in_table(tmp_path):
     salt = Path(res.volumes[0]).read_bytes()[9:25]
     vol = unpack_volume(Path(res.volumes[0]).read_bytes(), *derive_keys(PW, salt))
     assert vol.files[0].crc32 == zlib.crc32(data)
+
+
+def test_read_error_becomes_e_input(tmp_path, monkeypatch):
+    (tmp_path / "f.txt").write_bytes(b"abc" * 100)
+    import sarc.archive as archive_mod
+
+    def broken(*a, **k):
+        raise OSError(5, "Input/output error")
+    monkeypatch.setattr(archive_mod, "encode_block", broken)   # збій посеред читання файлу
+    with pytest.raises(ArchiveError) as e:
+        create_archive([str(tmp_path / "f.txt")], str(tmp_path / "a.arc"), PW)
+    assert e.value.code == "E_INPUT"
+    assert not list(tmp_path.glob("*.arc")) and not list(tmp_path.glob(".sarc-*"))
+
+
+def test_publish_rolls_back_on_failure(tmp_path, monkeypatch):
+    (tmp_path / "f.bin").write_bytes(random.Random(3).randbytes(20_000))
+    real_replace = os.replace
+    calls = []
+
+    def flaky(src, dst):
+        calls.append(dst)
+        if len(calls) == 3:
+            raise OSError(28, "No space left on device")
+        real_replace(src, dst)
+    monkeypatch.setattr(os, "replace", flaky)
+    with pytest.raises(ArchiveError) as e:
+        create_archive([str(tmp_path / "f.bin")], str(tmp_path / "a.arc"), PW,
+                       Options(max_volume=8192, block_size=4096))
+    assert e.value.code == "E_OUTPUT"
+    assert not list(tmp_path.glob("*.arc"))            # або весь архів, або нічого
+    assert not list(tmp_path.glob(".sarc-*"))
+
+
+def test_unknown_packer(tmp_path):
+    (tmp_path / "f.txt").write_bytes(b"1")
+    with pytest.raises(ArchiveError):
+        create_archive([str(tmp_path / "f.txt")], str(tmp_path / "a.arc"), PW, Options(packer="magic"))

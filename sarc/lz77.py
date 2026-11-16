@@ -57,8 +57,10 @@ class MatchFinder:
         cand = self.head.get(self._hash(i), -1)
         chain = self.p.max_chain
         while cand >= 0 and chain > 0 and i - cand <= self.p.window:
-            # швидка перевірка: збіг може бути кращим, лише якщо байт на позиції best_len теж збігся
-            if d[cand + best_len] == d[i + best_len] if best_len < limit else False:
+            # швидка перевірка: кандидат може дати довший збіг, лише якщо в нього збігається
+            # і байт на позиції best_len (інакше його збіг точно не довший за поточний)
+            could_be_longer = best_len < limit and d[cand + best_len] == d[i + best_len]
+            if could_be_longer:
                 k = 0
                 while k < limit and d[cand + k] == d[i + k]:
                     k += 1
