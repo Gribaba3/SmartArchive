@@ -1,16 +1,12 @@
-"""Аналіз файлу: тип за вмістом (перцептрон) і ентропія.
+"""Аналіз файлу: тип і стратегія стиснення.
 
-classify(name, sample) -> тип 0..6. Тип визначає перцептрон (sarc/mlp.py) за ознаками
-байтів (sarc/features.py); ім'я та розширення НЕ використовуються: на прихованій вибірці
-викладача вони можуть не збігатися з вмістом. Модель навчає experiments/train_mlp.py
-і зберігає в sarc/mlp_model.json.
+⚠ ТИМЧАСОВО: тип визначається за розширенням з запасним варіантом за ентропією.
+Зона «Аналіз файлу» замінює classify() перцептроном за ознаками вмісту
+(ентропія, гістограма, частка ASCII, автокореляція, ентропія біграм).
+Інтерфейс лишається тим самим: classify(name, sample) -> тип 0..6.
 """
 import math
 from collections import Counter
-from pathlib import Path
-
-from . import features
-from .mlp import MLP
 
 TYPE_NAMES = {
     0: "природний текст", 1: "вихідний код", 2: "структуровані дані",
@@ -18,16 +14,15 @@ TYPE_NAMES = {
 }
 ALREADY_COMPRESSED = 5
 
-MODEL_PATH = Path(__file__).with_name("mlp_model.json")
-_model = None
-
-
-def _get_model() -> MLP:
-    """Модель читається з диска один раз і далі береться з пам'яті."""
-    global _model
-    if _model is None:
-        _model = MLP.load(str(MODEL_PATH))
-    return _model
+_BY_EXTENSION = {
+    ".txt": 0, ".md": 0,
+    ".py": 1, ".c": 1, ".h": 1, ".java": 1, ".js": 1, ".cs": 1, ".cpp": 1,
+    ".csv": 2, ".json": 2, ".log": 2, ".xml": 2,
+    ".bmp": 3, ".pgm": 3, ".ppm": 3,
+    ".exe": 4, ".so": 4, ".dll": 4, ".bin": 4,
+    ".z": 5, ".zip": 5, ".gz": 5, ".jpg": 5, ".jpeg": 5, ".png": 5, ".mp3": 5, ".7z": 5,
+    ".dat": 6,
+}
 
 
 def entropy(data: bytes) -> float:
@@ -39,5 +34,14 @@ def entropy(data: bytes) -> float:
 
 
 def classify(name: str, sample: bytes) -> int:
-    """name лишився в інтерфейсі для сумісності, але не використовується."""
-    return int(_get_model().predict(features.extract(sample))[0])
+    dot = name.rfind(".")
+    ext = name[dot:].lower() if dot >= 0 else ""
+    if ext in _BY_EXTENSION:
+        return _BY_EXTENSION[ext]
+    h = entropy(sample)
+    if h > 7.5:
+        return ALREADY_COMPRESSED
+    if h < 1.0:
+        return 6
+    printable = sum(32 <= b < 127 or b in (9, 10, 13) for b in sample) / max(1, len(sample))
+    return 0 if printable > 0.95 else 4

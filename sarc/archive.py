@@ -33,10 +33,6 @@ class Options:
     # стискається в ~8 разів. Ентропія гістограми не бачить порядку байтів. Параметр для ГА.
     entropy_threshold: float = 8.0
     priorities: dict = field(default_factory=lambda: dict(DEFAULT_PRIORITIES))
-    # True — клас файлу впливає на стратегію: «вже стиснуте» одразу йде в STORED, цінність блоку
-    # в рюкзаку = пріоритет класу. False — «фіксована стратегія» для порівняння (методичка, 10.43):
-    # кожен блок пробуємо стиснути, усі блоки рівноцінні. Тип у таблиці файлів записується в обох.
-    use_class: bool = True
 
 
 @dataclass
@@ -57,7 +53,7 @@ class ArchiveResult:
 def encode_block(raw: bytes, ftype: int, opts: Options) -> EncodedBlock:
     """Стратегія для одного блоку. Відмова від стиснення (NO_COMPRESSION), якщо:
     файл уже стиснутий; ентропія блоку вища за поріг; або стиснення не дало виграшу."""
-    if not raw or (opts.use_class and ftype == ALREADY_COMPRESSED):
+    if not raw or ftype == ALREADY_COMPRESSED:
         return EncodedBlock(len(raw), METHOD_STORED, raw)
     # ентропію рахуємо лише тоді, коли поріг увімкнено: за 8.0 перевірка ніколи не спрацює
     if opts.entropy_threshold < 8.0 and entropy(raw) > opts.entropy_threshold:
@@ -136,7 +132,6 @@ def _read_and_encode(path: str, name: str, opts: Options, spool: _Spool, result:
         with open(path, "rb") as fh:
             chunk = fh.read(opts.block_size)
             ftype = classify(name, chunk)
-            value = opts.priorities.get(ftype, 1) if opts.use_class else 1
             crc = size = index = compressed = 0
             while True:                       # потокове читання: у пам'яті один сирий блок
                 crc = zlib.crc32(chunk, crc)
@@ -144,7 +139,7 @@ def _read_and_encode(path: str, name: str, opts: Options, spool: _Spool, result:
                 blk = encode_block(chunk, ftype, opts)
                 spool.put((name, index), blk)
                 compressed += blk.method == METHOD_HUFFMAN
-                planned.append(PlannedBlock(name, index, len(blk.data), value))
+                planned.append(PlannedBlock(name, index, len(blk.data), opts.priorities.get(ftype, 1)))
                 index += 1
                 chunk = fh.read(opts.block_size)
                 if not chunk:
