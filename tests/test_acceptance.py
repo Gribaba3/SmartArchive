@@ -187,6 +187,23 @@ def test_c12_volumes(tmp_path):
 
 # ---------- крайні випадки C2 ----------
 
+def test_empty_archive(tmp_path):
+    """Порожній вхід: рівно 1 том без файлів і блоків, розпаковується в порожній набір (10.39)."""
+    res = create_archive([], str(tmp_path / "a.arc"), PW)
+    assert len(res.volumes) == 1
+    assert read_archive(res.volumes, PW) == {}
+    salt = Path(res.volumes[0]).read_bytes()[9:25]
+    vol = unpack_volume(Path(res.volumes[0]).read_bytes(), *derive_keys(PW, salt))
+    assert vol.files == [] and vol.blocks == []
+
+
+def test_volumes_in_reverse_order(tmp_path):
+    files = {"a.bin": random.Random(1).randbytes(30000), "b.txt": b"hello " * 3000}
+    res = roundtrip(tmp_path, files, Options(max_volume=8192, block_size=4096))
+    assert len(res.volumes) >= 2
+    assert read_archive(list(reversed(res.volumes)), PW) == files
+
+
 def test_c2_input_validation(tmp_path):
     with pytest.raises(ArchiveError) as e:
         create_archive([str(tmp_path / "missing")], str(tmp_path / "a.arc"), PW)

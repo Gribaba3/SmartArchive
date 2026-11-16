@@ -74,8 +74,6 @@ def encode_block(raw: bytes, ftype: int, opts: Options) -> EncodedBlock:
 def _validate_inputs(paths: list[str]) -> list[tuple[str, str]]:
     """-> [(шлях, ім'я в архіві)]. Перевіряє існування, права, тип і унікальність імен."""
     result, seen = [], {}
-    if not paths:
-        raise ArchiveError(E_INPUT, "не задано жодного файлу")
     for p in paths:
         if not os.path.exists(p):
             raise ArchiveError(E_INPUT, f"файл не існує: {p}")
