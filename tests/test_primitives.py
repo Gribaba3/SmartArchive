@@ -74,3 +74,20 @@ def test_long_codes_fallback_decoder():
     assert d.table is None
     r = BitReader(w.getvalue())
     assert [d.read(r) for _ in msg] == msg
+
+
+def test_length_limit_on_fibonacci_worst_case():
+    """Частоти Фібоначчі дають найглибше дерево Гаффмана: без ліміту код сягає 24 біт.
+    З лімітом 15 — усі коди <= 15, Крафт виконується, а середня довжина зростає мало."""
+    from sarc.huffman import _huffman_lengths, build_lengths
+    fib = [1, 1]
+    while len(fib) < 25:
+        fib.append(fib[-1] + fib[-2])
+    freqs = dict(enumerate(fib))
+    free = _huffman_lengths(freqs)
+    limited = build_lengths(freqs, 15)
+    assert max(free.values()) == 24
+    assert max(limited.values()) <= 15
+    assert sum(2 ** -ln for ln in limited.values()) <= 1
+    cost = lambda lens: sum(freqs[s] * lens[s] for s in freqs)  # noqa: E731
+    assert cost(limited) / cost(free) < 1.01        # втрата менше 1 %
