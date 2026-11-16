@@ -192,3 +192,54 @@ def test_fixed_strategy_still_roundtrips(tmp_path):
     from tests.test_acceptance import roundtrip
     files = {"a.z": zlib.compress(b"hello world " * 500), "b.txt": b"some text\n" * 300}
     roundtrip(tmp_path, files, Options(use_class=False))
+
+
+# ---------- виправлення за рев'ю #5 ----------
+
+@pytest.mark.parametrize("size", [0, 1, 4095, 4096, 4097, 16384, 20000, 40000])
+@pytest.mark.parametrize("block_size", [4096, 16384, 65536])
+def test_blocks_split_stream_exactly(size, block_size):
+    """_blocks дає ті самі блоки, що й просте різання по block_size (порожній файл — один блок)."""
+    import io
+
+    from sarc.archive import _blocks
+    from sarc.features import SAMPLE_SIZE
+    data = random.Random(size).randbytes(size)
+    fh = io.BytesIO(data)
+    first = fh.read(max(SAMPLE_SIZE, block_size))
+    blocks = list(_blocks(fh, first, block_size))
+    expected = [data[i:i + block_size] for i in range(0, len(data), block_size)] or [b""]
+    assert blocks == expected
+
+
+def test_classifier_sees_full_sample_with_small_blocks(tmp_path, monkeypatch):
+    """З block_size = 4096 класифікатор однаково отримує SAMPLE_SIZE байтів."""
+    import sarc.archive as archive_mod
+    from sarc.archive import Options
+    from sarc.features import SAMPLE_SIZE
+    from tests.test_acceptance import roundtrip
+    seen = []
+    real = archive_mod.classify
+    monkeypatch.setattr(archive_mod, "classify", lambda name, s: seen.append(len(s)) or real(name, s))
+    data = random.Random(7).randbytes(40000)
+    roundtrip(tmp_path, {"x.bin": data}, Options(block_size=4096, max_volume=8192))
+    assert seen == [SAMPLE_SIZE]
+
+
+@pytest.mark.parametrize("content", [None, b"not json", b'{"model": {"W1": [[1.0]]}}',
+                                     b'{"model": {"W1": [[1.0]], "b1": [0], "W2": [[1.0]], "b2": [0],'
+                                     b' "mean": [0], "std": [1]}}'],
+                         ids=["missing", "broken_json", "missing_fields", "wrong_shape"])
+def test_bad_model_file_gives_e_model(tmp_path, monkeypatch, content):
+    import sarc.analysis as analysis
+    from sarc.archive import create_archive
+    from sarc.errors import ArchiveError
+    path = tmp_path / "model.json"
+    if content is not None:
+        path.write_bytes(content)
+    monkeypatch.setattr(analysis, "MODEL_PATH", path)
+    monkeypatch.setattr(analysis, "_model", None)
+    (tmp_path / "f.txt").write_bytes(b"hello")
+    with pytest.raises(ArchiveError) as e:
+        create_archive([str(tmp_path / "f.txt")], str(tmp_path / "a.arc"), "pw")
+    assert e.value.code == "E_MODEL"

@@ -14,6 +14,7 @@ from .codec import encode_tokens
 from .container import METHOD_HUFFMAN, METHOD_STORED, BlockEntry, FileEntry, Volume, check_name, pack_volume
 from .crypto import NONCE_LEN, SALT_LEN, derive_keys
 from .errors import E_CAPACITY, E_EXISTS, E_INPUT, E_OUTPUT, ArchiveError
+from .features import SAMPLE_SIZE
 from .lz77 import LZParams, greedy_parse, lazy_parse
 from .packing import SOLVERS, PlannedBlock, plan_volumes
 
@@ -129,16 +130,36 @@ class _Spool:
         self.fh.close()
 
 
+def _blocks(fh, first: bytes, block_size: int):
+    """Ділить потік на блоки block_size, починаючи з уже прочитаного шматка first.
+
+    Потрібно, бо зразок для класифікатора (SAMPLE_SIZE) і блок можуть бути різного розміру.
+    Порожній файл -> один порожній блок (так у форматі).
+    """
+    buf = first
+    while True:
+        while len(buf) < block_size:
+            more = fh.read(block_size - len(buf))
+            if not more:
+                break
+            buf += more
+        yield buf[:block_size]
+        buf = buf[block_size:]
+        if not buf and not (buf := fh.read(block_size)):
+            return
+
+
 def _read_and_encode(path: str, name: str, opts: Options, spool: _Spool, result: "ArchiveResult"):
     """Читає файл блоками, кодує, кладе в spool. Помилки читання -> E_INPUT."""
     planned = []
     try:
         with open(path, "rb") as fh:
-            chunk = fh.read(opts.block_size)
-            ftype = classify(name, chunk)
+            # Класифікатор бачить ті самі SAMPLE_SIZE байтів, на яких навчався, незалежно від block_size
+            first = fh.read(max(SAMPLE_SIZE, opts.block_size))
+            ftype = classify(name, first[:SAMPLE_SIZE])
             value = opts.priorities.get(ftype, 1) if opts.use_class else 1
             crc = size = index = compressed = 0
-            while True:                       # потокове читання: у пам'яті один сирий блок
+            for chunk in _blocks(fh, first, opts.block_size):   # у пам'яті не більше двох блоків
                 crc = zlib.crc32(chunk, crc)
                 size += len(chunk)
                 blk = encode_block(chunk, ftype, opts)
@@ -146,9 +167,6 @@ def _read_and_encode(path: str, name: str, opts: Options, spool: _Spool, result:
                 compressed += blk.method == METHOD_HUFFMAN
                 planned.append(PlannedBlock(name, index, len(blk.data), value))
                 index += 1
-                chunk = fh.read(opts.block_size)
-                if not chunk:
-                    break
     except OSError as e:
         raise ArchiveError(E_INPUT, f"не вдалося прочитати {path}: {e.strerror}") from None
     if size >= 1 << 32:

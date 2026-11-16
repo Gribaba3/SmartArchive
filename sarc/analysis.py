@@ -10,6 +10,7 @@ from collections import Counter
 from pathlib import Path
 
 from . import features
+from .errors import E_MODEL, ArchiveError
 from .mlp import MLP
 
 TYPE_NAMES = {
@@ -23,10 +24,23 @@ _model = None
 
 
 def _get_model() -> MLP:
-    """Модель читається з диска один раз і далі береться з пам'яті."""
+    """Модель читається з диска один раз і далі береться з пам'яті.
+
+    Немає файлу, немає прав, битий JSON або не ті поля -> контрольована помилка E_MODEL,
+    а не необроблений виняток (і не E_INPUT: вхідний файл користувача тут ні до чого).
+    """
     global _model
     if _model is None:
-        _model = MLP.load(str(MODEL_PATH))
+        try:
+            model = MLP.load(str(MODEL_PATH))
+        except OSError as e:
+            raise ArchiveError(E_MODEL, f"не вдалося прочитати модель {MODEL_PATH}: {e.strerror}") from None
+        except (ValueError, KeyError, TypeError, IndexError):
+            raise ArchiveError(E_MODEL, f"файл моделі {MODEL_PATH} пошкоджений") from None
+        if model.W1.shape[0] != features.N_FEATURES:
+            raise ArchiveError(E_MODEL, f"модель розрахована на {model.W1.shape[0]} ознак, "
+                                        f"а features.py дає {features.N_FEATURES}: перенавчіть модель")
+        _model = model
     return _model
 
 
