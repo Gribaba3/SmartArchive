@@ -7,10 +7,13 @@ name = "sarc"
 version = "0.1.0"
 description = "Розумний захищений архіватор (проєкт 2, команда T01)"
 requires-python = ">=3.10"
-dependencies = ["cryptography>=41"]
+dependencies = ["cryptography>=41", "numpy>=1.24"]
 
 [tool.setuptools]
 packages = ["sarc"]   # у корені лише цей пакет; data/, docs/, tests/ — не пакети
+
+[tool.setuptools.package-data]
+sarc = ["mlp_model.json"]   # ваги перцептрона
 
 [project.optional-dependencies]
 dev = ["pytest", "pytest-cov", "ruff"]
