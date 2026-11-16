@@ -147,4 +147,7 @@ def plan_volumes(blocks: list[PlannedBlock], files: dict[str, FileEntry], max_vo
         chosen = set(solver(items, capacity))
         volumes.append(PlannedVolume(table, [b for i, b in enumerate(remaining) if i in chosen]))
         remaining = [b for i, b in enumerate(remaining) if i not in chosen]
+    if not volumes:
+        # Порожній вхід допустимий (методичка, 10.39): 1 том, file_count = 0, block_count = 0
+        volumes.append(PlannedVolume([], []))
     return volumes

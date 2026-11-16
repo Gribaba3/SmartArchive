@@ -10,7 +10,7 @@ head[h] — остання позиція з таким хешем, prev[i] — 
 """
 from dataclasses import dataclass
 
-from .codec import MAX_MATCH, MIN_MATCH
+from .codec import MAX_MATCH, MIN_MATCH, WINDOW
 
 
 @dataclass(frozen=True)
@@ -19,6 +19,14 @@ class LZParams:
     min_match: int = 3       # коротші збіги не беремо (формат дозволяє від 3)
     max_chain: int = 64      # глибина пошуку в хеш-ланцюжку
     lazy_gain: int = 1       # лінивий розбір: наскільки довшим має бути збіг у i+1
+
+    def __post_init__(self):
+        # Межі формату: інакше архіватор створить архів, який жоден розархіватор не відкриє.
+        # Важливо для ГА: мутація не повинна виводити параметри за ці межі.
+        if not 1 <= self.window <= WINDOW:
+            raise ValueError(f"window має бути від 1 до {WINDOW}")
+        if not MIN_MATCH <= self.min_match <= MAX_MATCH:
+            raise ValueError(f"min_match має бути від {MIN_MATCH} до {MAX_MATCH}")
 
 
 class MatchFinder:

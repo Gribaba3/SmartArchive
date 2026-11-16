@@ -5,11 +5,9 @@
 import heapq
 
 from .bitio import BitReader
-from .errors import E_PAYLOAD, ArchiveError
+from .errors import E_CODE, ArchiveError
 
-MAX_CODE_LEN = 15      # ліміт для НАШОГО кодера (⚠ припущення щодо специфікації)
-DECODE_MAX_LEN = 32    # розархіватор приймає довші коди — для сумісності з іншими командами
-TABLE_MAX_LEN = 15     # до цієї довжини декодуємо через таблицю, довші — по бітах
+MAX_CODE_LEN = 15      # максимальна довжина коду за форматом (методичка, 10.24)
 
 
 def canonical_codes(lengths: dict[int, int]) -> dict[int, tuple[int, int]]:
@@ -29,11 +27,31 @@ def canonical_codes(lengths: dict[int, int]) -> dict[int, tuple[int, int]]:
     return codes
 
 
+def check_lengths(lengths: dict[int, int]) -> None:
+    """Перевірка таблиці довжин з архіву (методичка, 10.24–10.26). Помилка -> E_CODE.
+
+    - кожна довжина від 1 до 15 біт;
+    - один символ -> довжина рівно 1 (код "0");
+    - більше одного символу -> рівність Крафта: сума 2^-l = 1, тобто код повний.
+      Якщо сума > 1, коди перетинаються; якщо < 1, частина бітових рядків нічого не означає.
+      В обох випадках таблицю не «виправляємо», а відхиляємо.
+    """
+    if any(not 1 <= ln <= MAX_CODE_LEN for ln in lengths.values()):
+        raise ArchiveError(E_CODE, "довжина коду поза межами 1..15")
+    if len(lengths) == 1:
+        if next(iter(lengths.values())) != 1:
+            raise ArchiveError(E_CODE, "єдиний символ повинен мати довжину 1")
+        return
+    # 2^-l = 2^(15-l) / 2^15, тому рахуємо в цілих числах
+    if sum(1 << (MAX_CODE_LEN - ln) for ln in lengths.values()) != 1 << MAX_CODE_LEN:
+        raise ArchiveError(E_CODE, "довжини кодів порушують рівність Крафта")
+
+
 class Decoder:
     """Табличне декодування: беремо max_len бітів наперед, таблиця одразу дає (символ, довжина).
 
     Код довжини l займає в таблиці 2^(max_len - l) комірок — усі продовження цього префікса.
-    Для дуже довгих кодів (> TABLE_MAX_LEN) таблиця завелика, тоді декодуємо по одному біту.
+    Коди не довші за 15 біт, тому таблиця не більша за 2^15 = 32768 комірок.
     """
 
     def __init__(self, lengths: dict[int, int]):
@@ -41,36 +59,22 @@ class Decoder:
         self.table = None
         if not lengths:
             return
-        if any(not 1 <= ln <= DECODE_MAX_LEN for ln in lengths.values()):
-            raise ArchiveError(E_PAYLOAD, "некоректна довжина коду")
-        # Нерівність Крафта: сума 2^-l <= 1, інакше коди перетинаються
-        if sum(1 << (DECODE_MAX_LEN - ln) for ln in lengths.values()) > (1 << DECODE_MAX_LEN):
-            raise ArchiveError(E_PAYLOAD, "довжини кодів порушують нерівність Крафта")
+        check_lengths(lengths)
         self.max_len = max(lengths.values())
-        codes = canonical_codes(lengths)
-        if self.max_len <= TABLE_MAX_LEN:
-            self.table = [None] * (1 << self.max_len)
-            for sym, (code, ln) in codes.items():
-                shift = self.max_len - ln
-                start = code << shift
-                self.table[start:start + (1 << shift)] = [(sym, ln)] * (1 << shift)
-        else:
-            self.by_code = {(ln, code): sym for sym, (code, ln) in codes.items()}
+        self.table = [None] * (1 << self.max_len)
+        for sym, (code, ln) in canonical_codes(lengths).items():
+            shift = self.max_len - ln
+            start = code << shift
+            self.table[start:start + (1 << shift)] = [(sym, ln)] * (1 << shift)
 
     def read(self, br: BitReader) -> int:
-        if self.table is not None:
-            entry = self.table[br.peek(self.max_len)]
-            if entry is None:
-                raise ArchiveError(E_PAYLOAD, "невідомий код Гаффмана")
-            br.skip(entry[1])
-            return entry[0]
-        code = 0
-        for ln in range(1, self.max_len + 1):
-            code = (code << 1) | br.bit()
-            sym = self.by_code.get((ln, code))
-            if sym is not None:
-                return sym
-        raise ArchiveError(E_PAYLOAD, "невідомий код Гаффмана")
+        if self.table is None:
+            raise ArchiveError(E_CODE, "читання з порожнього дерева")
+        entry = self.table[br.peek(self.max_len)]
+        if entry is None:  # можливо лише для одного символу: біт "1" не є кодом
+            raise ArchiveError(E_CODE, "невідомий код Гаффмана")
+        br.skip(entry[1])
+        return entry[0]
 
 
 # ---------- побудова кодів (архіватор) ----------

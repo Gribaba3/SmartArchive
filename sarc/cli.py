@@ -20,6 +20,7 @@ import os
 import sys
 
 from .archive import Options, create_archive
+from .codec import MAX_MATCH, MIN_MATCH, WINDOW
 from .errors import E_INPUT, ArchiveError
 from .extract import extract
 from .lz77 import LZParams
@@ -94,6 +95,11 @@ def main(argv=None) -> int:
     ex.add_argument("-f", "--force", action="store_true", help="перезаписувати наявні файли")
 
     args = ap.parse_args(argv)
+    if args.cmd == "archive":
+        if not 1 <= args.window <= WINDOW:
+            ap.error(f"--window має бути від 1 до {WINDOW} (межа формату)")
+        if not MIN_MATCH <= args.min_match <= MAX_MATCH:
+            ap.error(f"--min-match має бути від {MIN_MATCH} до {MAX_MATCH}")
     try:
         if args.cmd == "archive":
             opts = Options(block_size=args.block_size, max_volume=args.volume_size, parser=args.parser,
