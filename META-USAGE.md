@@ -9,6 +9,7 @@
 | 2026-11-16 | Claude (Anthropic), Claude Opus 5.5 | Виправлення за рев'ю PR #2: ДП за цінністю, тимчасовий файл для блоків, обробка помилок читання/запису, медіана часу | `sarc/packing.py`, `sarc/archive.py`, `sarc/lz77.py`, `tools/measure.py`, `tests/*.py` |
 | 2026-11-16 | Claude (Anthropic), Claude Opus 5.5 | Архіватор: кодер Гаффмана, LZ77 (жадібний і лінивий), рюкзак ДП/жадібний, команда archive, тести 12 кейсів C1, скрипт вимірювань | `sarc/huffman.py`, `sarc/codec.py`, `sarc/lz77.py`, `sarc/packing.py`, `sarc/analysis.py`, `sarc/archive.py`, `sarc/cli.py`, `tests/test_acceptance.py`, `tools/measure.py`, `docs/RESULTS.md` |
 | 2026-11-15 | Claude (Anthropic), Claude Opus 5.5 | Каркас пакета, розархіватор з кодами відмов, тести на еталонних архівах, CI | `sarc/*.py`, `tests/*.py`, `.github/workflows/ci.yml`, `pyproject.toml`, `README.md` |
+| 2026-11-16 | Claude (Anthropic), Claude Opus 5.5 | Звірка репозиторію з методичкою (розділи 3, 6, 10) і виправлення невідповідностей: суворий декодер (коди ≤ 15 біт, рівність Крафта, алфавіти, вікно 32768), код E_CODE, порожній архів, межі LZParams, нові тести, лог рішень, перенесення `tools/` → `experiments/` | `sarc/huffman.py`, `sarc/codec.py`, `sarc/errors.py`, `sarc/lz77.py`, `sarc/cli.py`, `sarc/archive.py`, `sarc/packing.py`, `tests/*.py`, `docs/DECISIONS.md`, `docs/FORMAT_SPEC.md`, `README.md` |
 
 Перевірку виконано автоматичними тестами: усі еталонні архіви `data/reference/ref_*.arc`
 розпаковуються з правильними CRC32, усі `bad_*.arc` дають очікувані коди з `expected_failures.json`.

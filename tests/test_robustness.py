@@ -30,17 +30,27 @@ def test_handmade_block_ok(tmp_path):
     assert read_archive([huffman_block_file(tmp_path, GOOD, b"AAAAA")], PASSWORD) == {"x.bin": b"AAAAA"}
 
 
-@pytest.mark.parametrize("block", [
-    blk([(65, 1), (65, 1)], [], [], 1, b"\x00"),             # символ у дереві двічі
-    blk([(65, 1), (66, 1), (67, 1)], [], [], 1, b"\x00"),    # порушено нерівність Крафта
-    blk(AM, [(1, 1)], [(0, 1)], 9, b"\x40"),                  # token_count > raw_len
-    blk([(65, 2), (66, 2)], [], [], 5, b"\x00"),             # бітовий потік закінчився
-    blk([(65, 2), (66, 2)], [], [], 1, b"\xff"),             # невідомий код
-    blk(AM, [(1, 1)], [(0, 1)], 1, b"\x80"),                  # посилання на порожній вихід
-    GOOD[:-3],                                                # блок обрізаний
-], ids=["dup", "kraft", "tokens", "eof", "badcode", "dist", "cut"])
-def test_corrupted_blocks(tmp_path, block):
-    assert code_of(read_archive, [huffman_block_file(tmp_path, block, b"AAAAA")], PASSWORD) == "E_PAYLOAD"
+@pytest.mark.parametrize("block,code", [
+    # таблиця кодів (методичка, 10.24-10.26) -> E_CODE
+    (blk([(65, 1), (65, 1)], [], [], 1, b"\x00"), "E_CODE"),            # символ у дереві двічі
+    (blk([(65, 1), (66, 1), (67, 1)], [], [], 1, b"\x00"), "E_CODE"),   # сума 2^-l > 1
+    (blk([(65, 2), (66, 2)], [], [], 1, b"\x00"), "E_CODE"),            # сума 2^-l < 1 (неповний код)
+    (blk([(65, 2)], [], [], 1, b"\x00"), "E_CODE"),                     # єдиний символ, довжина != 1
+    (blk([(65, 1), (66, 16)], [], [], 1, b"\x00"), "E_CODE"),           # код довший за 15 біт
+    (blk([(65, 1), (257, 1)], [], [], 1, b"\x00"), "E_CODE"),           # LIT поза 0..256
+    (blk(AM, [(256, 1), (1, 1)], [(0, 1)], 2, b"\x40"), "E_CODE"),      # LEN поза 0..255
+    (blk(AM, [(1, 1)], [(16, 1)], 2, b"\x40"), "E_CODE"),               # DIST поза 0..15
+    # бітовий потік -> E_CODE
+    (blk([(65, 1)], [], [], 1, b"\x80"), "E_CODE"),                     # біт "1" не є кодом
+    (blk(AM, [(1, 1)], [(0, 1)], 1, b"\x80"), "E_CODE"),                # посилання на порожній вихід
+    # структура блоку -> E_PAYLOAD
+    (blk(AM, [(1, 1)], [(0, 1)], 9, b"\x40"), "E_PAYLOAD"),             # token_count > raw_len
+    (blk([(65, 1), (66, 1)], [], [], 5, b""), "E_PAYLOAD"),              # бітовий потік закінчився
+    (GOOD[:-3], "E_PAYLOAD"),                                           # блок обрізаний
+], ids=["dup", "kraft_over", "kraft_under", "single_len2", "len16", "lit257", "len256", "dist16",
+        "badcode", "dist_empty", "tokens", "eof", "cut"])
+def test_corrupted_blocks(tmp_path, block, code):
+    assert code_of(read_archive, [huffman_block_file(tmp_path, block, b"AAAAA")], PASSWORD) == code
 
 
 # ---------- імена ----------

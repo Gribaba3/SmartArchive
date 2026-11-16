@@ -1,7 +1,7 @@
 """Вимірювання для звіту: метрика Q і таблиці 1, 2, 3, 4 (розділ 12 умови).
 
-    python tools/measure.py                 # друкує Markdown
-    python tools/measure.py -o docs/RESULTS.md
+    python experiments/measure.py                 # друкує Markdown
+    python experiments/measure.py -o docs/RESULTS.md
 
 Q = α·S + β·T,  S = B_orig / (B_orig + B_arc),  T = t_ref / (t_ref + t),
 t — сумарний час архівації і розпакування (медіана з RUNS прогонів, бо на ~0.5 с шум помітний);
@@ -191,7 +191,7 @@ def main():
     args = ap.parse_args()
     full = measure_q(Options())
     parts = [
-        "# Результати вимірювань (згенеровано tools/measure.py)\n",
+        "# Результати вимірювань (згенеровано experiments/measure.py)\n",
         f"Корпус: {len(CORPUS)} файлів, {full['orig']} Б. α = {Q_CFG['alpha']}, β = {Q_CFG['beta']}, "
         f"t_ref = {Q_CFG['t_ref_секунд']} с. Опорний пакувальник викладача: "
         f"{CONFIG['довідково']['розмір_архіву_опорного_пакувальника']} Б "

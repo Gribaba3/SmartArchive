@@ -48,6 +48,26 @@ def test_bad_archives(fname):
     assert e.value.code == EXPECTED_FAILURES[fname]["очікуваний_код"]
 
 
+def test_bad_version(tmp_path):
+    """Версія ≠ 1 -> E_MAGIC ще до перевірки HMAC (методичка, 10.64)."""
+    data = bytearray((REF / "ref_01_single_file.arc").read_bytes())
+    data[4] = 2
+    (tmp_path / "v.arc").write_bytes(data)
+    with pytest.raises(ArchiveError) as e:
+        read_archive([str(tmp_path / "v.arc")], PASSWORD)
+    assert e.value.code == "E_MAGIC"
+
+
+def test_wrong_ciphertext_len(tmp_path):
+    """Поле ciphertext_len не відповідає розміру тому -> E_LENGTH (методичка, 10.64)."""
+    data = bytearray((REF / "ref_01_single_file.arc").read_bytes())
+    data[40] ^= 1
+    (tmp_path / "v.arc").write_bytes(data)
+    with pytest.raises(ArchiveError) as e:
+        read_archive([str(tmp_path / "v.arc")], PASSWORD)
+    assert e.value.code == "E_LENGTH"
+
+
 def test_wrong_password():
     with pytest.raises(ArchiveError) as e:
         read_archive(volumes_of("ref_01_single_file"), "wrong")

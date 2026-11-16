@@ -8,12 +8,18 @@ import struct
 from collections import Counter
 
 from .bitio import BitReader, BitWriter
-from .errors import E_PAYLOAD, ArchiveError
+from .errors import E_CODE, E_PAYLOAD, ArchiveError
 from .huffman import Decoder, build_lengths, canonical_codes
 
 MATCH_SYMBOL = 256   # у дереві LIT означає «далі посилання»
 MIN_MATCH = 3
 MAX_MATCH = 258
+WINDOW = 32768       # максимальна відстань посилання за форматом (методичка, 10.19)
+
+# Розміри алфавітів (методичка, 10.22): символ поза алфавітом -> E_CODE
+LIT_ALPHABET = 257   # 0..255 байти, 256 = «далі посилання»
+LEN_ALPHABET = 256   # довжина збігу - 3, тобто 3..258
+DIST_ALPHABET = 16   # bit_length(dist - 1) для dist 1..32768 -> 0..15
 
 
 def dist_symbol(dist: int) -> tuple[int, int, int]:
@@ -24,7 +30,7 @@ def dist_symbol(dist: int) -> tuple[int, int, int]:
     return b, b - 1, (dist - 1) - (1 << (b - 1))
 
 
-def _read_tree(buf: bytes, pos: int) -> tuple[dict[int, int], int]:
+def _read_tree(buf: bytes, pos: int, alphabet: int) -> tuple[dict[int, int], int]:
     if pos + 2 > len(buf):
         raise ArchiveError(E_PAYLOAD, "блок обрізаний (дерево)")
     (n,) = struct.unpack_from(">H", buf, pos)
@@ -35,16 +41,18 @@ def _read_tree(buf: bytes, pos: int) -> tuple[dict[int, int], int]:
     for _ in range(n):
         sym, ln = struct.unpack_from(">HB", buf, pos)
         pos += 3
+        if sym >= alphabet:
+            raise ArchiveError(E_CODE, f"символ {sym} поза алфавітом 0..{alphabet - 1}")
         if sym in lengths:
-            raise ArchiveError(E_PAYLOAD, f"символ {sym} у дереві двічі")
+            raise ArchiveError(E_CODE, f"символ {sym} у дереві двічі")
         lengths[sym] = ln
     return lengths, pos
 
 
 def decode_block(buf: bytes, raw_len: int) -> bytes:
-    lit_l, pos = _read_tree(buf, 0)
-    len_l, pos = _read_tree(buf, pos)
-    dist_l, pos = _read_tree(buf, pos)
+    lit_l, pos = _read_tree(buf, 0, LIT_ALPHABET)
+    len_l, pos = _read_tree(buf, pos, LEN_ALPHABET)
+    dist_l, pos = _read_tree(buf, pos, DIST_ALPHABET)
     if pos + 8 > len(buf):
         raise ArchiveError(E_PAYLOAD, "блок обрізаний (лічильники)")
     token_count, bits_len = struct.unpack_from(">II", buf, pos)
@@ -62,13 +70,12 @@ def decode_block(buf: bytes, raw_len: int) -> bytes:
         if sym < 256:
             out.append(sym)
             continue
-        if sym != MATCH_SYMBOL:
-            raise ArchiveError(E_PAYLOAD, "символ LIT > 256")
+        # символи поза алфавітами вже відсіяні в _read_tree, тому sym == 256, n <= 258, b <= 15
         n = length.read(br) + MIN_MATCH
         b = dist.read(br)
         d = 1 if b == 0 else ((1 << (b - 1)) | br.read(b - 1)) + 1
-        if d > len(out) or n > MAX_MATCH:
-            raise ArchiveError(E_PAYLOAD, "посилання за межі вже декодованих даних")
+        if d > len(out):  # d <= 32768 гарантує b <= 15
+            raise ArchiveError(E_CODE, "посилання за межі вже декодованих даних")
         start = len(out) - d
         if d >= n:
             out += out[start:start + n]
