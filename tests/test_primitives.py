@@ -124,3 +124,26 @@ def test_length_limit_on_fibonacci_worst_case():
     assert sum(2 ** -ln for ln in limited.values()) <= 1
     cost = lambda lens: sum(freqs[s] * lens[s] for s in freqs)  # noqa: E731
     assert cost(limited) / cost(free) < 1.01        # втрата менше 1 %
+
+
+@pytest.mark.parametrize("seed", range(5))
+def test_longest_matches_brute_force(seed):
+    """MatchFinder.longest (з вбудованими хешем і вставкою в ланцюжки) знаходить ту саму довжину
+    збігу, що й повний перебір усіх попередніх позицій у межах вікна."""
+    import random
+
+    from sarc.lz77 import LZParams, MatchFinder
+    rng = random.Random(seed)
+    data = bytes(rng.choice(b"abc") for _ in range(600))   # малий алфавіт -> багато збігів
+    params = LZParams(window=200, min_match=3, max_chain=10**6)
+    mf = MatchFinder(data, params)
+    for i in range(len(data)):
+        best = 0
+        for c in range(max(0, i - params.window), i):
+            k = 0
+            while i + k < len(data) and k < 258 and data[c + k] == data[i + k]:
+                k += 1
+            best = max(best, k)
+        if best < 3:
+            best = 0
+        assert mf.longest(i)[0] == best, i
