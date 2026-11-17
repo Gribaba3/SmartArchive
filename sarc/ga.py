@@ -30,6 +30,10 @@ class GAConfig:
     p_crossover: float = 0.9
     p_mutation: float = 0.25   # імовірність мутації КОЖНОГО гена
     elite: int = 2
+    # "shift" — зсув на ±1..2 позиції (значення генів упорядковані: вікна, пороги);
+    # "reset" — нове випадкове значення (значення не впорядковані: байти ключа, де 0x41 не «ближче» до 0x42)
+    mutation: str = "shift"
+    max_stalled: int = 50   # стільки поколінь поспіль без жодної нової хромосоми -> зупинка
 
 
 @dataclass
@@ -83,16 +87,21 @@ def uniform_crossover(a: Chromosome, b: Chromosome, rng: random.Random) -> Chrom
     return tuple(x if rng.random() < 0.5 else y for x, y in zip(a, b, strict=True))
 
 
-def mutate(ch: Chromosome, sizes: list[int], p: float, rng: random.Random) -> Chromosome:
-    """Кожен ген з імовірністю p зсувається на ±1 або ±2 позиції; результат обрізається до меж.
+def mutate(ch: Chromosome, sizes: list[int], p: float, rng: random.Random,
+           mode: str = "shift") -> Chromosome:
+    """Кожен ген з імовірністю p змінюється.
 
-    Зсув, а не випадкове нове значення: значення генів упорядковані (вікно 4096 «ближче» до 8192,
-    ніж до 512), тому малий крок — це дослідження околиці доброго рішення.
+    mode="shift": зсув на ±1 або ±2 позиції з обрізанням до меж. Підходить, коли значення генів
+    упорядковані (вікно 4096 «ближче» до 8192, ніж до 512): малий крок досліджує околицю рішення.
+    mode="reset": нове випадкове значення, відмінне від поточного. Підходить, коли порядку немає.
     """
     out = []
     for g, n in zip(ch, sizes, strict=True):
         if rng.random() < p:
-            g = min(n - 1, max(0, g + rng.choice((-2, -1, 1, 2))))
+            if mode == "reset" and n > 1:
+                g = (g + rng.randrange(1, n)) % n     # будь-яке інше значення, рівноймовірно
+            elif mode == "shift":
+                g = min(n - 1, max(0, g + rng.choice((-2, -1, 1, 2))))
         out.append(g)
     return tuple(out)
 
@@ -114,7 +123,7 @@ def genetic_algorithm(sizes: list[int], evaluate: Evaluator, cfg: GAConfig = Non
         history.append({"generation": generation, "evaluations": evaluate.evaluations,
                         "best": fit[ranked[0]], "mean": sum(fit[c] for c in pop) / len(pop),
                         "best_chromosome": list(ranked[0])})
-        if evaluate.exhausted() or stalled > 50:
+        if evaluate.exhausted() or stalled > cfg.max_stalled:
             break   # stalled: популяція зійшлася і нових хромосом не з'являється — далі марно
         before = evaluate.evaluations
         children = ranked[:cfg.elite]                     # елітизм
@@ -122,7 +131,7 @@ def genetic_algorithm(sizes: list[int], evaluate: Evaluator, cfg: GAConfig = Non
             a = tournament_select(pop, fit, cfg.tournament, rng)
             b = tournament_select(pop, fit, cfg.tournament, rng)
             child = uniform_crossover(a, b, rng) if rng.random() < cfg.p_crossover else a
-            child = mutate(child, sizes, cfg.p_mutation, rng)
+            child = mutate(child, sizes, cfg.p_mutation, rng, cfg.mutation)
             fit[child] = evaluate(child)
             children.append(child)
         pop = children
