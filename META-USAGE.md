@@ -15,6 +15,7 @@
 | 2026-11-17 | Claude (Anthropic), Claude Opus 5.5 | Код відмови E_VOLUMES за методичкою (10.53) замість E_VOLUME; volume_index ≥ volume_count -> E_VOLUMES; тести | `sarc/errors.py`, `sarc/extract.py`, `sarc/container.py`, `tests/*.py`, `README.md`, `docs/FORMAT_SPEC.md`, `docs/DECISIONS.md` |
 | 2026-11-17 | Claude (Anthropic), Claude Opus 5.5 | Генетичний алгоритм і random search (селекція, схрещування, мутація, елітизм, бюджет і кеш оцінок), експеримент на корпусі, почерговий перевимір переможця, нові типові параметри LZ77, тести ГА за методичкою (6.14) | `sarc/ga.py`, `sarc/lz77.py`, `sarc/cli.py`, `experiments/run_ga.py`, `experiments/measure.py`, `tests/test_ga.py`, `docs/GA_RESULTS.md`, `docs/RESULTS.md`, `docs/DECISIONS.md`, `README.md` |
 | 2026-11-17 | Claude (Anthropic), Claude Opus 5.5 | Прискорення пошуку збігів LZ77 (профілювання, вбудовування хешу і вставки в longest), тест проти повного перебору | `sarc/lz77.py`, `tests/test_primitives.py`, `docs/DECISIONS.md` |
+| 2026-11-17 | Claude (Anthropic), Claude Opus 5.5 | Модуль атаки: навчальний XOR-шифр, модель тексту, пошук ключа ГА (мутація reset у sarc/ga.py), контроль на справжньому архіві з PIN, випадкові пошкодження архіву, експерименти й тести | `attack/*.py`, `sarc/ga.py`, `experiments/run_attack.py`, `tests/test_attack.py`, `docs/ATTACK_RESULTS.md`, `docs/DECISIONS.md`, `README.md` |
 
 Перевірку виконано автоматичними тестами: усі еталонні архіви `data/reference/ref_*.arc`
 розпаковуються з правильними CRC32, усі `bad_*.arc` дають очікувані коди з `expected_failures.json`.

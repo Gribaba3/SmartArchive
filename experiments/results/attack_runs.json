@@ -1,0 +1,517 @@
+{
+ "xor": [
+  {
+   "k": 4,
+   "seed": 0,
+   "method": "ga",
+   "k_guess": 4,
+   "key_acc": 1.0,
+   "text_acc": 1.0,
+   "fitness": -5.344500960202904,
+   "true_fitness": -5.344500960202904,
+   "seconds": 1.7269357449999916
+  },
+  {
+   "k": 4,
+   "seed": 0,
+   "method": "random",
+   "k_guess": 4,
+   "key_acc": 0.5,
+   "text_acc": 0.5000215507952244,
+   "fitness": -13.327501731813246,
+   "true_fitness": -5.344500960202904,
+   "seconds": 1.2129106749999892
+  },
+  {
+   "k": 4,
+   "seed": 1,
+   "method": "ga",
+   "k_guess": 4,
+   "key_acc": 1.0,
+   "text_acc": 1.0,
+   "fitness": -4.996232026776387,
+   "true_fitness": -4.996232026776387,
+   "seconds": 1.2942254249999792
+  },
+  {
+   "k": 4,
+   "seed": 1,
+   "method": "random",
+   "k_guess": 4,
+   "key_acc": 0.5,
+   "text_acc": 0.5,
+   "fitness": -12.914811390380462,
+   "true_fitness": -4.996232026776387,
+   "seconds": 1.260542665999992
+  },
+  {
+   "k": 4,
+   "seed": 2,
+   "method": "ga",
+   "k_guess": 4,
+   "key_acc": 1.0,
+   "text_acc": 1.0,
+   "fitness": -4.983728377785737,
+   "true_fitness": -4.983728377785737,
+   "seconds": 1.56539358699996
+  },
+  {
+   "k": 4,
+   "seed": 2,
+   "method": "random",
+   "k_guess": 4,
+   "key_acc": 0.5,
+   "text_acc": 0.5,
+   "fitness": -13.20982365914671,
+   "true_fitness": -4.983728377785737,
+   "seconds": 1.3785959869999829
+  },
+  {
+   "k": 4,
+   "seed": 3,
+   "method": "ga",
+   "k_guess": 4,
+   "key_acc": 1.0,
+   "text_acc": 1.0,
+   "fitness": -5.344500960202904,
+   "true_fitness": -5.344500960202904,
+   "seconds": 1.3403170570000498
+  },
+  {
+   "k": 4,
+   "seed": 3,
+   "method": "random",
+   "k_guess": 4,
+   "key_acc": 0.5,
+   "text_acc": 0.49997844920477563,
+   "fitness": -12.986499775449895,
+   "true_fitness": -5.344500960202904,
+   "seconds": 1.4822164379999663
+  },
+  {
+   "k": 4,
+   "seed": 4,
+   "method": "ga",
+   "k_guess": 4,
+   "key_acc": 1.0,
+   "text_acc": 1.0,
+   "fitness": -4.996232026776387,
+   "true_fitness": -4.996232026776387,
+   "seconds": 1.4213824479999744
+  },
+  {
+   "k": 4,
+   "seed": 4,
+   "method": "random",
+   "k_guess": 4,
+   "key_acc": 0.25,
+   "text_acc": 0.25,
+   "fitness": -13.42248730781169,
+   "true_fitness": -4.996232026776387,
+   "seconds": 1.270115475999944
+  },
+  {
+   "k": 8,
+   "seed": 0,
+   "method": "ga",
+   "k_guess": 8,
+   "key_acc": 1.0,
+   "text_acc": 1.0,
+   "fitness": -5.344500960202904,
+   "true_fitness": -5.344500960202904,
+   "seconds": 0.909252658000014
+  },
+  {
+   "k": 8,
+   "seed": 0,
+   "method": "random",
+   "k_guess": 8,
+   "key_acc": 0.25,
+   "text_acc": 0.24998922460238782,
+   "fitness": -15.065092779412202,
+   "true_fitness": -5.344500960202904,
+   "seconds": 0.7249422639999921
+  },
+  {
+   "k": 8,
+   "seed": 1,
+   "method": "ga",
+   "k_guess": 8,
+   "key_acc": 1.0,
+   "text_acc": 1.0,
+   "fitness": -4.996232026776387,
+   "true_fitness": -4.996232026776387,
+   "seconds": 1.1132438779999347
+  },
+  {
+   "k": 8,
+   "seed": 1,
+   "method": "random",
+   "k_guess": 8,
+   "key_acc": 0.25,
+   "text_acc": 0.24981844589687727,
+   "fitness": -15.093428309545413,
+   "true_fitness": -4.996232026776387,
+   "seconds": 0.9308993479999117
+  },
+  {
+   "k": 8,
+   "seed": 2,
+   "method": "ga",
+   "k_guess": 8,
+   "key_acc": 1.0,
+   "text_acc": 1.0,
+   "fitness": -4.983728377785737,
+   "true_fitness": -4.983728377785737,
+   "seconds": 1.2066937220000682
+  },
+  {
+   "k": 8,
+   "seed": 2,
+   "method": "random",
+   "k_guess": 8,
+   "key_acc": 0.125,
+   "text_acc": 0.12498592500844499,
+   "fitness": -15.261041910096047,
+   "true_fitness": -4.983728377785737,
+   "seconds": 0.925031681000064
+  },
+  {
+   "k": 8,
+   "seed": 3,
+   "method": "ga",
+   "k_guess": 8,
+   "key_acc": 1.0,
+   "text_acc": 1.0,
+   "fitness": -5.344500960202904,
+   "true_fitness": -5.344500960202904,
+   "seconds": 1.1972963570000275
+  },
+  {
+   "k": 8,
+   "seed": 3,
+   "method": "random",
+   "k_guess": 8,
+   "key_acc": 0.25,
+   "text_acc": 0.24998922460238782,
+   "fitness": -15.065437926756026,
+   "true_fitness": -5.344500960202904,
+   "seconds": 0.9416155389999403
+  },
+  {
+   "k": 8,
+   "seed": 4,
+   "method": "ga",
+   "k_guess": 8,
+   "key_acc": 1.0,
+   "text_acc": 1.0,
+   "fitness": -4.996232026776387,
+   "true_fitness": -4.996232026776387,
+   "seconds": 1.1213420320000296
+  },
+  {
+   "k": 8,
+   "seed": 4,
+   "method": "random",
+   "k_guess": 8,
+   "key_acc": 0.25,
+   "text_acc": 0.2501815541031227,
+   "fitness": -14.539586042945784,
+   "true_fitness": -4.996232026776387,
+   "seconds": 0.967081693999944
+  },
+  {
+   "k": 12,
+   "seed": 0,
+   "method": "ga",
+   "k_guess": 12,
+   "key_acc": 1.0,
+   "text_acc": 1.0,
+   "fitness": -5.344500960202904,
+   "true_fitness": -5.344500960202904,
+   "seconds": 1.0413432840000496
+  },
+  {
+   "k": 12,
+   "seed": 0,
+   "method": "random",
+   "k_guess": 12,
+   "key_acc": 0.16666666666666666,
+   "text_acc": 0.1666307486746261,
+   "fitness": -15.79677771523166,
+   "true_fitness": -5.344500960202904,
+   "seconds": 0.7947534940000196
+  },
+  {
+   "k": 12,
+   "seed": 1,
+   "method": "ga",
+   "k_guess": 12,
+   "key_acc": 1.0,
+   "text_acc": 1.0,
+   "fitness": -4.996232026776387,
+   "true_fitness": -4.996232026776387,
+   "seconds": 1.1000108289999844
+  },
+  {
+   "k": 12,
+   "seed": 1,
+   "method": "random",
+   "k_guess": 12,
+   "key_acc": 0.16666666666666666,
+   "text_acc": 0.16666666666666666,
+   "fitness": -16.03255794072997,
+   "true_fitness": -4.996232026776387,
+   "seconds": 0.8090496669999538
+  },
+  {
+   "k": 12,
+   "seed": 2,
+   "method": "ga",
+   "k_guess": 12,
+   "key_acc": 1.0,
+   "text_acc": 1.0,
+   "fitness": -4.983728377785737,
+   "true_fitness": -4.983728377785737,
+   "seconds": 0.8117049159999397
+  },
+  {
+   "k": 12,
+   "seed": 2,
+   "method": "random",
+   "k_guess": 12,
+   "key_acc": 0.16666666666666666,
+   "text_acc": 0.16670419997748,
+   "fitness": -15.846159718251771,
+   "true_fitness": -4.983728377785737,
+   "seconds": 0.874967702000049
+  },
+  {
+   "k": 12,
+   "seed": 3,
+   "method": "ga",
+   "k_guess": 12,
+   "key_acc": 1.0,
+   "text_acc": 1.0,
+   "fitness": -5.344500960202904,
+   "true_fitness": -5.344500960202904,
+   "seconds": 1.0135211939999635
+  },
+  {
+   "k": 12,
+   "seed": 3,
+   "method": "random",
+   "k_guess": 12,
+   "key_acc": 0.16666666666666666,
+   "text_acc": 0.16667385026507478,
+   "fitness": -16.02040604923665,
+   "true_fitness": -5.344500960202904,
+   "seconds": 0.8211349850000715
+  },
+  {
+   "k": 12,
+   "seed": 4,
+   "method": "ga",
+   "k_guess": 12,
+   "key_acc": 1.0,
+   "text_acc": 1.0,
+   "fitness": -4.996232026776387,
+   "true_fitness": -4.996232026776387,
+   "seconds": 1.0284822739999981
+  },
+  {
+   "k": 12,
+   "seed": 4,
+   "method": "random",
+   "k_guess": 12,
+   "key_acc": 0.16666666666666666,
+   "text_acc": 0.16666666666666666,
+   "fitness": -15.667934804890638,
+   "true_fitness": -4.996232026776387,
+   "seconds": 0.7218031759999803
+  },
+  {
+   "k": 16,
+   "seed": 0,
+   "method": "ga",
+   "k_guess": 16,
+   "key_acc": 1.0,
+   "text_acc": 1.0,
+   "fitness": -5.344500960202904,
+   "true_fitness": -5.344500960202904,
+   "seconds": 0.9060179599999856
+  },
+  {
+   "k": 16,
+   "seed": 0,
+   "method": "random",
+   "k_guess": 16,
+   "key_acc": 0.0,
+   "text_acc": 0.0,
+   "fitness": -16.26690708215537,
+   "true_fitness": -5.344500960202904,
+   "seconds": 0.7236814449998974
+  },
+  {
+   "k": 16,
+   "seed": 1,
+   "method": "ga",
+   "k_guess": 16,
+   "key_acc": 1.0,
+   "text_acc": 1.0,
+   "fitness": -4.996232026776387,
+   "true_fitness": -4.996232026776387,
+   "seconds": 0.9196188670000538
+  },
+  {
+   "k": 16,
+   "seed": 1,
+   "method": "random",
+   "k_guess": 16,
+   "key_acc": 0.1875,
+   "text_acc": 0.18736383442265794,
+   "fitness": -16.16526177176558,
+   "true_fitness": -4.996232026776387,
+   "seconds": 0.7333521990000236
+  },
+  {
+   "k": 16,
+   "seed": 2,
+   "method": "ga",
+   "k_guess": 16,
+   "key_acc": 1.0,
+   "text_acc": 1.0,
+   "fitness": -4.983728377785737,
+   "true_fitness": -4.983728377785737,
+   "seconds": 0.9469436169999881
+  },
+  {
+   "k": 16,
+   "seed": 2,
+   "method": "random",
+   "k_guess": 16,
+   "key_acc": 0.125,
+   "text_acc": 0.12498592500844499,
+   "fitness": -16.076281359530697,
+   "true_fitness": -4.983728377785737,
+   "seconds": 0.8964368629999626
+  },
+  {
+   "k": 16,
+   "seed": 3,
+   "method": "ga",
+   "k_guess": 16,
+   "key_acc": 0.9375,
+   "text_acc": 0.937502693849403,
+   "fitness": -6.200211633174101,
+   "true_fitness": -5.344500960202904,
+   "seconds": 0.9784487160000026
+  },
+  {
+   "k": 16,
+   "seed": 3,
+   "method": "random",
+   "k_guess": 16,
+   "key_acc": 0.125,
+   "text_acc": 0.12499461230119391,
+   "fitness": -16.135915921852597,
+   "true_fitness": -5.344500960202904,
+   "seconds": 0.7358614119999629
+  },
+  {
+   "k": 16,
+   "seed": 4,
+   "method": "ga",
+   "k_guess": 16,
+   "key_acc": 0.9375,
+   "text_acc": 0.9375453885257807,
+   "fitness": -5.596891855700386,
+   "true_fitness": -4.996232026776387,
+   "seconds": 0.7705745829999842
+  },
+  {
+   "k": 16,
+   "seed": 4,
+   "method": "random",
+   "k_guess": 16,
+   "key_acc": 0.0625,
+   "text_acc": 0.06245461147421932,
+   "fitness": -15.85881903884709,
+   "true_fitness": -4.996232026776387,
+   "seconds": 0.6141209599999229
+  }
+ ],
+ "pin": {
+  "secret_len": 4,
+  "space": 10000,
+  "budget": 1000,
+  "per_check": 0.02930297100010648,
+  "rows": [
+   {
+    "seed": 0,
+    "method": "ga",
+    "found": false,
+    "evaluations": 1000
+   },
+   {
+    "seed": 0,
+    "method": "random",
+    "found": false,
+    "evaluations": 1000
+   },
+   {
+    "seed": 1,
+    "method": "ga",
+    "found": false,
+    "evaluations": 1000
+   },
+   {
+    "seed": 1,
+    "method": "random",
+    "found": true,
+    "evaluations": 1000
+   },
+   {
+    "seed": 2,
+    "method": "ga",
+    "found": true,
+    "evaluations": 1000
+   },
+   {
+    "seed": 2,
+    "method": "random",
+    "found": false,
+    "evaluations": 1000
+   }
+  ]
+ },
+ "tamper": {
+  "magic і версія (0–4)": {
+   "E_MAGIC": 50
+  },
+  "номер і кількість томів (5–8)": {
+   "E_VOLUMES": 50
+  },
+  "salt (9–24)": {
+   "E_VOLUMES": 50
+  },
+  "nonce (25–36)": {
+   "E_HMAC": 50
+  },
+  "ciphertext_len (37–40)": {
+   "E_LENGTH": 50
+  },
+  "шифротекст": {
+   "E_HMAC": 50
+  },
+  "тег HMAC": {
+   "E_HMAC": 50
+  },
+  "обрізати хвіст": {
+   "E_LENGTH": 50
+  },
+  "дописати байти": {
+   "E_LENGTH": 50
+  }
+ }
+}
