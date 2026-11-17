@@ -18,7 +18,7 @@ from dataclasses import dataclass, field
 from .codec import decode_block
 from .container import HEADER_LEN, METHOD_STORED, FileEntry, read_header, unpack_volume
 from .crypto import derive_keys
-from .errors import E_CRC, E_EXISTS, E_INPUT, E_PAYLOAD, E_VOLUME, ArchiveError
+from .errors import E_CRC, E_EXISTS, E_INPUT, E_PAYLOAD, E_VOLUMES, ArchiveError
 
 COPY_CHUNK = 1 << 20
 
@@ -55,17 +55,17 @@ def _scan_volumes(paths: list[str]) -> list[_VolumeInfo]:
         infos.append(_VolumeInfo(p, index, count, salt, nonce))
 
     if len({v.salt for v in infos}) != 1 or len({v.count for v in infos}) != 1:
-        raise ArchiveError(E_VOLUME, "томи з різних архівів")
+        raise ArchiveError(E_VOLUMES, "томи з різних архівів")
     indices = [v.index for v in infos]
     if len(set(indices)) != len(indices):
-        raise ArchiveError(E_VOLUME, "дубльований том")
+        raise ArchiveError(E_VOLUMES, "дубльований том")
     if len(indices) != infos[0].count:
         missing = sorted(set(range(infos[0].count)) - set(indices))
-        raise ArchiveError(E_VOLUME, f"відсутні томи: {missing}")
+        raise ArchiveError(E_VOLUMES, f"відсутні томи: {missing}")
     # Ключ один на весь архів, тому повтор nonce у CTR = однаковий гамма-потік у двох томах:
     # XOR двох шифротекстів дав би XOR відкритих текстів. Такий архів не приймаємо.
     if len({v.nonce for v in infos}) != len(infos):
-        raise ArchiveError(E_VOLUME, "nonce повторюється в різних томах")
+        raise ArchiveError(E_VOLUMES, "nonce повторюється в різних томах")
     return sorted(infos, key=lambda v: v.index)
 
 

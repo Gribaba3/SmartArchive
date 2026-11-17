@@ -6,7 +6,7 @@ import struct
 from dataclasses import dataclass, field
 
 from .crypto import TAG_LEN, aes_ctr, mac, mac_ok
-from .errors import E_HMAC, E_LENGTH, E_MAGIC, E_PAYLOAD, ArchiveError
+from .errors import E_HMAC, E_LENGTH, E_MAGIC, E_PAYLOAD, E_VOLUMES, ArchiveError
 
 MAGIC = b"SARC"
 VERSION = 1
@@ -166,7 +166,8 @@ def read_header(head: bytes, total_size: int) -> tuple[int, int, bytes, bytes, i
     if total_size != HEADER_LEN + ct_len + TAG_LEN:
         raise ArchiveError(E_LENGTH, "розмір тому не відповідає ciphertext_len")
     if count == 0 or index >= count:
-        raise ArchiveError(E_PAYLOAD, "некоректний номер тому")
+        # методичка, 10.53: volume_index ≥ volume_count — це помилка набору томів
+        raise ArchiveError(E_VOLUMES, f"номер тому {index} при кількості томів {count}")
     return index, count, salt, nonce, ct_len
 
 

@@ -68,6 +68,18 @@ def test_wrong_ciphertext_len(tmp_path):
     assert e.value.code == "E_LENGTH"
 
 
+@pytest.mark.parametrize("index,count", [(1, 1), (5, 2), (0, 0)])
+def test_volume_index_out_of_range(tmp_path, index, count):
+    """volume_index ≥ volume_count (або count = 0) -> E_VOLUMES (методичка, 10.53)."""
+    data = bytearray((REF / "ref_01_single_file.arc").read_bytes())
+    data[5:7] = index.to_bytes(2, "big")
+    data[7:9] = count.to_bytes(2, "big")
+    (tmp_path / "v.arc").write_bytes(data)
+    with pytest.raises(ArchiveError) as e:
+        read_archive([str(tmp_path / "v.arc")], PASSWORD)
+    assert e.value.code == "E_VOLUMES"
+
+
 def test_wrong_password():
     with pytest.raises(ArchiveError) as e:
         read_archive(volumes_of("ref_01_single_file"), "wrong")
@@ -78,14 +90,14 @@ def test_missing_volume():
     vols = volumes_of("ref_06_two_volumes")
     with pytest.raises(ArchiveError) as e:
         read_archive(vols[:2], PASSWORD)
-    assert e.value.code == "E_VOLUME"
+    assert e.value.code == "E_VOLUMES"
 
 
 def test_duplicate_volume():
     vols = volumes_of("ref_06_two_volumes")
     with pytest.raises(ArchiveError) as e:
         read_archive(vols + vols[:1], PASSWORD)
-    assert e.value.code == "E_VOLUME"
+    assert e.value.code == "E_VOLUMES"
 
 
 @pytest.mark.parametrize("cut", [0, 3, 20, 41, 100])
