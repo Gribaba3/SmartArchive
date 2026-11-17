@@ -1,0 +1,9869 @@
+{
+ "budget": 200,
+ "ga_config": {
+  "population": 10,
+  "tournament": 3,
+  "p_crossover": 0.9,
+  "p_mutation": 0.25,
+  "elite": 2
+ },
+ "genes": {
+  "window": [
+   256,
+   512,
+   1024,
+   2048,
+   4096,
+   8192,
+   16384
+  ],
+  "min_match": [
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "threshold": [
+   7.0,
+   7.5,
+   7.8,
+   7.9,
+   7.95,
+   7.97,
+   7.99,
+   8.0
+  ],
+  "max_chain": [
+   4,
+   8,
+   16,
+   32,
+   64,
+   128,
+   256
+  ]
+ },
+ "baseline": {
+  "chromosome": [
+   6,
+   0,
+   7,
+   4
+  ],
+  "orig": 329903,
+  "arc": 129041,
+  "ratio": 2.556575042040902,
+  "S": 0.7188306198577604,
+  "T": 0.9811756577541536,
+  "t": 0.5755648980000387,
+  "t_min": 0.45941626300009375,
+  "t_max": 0.6269678599999224,
+  "Q": 0.7975341312266784,
+  "ok": true
+ },
+ "winner": {
+  "chromosome": [
+   4,
+   2,
+   7,
+   4
+  ],
+  "orig": 329903,
+  "arc": 128451,
+  "ratio": 2.568317879969794,
+  "S": 0.7197559091880948,
+  "T": 0.9825833440828214,
+  "t": 0.5317611790001138,
+  "t_min": 0.429114195000011,
+  "t_max": 0.5881747460000497,
+  "Q": 0.7986041396565128,
+  "ok": true
+ },
+ "elitism_ok": true,
+ "runs": {
+  "ga": [
+   {
+    "seed": 1,
+    "best": [
+     4,
+     2,
+     7,
+     4
+    ],
+    "best_fitness": 0.7994962800578921,
+    "evaluations": 200,
+    "history": [
+     {
+      "generation": 0,
+      "evaluations": 10,
+      "best": 0.7978499891508757,
+      "mean": 0.7687177766656037,
+      "best_chromosome": [
+       4,
+       0,
+       7,
+       2
+      ]
+     },
+     {
+      "generation": 1,
+      "evaluations": 16,
+      "best": 0.7978499891508757,
+      "mean": 0.7852363163846385,
+      "best_chromosome": [
+       4,
+       0,
+       7,
+       2
+      ]
+     },
+     {
+      "generation": 2,
+      "evaluations": 24,
+      "best": 0.7978499891508757,
+      "mean": 0.7877566056259258,
+      "best_chromosome": [
+       4,
+       0,
+       7,
+       2
+      ]
+     },
+     {
+      "generation": 3,
+      "evaluations": 30,
+      "best": 0.7978499891508757,
+      "mean": 0.7923477935460684,
+      "best_chromosome": [
+       4,
+       0,
+       7,
+       2
+      ]
+     },
+     {
+      "generation": 4,
+      "evaluations": 35,
+      "best": 0.7984235848829804,
+      "mean": 0.7938231197664474,
+      "best_chromosome": [
+       4,
+       0,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 5,
+      "evaluations": 38,
+      "best": 0.7984235848829804,
+      "mean": 0.7970264647049274,
+      "best_chromosome": [
+       4,
+       0,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 6,
+      "evaluations": 42,
+      "best": 0.798556086636707,
+      "mean": 0.794404730830448,
+      "best_chromosome": [
+       6,
+       0,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 7,
+      "evaluations": 43,
+      "best": 0.7988218712122959,
+      "mean": 0.7984677840206199,
+      "best_chromosome": [
+       5,
+       0,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 8,
+      "evaluations": 46,
+      "best": 0.7993473833948437,
+      "mean": 0.797652762583233,
+      "best_chromosome": [
+       6,
+       1,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 9,
+      "evaluations": 49,
+      "best": 0.7993473833948437,
+      "mean": 0.7939612448526499,
+      "best_chromosome": [
+       6,
+       1,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 10,
+      "evaluations": 50,
+      "best": 0.7993473833948437,
+      "mean": 0.7987589012352017,
+      "best_chromosome": [
+       6,
+       1,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 11,
+      "evaluations": 52,
+      "best": 0.7993473833948437,
+      "mean": 0.7988840124507393,
+      "best_chromosome": [
+       6,
+       1,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 12,
+      "evaluations": 55,
+      "best": 0.7993473833948437,
+      "mean": 0.7953354821983916,
+      "best_chromosome": [
+       6,
+       1,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 13,
+      "evaluations": 57,
+      "best": 0.7993473833948437,
+      "mean": 0.7986199362422065,
+      "best_chromosome": [
+       6,
+       1,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 14,
+      "evaluations": 57,
+      "best": 0.7993473833948437,
+      "mean": 0.7952611273307554,
+      "best_chromosome": [
+       6,
+       1,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 15,
+      "evaluations": 57,
+      "best": 0.7993473833948437,
+      "mean": 0.7949135686369874,
+      "best_chromosome": [
+       6,
+       1,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 16,
+      "evaluations": 60,
+      "best": 0.7993473833948437,
+      "mean": 0.7907389252269976,
+      "best_chromosome": [
+       6,
+       1,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 17,
+      "evaluations": 65,
+      "best": 0.7993473833948437,
+      "mean": 0.7940403247695292,
+      "best_chromosome": [
+       6,
+       1,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 18,
+      "evaluations": 67,
+      "best": 0.7993473833948437,
+      "mean": 0.7976641792325334,
+      "best_chromosome": [
+       6,
+       1,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 19,
+      "evaluations": 71,
+      "best": 0.7994962800578921,
+      "mean": 0.7945733541215518,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 20,
+      "evaluations": 73,
+      "best": 0.7994962800578921,
+      "mean": 0.7986650569098407,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 21,
+      "evaluations": 73,
+      "best": 0.7994962800578921,
+      "mean": 0.7987042982217527,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 22,
+      "evaluations": 75,
+      "best": 0.7994962800578921,
+      "mean": 0.7951789758443033,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 23,
+      "evaluations": 79,
+      "best": 0.7994962800578921,
+      "mean": 0.794819742908125,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 24,
+      "evaluations": 80,
+      "best": 0.7994962800578921,
+      "mean": 0.7983587871551472,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 25,
+      "evaluations": 84,
+      "best": 0.7994962800578921,
+      "mean": 0.7945797154401737,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 26,
+      "evaluations": 84,
+      "best": 0.7994962800578921,
+      "mean": 0.7989225186705119,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 27,
+      "evaluations": 87,
+      "best": 0.7994962800578921,
+      "mean": 0.7943830824077681,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 28,
+      "evaluations": 89,
+      "best": 0.7994962800578921,
+      "mean": 0.797685383577998,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 29,
+      "evaluations": 92,
+      "best": 0.7994962800578921,
+      "mean": 0.7943727492824739,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 30,
+      "evaluations": 94,
+      "best": 0.7994962800578921,
+      "mean": 0.7979630202092547,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 31,
+      "evaluations": 96,
+      "best": 0.7994962800578921,
+      "mean": 0.7907348081120813,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 32,
+      "evaluations": 99,
+      "best": 0.7994962800578921,
+      "mean": 0.7944304450442995,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 33,
+      "evaluations": 101,
+      "best": 0.7994962800578921,
+      "mean": 0.7985500517324248,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 34,
+      "evaluations": 104,
+      "best": 0.7994962800578921,
+      "mean": 0.7977802892041532,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 35,
+      "evaluations": 104,
+      "best": 0.7994962800578921,
+      "mean": 0.7985730154926223,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 36,
+      "evaluations": 107,
+      "best": 0.7994962800578921,
+      "mean": 0.7975971311680231,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 37,
+      "evaluations": 109,
+      "best": 0.7994962800578921,
+      "mean": 0.794222827464685,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 38,
+      "evaluations": 111,
+      "best": 0.7994962800578921,
+      "mean": 0.7969484567268521,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 39,
+      "evaluations": 112,
+      "best": 0.7994962800578921,
+      "mean": 0.7944553030410839,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 40,
+      "evaluations": 113,
+      "best": 0.7994962800578921,
+      "mean": 0.7987260992409375,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 41,
+      "evaluations": 114,
+      "best": 0.7994962800578921,
+      "mean": 0.7975010440321235,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 42,
+      "evaluations": 116,
+      "best": 0.7994962800578921,
+      "mean": 0.7980734968409398,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 43,
+      "evaluations": 118,
+      "best": 0.7994962800578921,
+      "mean": 0.7949060944854716,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 44,
+      "evaluations": 118,
+      "best": 0.7994962800578921,
+      "mean": 0.7987879673844633,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 45,
+      "evaluations": 119,
+      "best": 0.7994962800578921,
+      "mean": 0.7904816441877699,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 46,
+      "evaluations": 121,
+      "best": 0.7994962800578921,
+      "mean": 0.797801343085969,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 47,
+      "evaluations": 122,
+      "best": 0.7994962800578921,
+      "mean": 0.7935632112626012,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 48,
+      "evaluations": 123,
+      "best": 0.7994962800578921,
+      "mean": 0.7976355221729914,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 49,
+      "evaluations": 123,
+      "best": 0.7994962800578921,
+      "mean": 0.7981797278432372,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 50,
+      "evaluations": 124,
+      "best": 0.7994962800578921,
+      "mean": 0.7909837168916838,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 51,
+      "evaluations": 124,
+      "best": 0.7994962800578921,
+      "mean": 0.7981700637587615,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 52,
+      "evaluations": 124,
+      "best": 0.7994962800578921,
+      "mean": 0.7938957420656624,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 53,
+      "evaluations": 125,
+      "best": 0.7994962800578921,
+      "mean": 0.7945834311706957,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 54,
+      "evaluations": 125,
+      "best": 0.7994962800578921,
+      "mean": 0.7948640926665653,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 55,
+      "evaluations": 125,
+      "best": 0.7994962800578921,
+      "mean": 0.7973799143759213,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 56,
+      "evaluations": 127,
+      "best": 0.7994962800578921,
+      "mean": 0.7945547183876884,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 57,
+      "evaluations": 127,
+      "best": 0.7994962800578921,
+      "mean": 0.7977061642485487,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 58,
+      "evaluations": 129,
+      "best": 0.7994962800578921,
+      "mean": 0.7901149342677414,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 59,
+      "evaluations": 129,
+      "best": 0.7994962800578921,
+      "mean": 0.798898330757175,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 60,
+      "evaluations": 131,
+      "best": 0.7994962800578921,
+      "mean": 0.7948592272938709,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 61,
+      "evaluations": 132,
+      "best": 0.7994962800578921,
+      "mean": 0.7936928739543997,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 62,
+      "evaluations": 133,
+      "best": 0.7994962800578921,
+      "mean": 0.796962496087394,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 63,
+      "evaluations": 135,
+      "best": 0.7994962800578921,
+      "mean": 0.7983560523340121,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 64,
+      "evaluations": 136,
+      "best": 0.7994962800578921,
+      "mean": 0.79881483908819,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 65,
+      "evaluations": 138,
+      "best": 0.7994962800578921,
+      "mean": 0.7953280465940262,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 66,
+      "evaluations": 138,
+      "best": 0.7994962800578921,
+      "mean": 0.797760262571406,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 67,
+      "evaluations": 139,
+      "best": 0.7994962800578921,
+      "mean": 0.7983737319292604,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 68,
+      "evaluations": 143,
+      "best": 0.7994962800578921,
+      "mean": 0.7929371515093064,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 69,
+      "evaluations": 144,
+      "best": 0.7994962800578921,
+      "mean": 0.7979148082419874,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 70,
+      "evaluations": 145,
+      "best": 0.7994962800578921,
+      "mean": 0.7943935309361363,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 71,
+      "evaluations": 147,
+      "best": 0.7994962800578921,
+      "mean": 0.7937923265441388,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 72,
+      "evaluations": 148,
+      "best": 0.7994962800578921,
+      "mean": 0.7948545544883557,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 73,
+      "evaluations": 148,
+      "best": 0.7994962800578921,
+      "mean": 0.7942484305954312,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 74,
+      "evaluations": 148,
+      "best": 0.7994962800578921,
+      "mean": 0.798064671025448,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 75,
+      "evaluations": 151,
+      "best": 0.7994962800578921,
+      "mean": 0.7943736777582938,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 76,
+      "evaluations": 153,
+      "best": 0.7994962800578921,
+      "mean": 0.7957487676469286,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 77,
+      "evaluations": 154,
+      "best": 0.7994962800578921,
+      "mean": 0.7943086346574509,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 78,
+      "evaluations": 154,
+      "best": 0.7994962800578921,
+      "mean": 0.7974150201816292,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 79,
+      "evaluations": 154,
+      "best": 0.7994962800578921,
+      "mean": 0.7968951440556934,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 80,
+      "evaluations": 155,
+      "best": 0.7994962800578921,
+      "mean": 0.7969197307001326,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 81,
+      "evaluations": 155,
+      "best": 0.7994962800578921,
+      "mean": 0.7975634146458405,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 82,
+      "evaluations": 155,
+      "best": 0.7994962800578921,
+      "mean": 0.7977729353552212,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 83,
+      "evaluations": 155,
+      "best": 0.7994962800578921,
+      "mean": 0.797401658689229,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 84,
+      "evaluations": 155,
+      "best": 0.7994962800578921,
+      "mean": 0.793850994509385,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 85,
+      "evaluations": 157,
+      "best": 0.7994962800578921,
+      "mean": 0.7905449963839042,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 86,
+      "evaluations": 157,
+      "best": 0.7994962800578921,
+      "mean": 0.797924403961913,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 87,
+      "evaluations": 157,
+      "best": 0.7994962800578921,
+      "mean": 0.7983751809676758,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 88,
+      "evaluations": 157,
+      "best": 0.7994962800578921,
+      "mean": 0.791652492467465,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 89,
+      "evaluations": 157,
+      "best": 0.7994962800578921,
+      "mean": 0.7940023395335942,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 90,
+      "evaluations": 157,
+      "best": 0.7994962800578921,
+      "mean": 0.7990476324069016,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 91,
+      "evaluations": 158,
+      "best": 0.7994962800578921,
+      "mean": 0.7981050045741174,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 92,
+      "evaluations": 159,
+      "best": 0.7994962800578921,
+      "mean": 0.7980219565353158,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 93,
+      "evaluations": 159,
+      "best": 0.7994962800578921,
+      "mean": 0.7983148538891726,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 94,
+      "evaluations": 160,
+      "best": 0.7994962800578921,
+      "mean": 0.7946686838900328,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 95,
+      "evaluations": 161,
+      "best": 0.7994962800578921,
+      "mean": 0.7944651596542978,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 96,
+      "evaluations": 161,
+      "best": 0.7994962800578921,
+      "mean": 0.7991422496133259,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 97,
+      "evaluations": 161,
+      "best": 0.7994962800578921,
+      "mean": 0.7986609875332427,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 98,
+      "evaluations": 161,
+      "best": 0.7994962800578921,
+      "mean": 0.7946287976519353,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 99,
+      "evaluations": 161,
+      "best": 0.7994962800578921,
+      "mean": 0.7987495226770208,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 100,
+      "evaluations": 161,
+      "best": 0.7994962800578921,
+      "mean": 0.7980614083437422,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 101,
+      "evaluations": 161,
+      "best": 0.7994962800578921,
+      "mean": 0.799100605248272,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 102,
+      "evaluations": 162,
+      "best": 0.7994962800578921,
+      "mean": 0.7972097570934927,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 103,
+      "evaluations": 162,
+      "best": 0.7994962800578921,
+      "mean": 0.7939563105124621,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 104,
+      "evaluations": 162,
+      "best": 0.7994962800578921,
+      "mean": 0.7987443045090731,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 105,
+      "evaluations": 163,
+      "best": 0.7994962800578921,
+      "mean": 0.7909459578299092,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 106,
+      "evaluations": 163,
+      "best": 0.7994962800578921,
+      "mean": 0.7973664847538942,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 107,
+      "evaluations": 163,
+      "best": 0.7994962800578921,
+      "mean": 0.7981166855851611,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 108,
+      "evaluations": 164,
+      "best": 0.7994962800578921,
+      "mean": 0.7875106264985143,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 109,
+      "evaluations": 164,
+      "best": 0.7994962800578921,
+      "mean": 0.7952069562407874,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 110,
+      "evaluations": 165,
+      "best": 0.7994962800578921,
+      "mean": 0.7982300255690834,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 111,
+      "evaluations": 165,
+      "best": 0.7994962800578921,
+      "mean": 0.7986239016892599,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 112,
+      "evaluations": 165,
+      "best": 0.7994962800578921,
+      "mean": 0.7976244635532679,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 113,
+      "evaluations": 165,
+      "best": 0.7994962800578921,
+      "mean": 0.797518338357369,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 114,
+      "evaluations": 166,
+      "best": 0.7994962800578921,
+      "mean": 0.7971607818941931,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 115,
+      "evaluations": 166,
+      "best": 0.7994962800578921,
+      "mean": 0.7990497373125753,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 116,
+      "evaluations": 166,
+      "best": 0.7994962800578921,
+      "mean": 0.7989658692112762,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 117,
+      "evaluations": 166,
+      "best": 0.7994962800578921,
+      "mean": 0.791718152439524,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 118,
+      "evaluations": 166,
+      "best": 0.7994962800578921,
+      "mean": 0.7983518222912561,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 119,
+      "evaluations": 167,
+      "best": 0.7994962800578921,
+      "mean": 0.7939378873756386,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 120,
+      "evaluations": 167,
+      "best": 0.7994962800578921,
+      "mean": 0.7950725606234379,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 121,
+      "evaluations": 168,
+      "best": 0.7994962800578921,
+      "mean": 0.7927865803203229,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 122,
+      "evaluations": 168,
+      "best": 0.7994962800578921,
+      "mean": 0.7981861040081054,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 123,
+      "evaluations": 168,
+      "best": 0.7994962800578921,
+      "mean": 0.7980403221169852,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 124,
+      "evaluations": 168,
+      "best": 0.7994962800578921,
+      "mean": 0.7984003155589625,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 125,
+      "evaluations": 168,
+      "best": 0.7994962800578921,
+      "mean": 0.7988820741558038,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 126,
+      "evaluations": 168,
+      "best": 0.7994962800578921,
+      "mean": 0.7971373534541049,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 127,
+      "evaluations": 168,
+      "best": 0.7994962800578921,
+      "mean": 0.7935967028484298,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 128,
+      "evaluations": 168,
+      "best": 0.7994962800578921,
+      "mean": 0.7908056814745417,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 129,
+      "evaluations": 168,
+      "best": 0.7994962800578921,
+      "mean": 0.7985059632247997,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 130,
+      "evaluations": 168,
+      "best": 0.7994962800578921,
+      "mean": 0.798654280674603,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 131,
+      "evaluations": 168,
+      "best": 0.7994962800578921,
+      "mean": 0.7966861112719277,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 132,
+      "evaluations": 168,
+      "best": 0.7994962800578921,
+      "mean": 0.7984929960727304,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 133,
+      "evaluations": 169,
+      "best": 0.7994962800578921,
+      "mean": 0.7952447941578447,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 134,
+      "evaluations": 170,
+      "best": 0.7994962800578921,
+      "mean": 0.7967432637323696,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 135,
+      "evaluations": 171,
+      "best": 0.7994962800578921,
+      "mean": 0.7933521762944914,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 136,
+      "evaluations": 173,
+      "best": 0.7994962800578921,
+      "mean": 0.7975796064200791,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 137,
+      "evaluations": 173,
+      "best": 0.7994962800578921,
+      "mean": 0.7979664449358477,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 138,
+      "evaluations": 173,
+      "best": 0.7994962800578921,
+      "mean": 0.7938618137607485,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 139,
+      "evaluations": 174,
+      "best": 0.7994962800578921,
+      "mean": 0.7943844293689134,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 140,
+      "evaluations": 175,
+      "best": 0.7994962800578921,
+      "mean": 0.7984716242586469,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 141,
+      "evaluations": 175,
+      "best": 0.7994962800578921,
+      "mean": 0.7943787646092473,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 142,
+      "evaluations": 175,
+      "best": 0.7994962800578921,
+      "mean": 0.7981163268943414,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 143,
+      "evaluations": 176,
+      "best": 0.7994962800578921,
+      "mean": 0.7945594719760085,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 144,
+      "evaluations": 176,
+      "best": 0.7994962800578921,
+      "mean": 0.7986317107728708,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 145,
+      "evaluations": 176,
+      "best": 0.7994962800578921,
+      "mean": 0.7987604717201564,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 146,
+      "evaluations": 177,
+      "best": 0.7994962800578921,
+      "mean": 0.7988184798066494,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 147,
+      "evaluations": 178,
+      "best": 0.7994962800578921,
+      "mean": 0.7949565333067634,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 148,
+      "evaluations": 178,
+      "best": 0.7994962800578921,
+      "mean": 0.7986295586285197,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 149,
+      "evaluations": 178,
+      "best": 0.7994962800578921,
+      "mean": 0.7990049954135978,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 150,
+      "evaluations": 178,
+      "best": 0.7994962800578921,
+      "mean": 0.7988558573044812,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 151,
+      "evaluations": 178,
+      "best": 0.7994962800578921,
+      "mean": 0.79750958600479,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 152,
+      "evaluations": 179,
+      "best": 0.7994962800578921,
+      "mean": 0.7950782160205812,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 153,
+      "evaluations": 179,
+      "best": 0.7994962800578921,
+      "mean": 0.7987330995649887,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 154,
+      "evaluations": 179,
+      "best": 0.7994962800578921,
+      "mean": 0.7977133808031776,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 155,
+      "evaluations": 179,
+      "best": 0.7994962800578921,
+      "mean": 0.7952856726701394,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 156,
+      "evaluations": 181,
+      "best": 0.7994962800578921,
+      "mean": 0.790006742616354,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 157,
+      "evaluations": 181,
+      "best": 0.7994962800578921,
+      "mean": 0.794756482022726,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 158,
+      "evaluations": 181,
+      "best": 0.7994962800578921,
+      "mean": 0.7979450490775043,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 159,
+      "evaluations": 181,
+      "best": 0.7994962800578921,
+      "mean": 0.7978858051274418,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 160,
+      "evaluations": 181,
+      "best": 0.7994962800578921,
+      "mean": 0.7984379858661512,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 161,
+      "evaluations": 181,
+      "best": 0.7994962800578921,
+      "mean": 0.7984402568346644,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 162,
+      "evaluations": 181,
+      "best": 0.7994962800578921,
+      "mean": 0.7910020914912038,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 163,
+      "evaluations": 181,
+      "best": 0.7994962800578921,
+      "mean": 0.7980551684233281,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 164,
+      "evaluations": 181,
+      "best": 0.7994962800578921,
+      "mean": 0.7977124400627315,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 165,
+      "evaluations": 182,
+      "best": 0.7994962800578921,
+      "mean": 0.7984682580509594,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 166,
+      "evaluations": 182,
+      "best": 0.7994962800578921,
+      "mean": 0.7981963855773788,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 167,
+      "evaluations": 183,
+      "best": 0.7994962800578921,
+      "mean": 0.7978859196590897,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 168,
+      "evaluations": 184,
+      "best": 0.7994962800578921,
+      "mean": 0.7940059336100145,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 169,
+      "evaluations": 184,
+      "best": 0.7994962800578921,
+      "mean": 0.7949575524723503,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 170,
+      "evaluations": 184,
+      "best": 0.7994962800578921,
+      "mean": 0.7981677445702469,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 171,
+      "evaluations": 185,
+      "best": 0.7994962800578921,
+      "mean": 0.797331881345782,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 172,
+      "evaluations": 185,
+      "best": 0.7994962800578921,
+      "mean": 0.7945711778616031,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 173,
+      "evaluations": 185,
+      "best": 0.7994962800578921,
+      "mean": 0.7980353520076454,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 174,
+      "evaluations": 185,
+      "best": 0.7994962800578921,
+      "mean": 0.7979837865140786,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 175,
+      "evaluations": 186,
+      "best": 0.7994962800578921,
+      "mean": 0.7903842084337358,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 176,
+      "evaluations": 186,
+      "best": 0.7994962800578921,
+      "mean": 0.7912155991286568,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 177,
+      "evaluations": 186,
+      "best": 0.7994962800578921,
+      "mean": 0.7951988248488291,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 178,
+      "evaluations": 186,
+      "best": 0.7994962800578921,
+      "mean": 0.798211700852995,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 179,
+      "evaluations": 187,
+      "best": 0.7994962800578921,
+      "mean": 0.7972787931003529,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 180,
+      "evaluations": 188,
+      "best": 0.7994962800578921,
+      "mean": 0.7935443796153002,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 181,
+      "evaluations": 188,
+      "best": 0.7994962800578921,
+      "mean": 0.7934663454595546,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 182,
+      "evaluations": 188,
+      "best": 0.7994962800578921,
+      "mean": 0.7990307738194905,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 183,
+      "evaluations": 188,
+      "best": 0.7994962800578921,
+      "mean": 0.7989695748249823,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 184,
+      "evaluations": 189,
+      "best": 0.7994962800578921,
+      "mean": 0.7902940542555006,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 185,
+      "evaluations": 191,
+      "best": 0.7994962800578921,
+      "mean": 0.7979030790036694,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 186,
+      "evaluations": 191,
+      "best": 0.7994962800578921,
+      "mean": 0.7976396429605417,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 187,
+      "evaluations": 191,
+      "best": 0.7994962800578921,
+      "mean": 0.7898286544973713,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 188,
+      "evaluations": 191,
+      "best": 0.7994962800578921,
+      "mean": 0.798912152106684,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 189,
+      "evaluations": 191,
+      "best": 0.7994962800578921,
+      "mean": 0.7979830010747506,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 190,
+      "evaluations": 191,
+      "best": 0.7994962800578921,
+      "mean": 0.7932682954042396,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 191,
+      "evaluations": 192,
+      "best": 0.7994962800578921,
+      "mean": 0.7937640843383732,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 192,
+      "evaluations": 193,
+      "best": 0.7994962800578921,
+      "mean": 0.7943375268529168,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 193,
+      "evaluations": 193,
+      "best": 0.7994962800578921,
+      "mean": 0.798472309403692,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 194,
+      "evaluations": 193,
+      "best": 0.7994962800578921,
+      "mean": 0.7979943049378202,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 195,
+      "evaluations": 193,
+      "best": 0.7994962800578921,
+      "mean": 0.7954036024330688,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 196,
+      "evaluations": 193,
+      "best": 0.7994962800578921,
+      "mean": 0.7983171892802775,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 197,
+      "evaluations": 193,
+      "best": 0.7994962800578921,
+      "mean": 0.7987133000212773,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 198,
+      "evaluations": 195,
+      "best": 0.7994962800578921,
+      "mean": 0.7934540175646055,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 199,
+      "evaluations": 195,
+      "best": 0.7994962800578921,
+      "mean": 0.7978705949663734,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 200,
+      "evaluations": 195,
+      "best": 0.7994962800578921,
+      "mean": 0.7943919075156141,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 201,
+      "evaluations": 195,
+      "best": 0.7994962800578921,
+      "mean": 0.7947972863777143,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 202,
+      "evaluations": 195,
+      "best": 0.7994962800578921,
+      "mean": 0.7979942911058171,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 203,
+      "evaluations": 195,
+      "best": 0.7994962800578921,
+      "mean": 0.7971600616133523,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 204,
+      "evaluations": 195,
+      "best": 0.7994962800578921,
+      "mean": 0.7989122850232326,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 205,
+      "evaluations": 195,
+      "best": 0.7994962800578921,
+      "mean": 0.7908922330269398,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 206,
+      "evaluations": 195,
+      "best": 0.7994962800578921,
+      "mean": 0.7943560271254277,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 207,
+      "evaluations": 195,
+      "best": 0.7994962800578921,
+      "mean": 0.7950959341674049,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 208,
+      "evaluations": 195,
+      "best": 0.7994962800578921,
+      "mean": 0.797721342881955,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 209,
+      "evaluations": 195,
+      "best": 0.7994962800578921,
+      "mean": 0.7911332389079149,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 210,
+      "evaluations": 195,
+      "best": 0.7994962800578921,
+      "mean": 0.794974552112822,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 211,
+      "evaluations": 196,
+      "best": 0.7994962800578921,
+      "mean": 0.7899438073247185,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 212,
+      "evaluations": 198,
+      "best": 0.7994962800578921,
+      "mean": 0.7969741885422457,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 213,
+      "evaluations": 198,
+      "best": 0.7994962800578921,
+      "mean": 0.7950759866554868,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 214,
+      "evaluations": 198,
+      "best": 0.7994962800578921,
+      "mean": 0.7984187037672805,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 215,
+      "evaluations": 199,
+      "best": 0.7994962800578921,
+      "mean": 0.7988119812757177,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 216,
+      "evaluations": 200,
+      "best": 0.7994962800578921,
+      "mean": 0.7889925548575798,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     }
+    ]
+   },
+   {
+    "seed": 2,
+    "best": [
+     4,
+     2,
+     7,
+     4
+    ],
+    "best_fitness": 0.7994962800578921,
+    "evaluations": 200,
+    "history": [
+     {
+      "generation": 0,
+      "evaluations": 10,
+      "best": 0.7924820048297984,
+      "mean": 0.7610095541286004,
+      "best_chromosome": [
+       5,
+       1,
+       6,
+       5
+      ]
+     },
+     {
+      "generation": 1,
+      "evaluations": 15,
+      "best": 0.7924820048297984,
+      "mean": 0.7727481115738558,
+      "best_chromosome": [
+       5,
+       1,
+       6,
+       5
+      ]
+     },
+     {
+      "generation": 2,
+      "evaluations": 23,
+      "best": 0.7986749616941586,
+      "mean": 0.7856721194267922,
+      "best_chromosome": [
+       5,
+       1,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 3,
+      "evaluations": 28,
+      "best": 0.7986749616941586,
+      "mean": 0.7956180401011093,
+      "best_chromosome": [
+       5,
+       1,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 4,
+      "evaluations": 33,
+      "best": 0.7988218712122959,
+      "mean": 0.798034512660234,
+      "best_chromosome": [
+       5,
+       0,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 5,
+      "evaluations": 38,
+      "best": 0.7993473833948437,
+      "mean": 0.7986011419305636,
+      "best_chromosome": [
+       6,
+       1,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 6,
+      "evaluations": 42,
+      "best": 0.7993473833948437,
+      "mean": 0.7948519483982622,
+      "best_chromosome": [
+       6,
+       1,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 7,
+      "evaluations": 45,
+      "best": 0.7993473833948437,
+      "mean": 0.797734724951035,
+      "best_chromosome": [
+       6,
+       1,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 8,
+      "evaluations": 49,
+      "best": 0.7993653884806006,
+      "mean": 0.7946981811666192,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 9,
+      "evaluations": 51,
+      "best": 0.7993653884806006,
+      "mean": 0.795287774855062,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 10,
+      "evaluations": 56,
+      "best": 0.7993653884806006,
+      "mean": 0.7902712323879735,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 11,
+      "evaluations": 60,
+      "best": 0.7993653884806006,
+      "mean": 0.7976028550498286,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 12,
+      "evaluations": 63,
+      "best": 0.7993653884806006,
+      "mean": 0.7986618887971406,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 13,
+      "evaluations": 65,
+      "best": 0.7993653884806006,
+      "mean": 0.7980871390048663,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 14,
+      "evaluations": 69,
+      "best": 0.7993653884806006,
+      "mean": 0.7961367657048036,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 15,
+      "evaluations": 73,
+      "best": 0.7993653884806006,
+      "mean": 0.7927738415904495,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 16,
+      "evaluations": 74,
+      "best": 0.7993653884806006,
+      "mean": 0.7985595000660328,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 17,
+      "evaluations": 75,
+      "best": 0.7993653884806006,
+      "mean": 0.7951018771300773,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 18,
+      "evaluations": 76,
+      "best": 0.7993653884806006,
+      "mean": 0.7981846384054971,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 19,
+      "evaluations": 77,
+      "best": 0.7993653884806006,
+      "mean": 0.797857460919839,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 20,
+      "evaluations": 77,
+      "best": 0.7993653884806006,
+      "mean": 0.7950759998183932,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 21,
+      "evaluations": 80,
+      "best": 0.7993653884806006,
+      "mean": 0.7940566001332817,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 22,
+      "evaluations": 85,
+      "best": 0.7993653884806006,
+      "mean": 0.7946937449262681,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 23,
+      "evaluations": 87,
+      "best": 0.7993653884806006,
+      "mean": 0.7950216278977786,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 24,
+      "evaluations": 88,
+      "best": 0.7993653884806006,
+      "mean": 0.7981764159701112,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 25,
+      "evaluations": 89,
+      "best": 0.7993653884806006,
+      "mean": 0.7951113956655653,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 26,
+      "evaluations": 91,
+      "best": 0.7993653884806006,
+      "mean": 0.7925800087114908,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 27,
+      "evaluations": 93,
+      "best": 0.7993653884806006,
+      "mean": 0.7874954743119631,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 28,
+      "evaluations": 96,
+      "best": 0.7993653884806006,
+      "mean": 0.7911873808942137,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 29,
+      "evaluations": 96,
+      "best": 0.7993653884806006,
+      "mean": 0.7950912251828257,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 30,
+      "evaluations": 96,
+      "best": 0.7993653884806006,
+      "mean": 0.7987525446593391,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 31,
+      "evaluations": 98,
+      "best": 0.7993653884806006,
+      "mean": 0.7970648451939497,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 32,
+      "evaluations": 100,
+      "best": 0.7993653884806006,
+      "mean": 0.7941624891931668,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 33,
+      "evaluations": 102,
+      "best": 0.7993653884806006,
+      "mean": 0.7972344503057055,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 34,
+      "evaluations": 103,
+      "best": 0.7993653884806006,
+      "mean": 0.7950422057841026,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 35,
+      "evaluations": 103,
+      "best": 0.7993653884806006,
+      "mean": 0.7986222128083906,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 36,
+      "evaluations": 104,
+      "best": 0.7993653884806006,
+      "mean": 0.7949424381711572,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 37,
+      "evaluations": 104,
+      "best": 0.7993653884806006,
+      "mean": 0.7984632455530096,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 38,
+      "evaluations": 106,
+      "best": 0.7993653884806006,
+      "mean": 0.7935629576988514,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 39,
+      "evaluations": 108,
+      "best": 0.7994962800578921,
+      "mean": 0.7976411945210713,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 40,
+      "evaluations": 109,
+      "best": 0.7994962800578921,
+      "mean": 0.7983450133259536,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 41,
+      "evaluations": 113,
+      "best": 0.7994962800578921,
+      "mean": 0.7974152465065995,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 42,
+      "evaluations": 114,
+      "best": 0.7994962800578921,
+      "mean": 0.7955008288976896,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 43,
+      "evaluations": 116,
+      "best": 0.7994962800578921,
+      "mean": 0.7939494598280674,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 44,
+      "evaluations": 117,
+      "best": 0.7994962800578921,
+      "mean": 0.7913241548280301,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 45,
+      "evaluations": 117,
+      "best": 0.7994962800578921,
+      "mean": 0.7944698274916304,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 46,
+      "evaluations": 117,
+      "best": 0.7994962800578921,
+      "mean": 0.7989045923064212,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 47,
+      "evaluations": 118,
+      "best": 0.7994962800578921,
+      "mean": 0.79390333250975,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 48,
+      "evaluations": 119,
+      "best": 0.7994962800578921,
+      "mean": 0.7953943820259585,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 49,
+      "evaluations": 121,
+      "best": 0.7994962800578921,
+      "mean": 0.7988204693786294,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 50,
+      "evaluations": 121,
+      "best": 0.7994962800578921,
+      "mean": 0.7984810212256717,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 51,
+      "evaluations": 123,
+      "best": 0.7994962800578921,
+      "mean": 0.7976847866605908,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 52,
+      "evaluations": 124,
+      "best": 0.7994962800578921,
+      "mean": 0.7949208732291483,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 53,
+      "evaluations": 126,
+      "best": 0.7994962800578921,
+      "mean": 0.7975359630713216,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 54,
+      "evaluations": 126,
+      "best": 0.7994962800578921,
+      "mean": 0.7985938451675244,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 55,
+      "evaluations": 128,
+      "best": 0.7994962800578921,
+      "mean": 0.7975971383930076,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 56,
+      "evaluations": 129,
+      "best": 0.7994962800578921,
+      "mean": 0.7983947516224722,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 57,
+      "evaluations": 130,
+      "best": 0.7994962800578921,
+      "mean": 0.7944031165648859,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 58,
+      "evaluations": 132,
+      "best": 0.7994962800578921,
+      "mean": 0.7938077527726499,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 59,
+      "evaluations": 132,
+      "best": 0.7994962800578921,
+      "mean": 0.7986826989024476,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 60,
+      "evaluations": 134,
+      "best": 0.7994962800578921,
+      "mean": 0.7977075769604032,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 61,
+      "evaluations": 134,
+      "best": 0.7994962800578921,
+      "mean": 0.7985445295553146,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 62,
+      "evaluations": 134,
+      "best": 0.7994962800578921,
+      "mean": 0.7982499799869502,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 63,
+      "evaluations": 135,
+      "best": 0.7994962800578921,
+      "mean": 0.7948108177932287,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 64,
+      "evaluations": 135,
+      "best": 0.7994962800578921,
+      "mean": 0.7986548333987725,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 65,
+      "evaluations": 137,
+      "best": 0.7994962800578921,
+      "mean": 0.7978507138900645,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 66,
+      "evaluations": 137,
+      "best": 0.7994962800578921,
+      "mean": 0.7949502114501927,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 67,
+      "evaluations": 138,
+      "best": 0.7994962800578921,
+      "mean": 0.79773686985567,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 68,
+      "evaluations": 138,
+      "best": 0.7994962800578921,
+      "mean": 0.7949011040993741,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 69,
+      "evaluations": 140,
+      "best": 0.7994962800578921,
+      "mean": 0.7944798620046718,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 70,
+      "evaluations": 140,
+      "best": 0.7994962800578921,
+      "mean": 0.7937228809268208,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 71,
+      "evaluations": 141,
+      "best": 0.7994962800578921,
+      "mean": 0.7970855605070583,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 72,
+      "evaluations": 142,
+      "best": 0.7994962800578921,
+      "mean": 0.796658640933426,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 73,
+      "evaluations": 142,
+      "best": 0.7994962800578921,
+      "mean": 0.7990996817359495,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 74,
+      "evaluations": 143,
+      "best": 0.7994962800578921,
+      "mean": 0.7933757768602662,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 75,
+      "evaluations": 144,
+      "best": 0.7994962800578921,
+      "mean": 0.7969412691941864,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 76,
+      "evaluations": 145,
+      "best": 0.7994962800578921,
+      "mean": 0.7942295720580507,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 77,
+      "evaluations": 145,
+      "best": 0.7994962800578921,
+      "mean": 0.7970720034567379,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 78,
+      "evaluations": 145,
+      "best": 0.7994962800578921,
+      "mean": 0.7953331933561966,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 79,
+      "evaluations": 146,
+      "best": 0.7994962800578921,
+      "mean": 0.7979395595747494,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 80,
+      "evaluations": 146,
+      "best": 0.7994962800578921,
+      "mean": 0.7979578983656123,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 81,
+      "evaluations": 148,
+      "best": 0.7994962800578921,
+      "mean": 0.7929519014977383,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 82,
+      "evaluations": 149,
+      "best": 0.7994962800578921,
+      "mean": 0.7986447636356149,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 83,
+      "evaluations": 150,
+      "best": 0.7994962800578921,
+      "mean": 0.7980413732861292,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 84,
+      "evaluations": 151,
+      "best": 0.7994962800578921,
+      "mean": 0.7979760984846961,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 85,
+      "evaluations": 153,
+      "best": 0.7994962800578921,
+      "mean": 0.7946613877372025,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 86,
+      "evaluations": 155,
+      "best": 0.7994962800578921,
+      "mean": 0.7943447158265432,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 87,
+      "evaluations": 156,
+      "best": 0.7994962800578921,
+      "mean": 0.7977292042808604,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 88,
+      "evaluations": 157,
+      "best": 0.7994962800578921,
+      "mean": 0.7950502593756045,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 89,
+      "evaluations": 157,
+      "best": 0.7994962800578921,
+      "mean": 0.7952543490038603,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 90,
+      "evaluations": 158,
+      "best": 0.7994962800578921,
+      "mean": 0.7982177375472153,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 91,
+      "evaluations": 158,
+      "best": 0.7994962800578921,
+      "mean": 0.7944632927733699,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 92,
+      "evaluations": 158,
+      "best": 0.7994962800578921,
+      "mean": 0.7990125670813396,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 93,
+      "evaluations": 158,
+      "best": 0.7994962800578921,
+      "mean": 0.7988119613543079,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 94,
+      "evaluations": 158,
+      "best": 0.7994962800578921,
+      "mean": 0.7982815596472532,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 95,
+      "evaluations": 159,
+      "best": 0.7994962800578921,
+      "mean": 0.7981802935664754,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 96,
+      "evaluations": 161,
+      "best": 0.7994962800578921,
+      "mean": 0.7916707864555667,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 97,
+      "evaluations": 161,
+      "best": 0.7994962800578921,
+      "mean": 0.797888183910014,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 98,
+      "evaluations": 163,
+      "best": 0.7994962800578921,
+      "mean": 0.7929306116716284,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 99,
+      "evaluations": 163,
+      "best": 0.7994962800578921,
+      "mean": 0.7984490509541385,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 100,
+      "evaluations": 164,
+      "best": 0.7994962800578921,
+      "mean": 0.7984307436933252,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 101,
+      "evaluations": 165,
+      "best": 0.7994962800578921,
+      "mean": 0.7985616306167084,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 102,
+      "evaluations": 165,
+      "best": 0.7994962800578921,
+      "mean": 0.7984142116232105,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 103,
+      "evaluations": 165,
+      "best": 0.7994962800578921,
+      "mean": 0.799167645771216,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 104,
+      "evaluations": 165,
+      "best": 0.7994962800578921,
+      "mean": 0.7978576856746893,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 105,
+      "evaluations": 165,
+      "best": 0.7994962800578921,
+      "mean": 0.7943603669959547,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 106,
+      "evaluations": 166,
+      "best": 0.7994962800578921,
+      "mean": 0.7911654917766267,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 107,
+      "evaluations": 167,
+      "best": 0.7994962800578921,
+      "mean": 0.798302162083294,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 108,
+      "evaluations": 167,
+      "best": 0.7994962800578921,
+      "mean": 0.7982059585020589,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 109,
+      "evaluations": 168,
+      "best": 0.7994962800578921,
+      "mean": 0.7981920893096197,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 110,
+      "evaluations": 169,
+      "best": 0.7994962800578921,
+      "mean": 0.7943137364219168,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 111,
+      "evaluations": 169,
+      "best": 0.7994962800578921,
+      "mean": 0.7987965117546352,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 112,
+      "evaluations": 170,
+      "best": 0.7994962800578921,
+      "mean": 0.7984819328426866,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 113,
+      "evaluations": 171,
+      "best": 0.7994962800578921,
+      "mean": 0.7963395131982495,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 114,
+      "evaluations": 172,
+      "best": 0.7994962800578921,
+      "mean": 0.7966754880381044,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 115,
+      "evaluations": 173,
+      "best": 0.7994962800578921,
+      "mean": 0.7937509723435986,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 116,
+      "evaluations": 174,
+      "best": 0.7994962800578921,
+      "mean": 0.7978362103762808,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 117,
+      "evaluations": 174,
+      "best": 0.7994962800578921,
+      "mean": 0.7983814396418328,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 118,
+      "evaluations": 174,
+      "best": 0.7994962800578921,
+      "mean": 0.7992660892826068,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 119,
+      "evaluations": 174,
+      "best": 0.7994962800578921,
+      "mean": 0.7984767360132269,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 120,
+      "evaluations": 175,
+      "best": 0.7994962800578921,
+      "mean": 0.7950975659964559,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 121,
+      "evaluations": 176,
+      "best": 0.7994962800578921,
+      "mean": 0.7981500787996639,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 122,
+      "evaluations": 176,
+      "best": 0.7994962800578921,
+      "mean": 0.7976723795624376,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 123,
+      "evaluations": 176,
+      "best": 0.7994962800578921,
+      "mean": 0.7978712499301964,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 124,
+      "evaluations": 177,
+      "best": 0.7994962800578921,
+      "mean": 0.7929749916601546,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 125,
+      "evaluations": 178,
+      "best": 0.7994962800578921,
+      "mean": 0.7973139800847515,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 126,
+      "evaluations": 178,
+      "best": 0.7994962800578921,
+      "mean": 0.7931326123017886,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 127,
+      "evaluations": 179,
+      "best": 0.7994962800578921,
+      "mean": 0.7982700216222269,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 128,
+      "evaluations": 180,
+      "best": 0.7994962800578921,
+      "mean": 0.7975991921901657,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 129,
+      "evaluations": 180,
+      "best": 0.7994962800578921,
+      "mean": 0.79501847358674,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 130,
+      "evaluations": 181,
+      "best": 0.7994962800578921,
+      "mean": 0.7975751069036429,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 131,
+      "evaluations": 181,
+      "best": 0.7994962800578921,
+      "mean": 0.7988338199859637,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 132,
+      "evaluations": 181,
+      "best": 0.7994962800578921,
+      "mean": 0.7990269330677314,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 133,
+      "evaluations": 181,
+      "best": 0.7994962800578921,
+      "mean": 0.7978147405876755,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 134,
+      "evaluations": 181,
+      "best": 0.7994962800578921,
+      "mean": 0.7946538542782546,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 135,
+      "evaluations": 181,
+      "best": 0.7994962800578921,
+      "mean": 0.7951185898081435,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 136,
+      "evaluations": 181,
+      "best": 0.7994962800578921,
+      "mean": 0.7985341318414366,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 137,
+      "evaluations": 181,
+      "best": 0.7994962800578921,
+      "mean": 0.7973111790896459,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 138,
+      "evaluations": 182,
+      "best": 0.7994962800578921,
+      "mean": 0.797976062888277,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 139,
+      "evaluations": 182,
+      "best": 0.7994962800578921,
+      "mean": 0.7983443646472286,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 140,
+      "evaluations": 182,
+      "best": 0.7994962800578921,
+      "mean": 0.7966054959835592,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 141,
+      "evaluations": 182,
+      "best": 0.7994962800578921,
+      "mean": 0.7972609204762942,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 142,
+      "evaluations": 183,
+      "best": 0.7994962800578921,
+      "mean": 0.7980774666826146,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 143,
+      "evaluations": 184,
+      "best": 0.7994962800578921,
+      "mean": 0.7980626993433659,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 144,
+      "evaluations": 184,
+      "best": 0.7994962800578921,
+      "mean": 0.7981041770852583,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 145,
+      "evaluations": 185,
+      "best": 0.7994962800578921,
+      "mean": 0.7930617689933755,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 146,
+      "evaluations": 186,
+      "best": 0.7994962800578921,
+      "mean": 0.7978906770697339,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 147,
+      "evaluations": 186,
+      "best": 0.7994962800578921,
+      "mean": 0.7871736265747651,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 148,
+      "evaluations": 187,
+      "best": 0.7994962800578921,
+      "mean": 0.7979910698149975,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 149,
+      "evaluations": 187,
+      "best": 0.7994962800578921,
+      "mean": 0.7986085506790396,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 150,
+      "evaluations": 187,
+      "best": 0.7994962800578921,
+      "mean": 0.7984096130111559,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 151,
+      "evaluations": 188,
+      "best": 0.7994962800578921,
+      "mean": 0.7941746402539154,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 152,
+      "evaluations": 188,
+      "best": 0.7994962800578921,
+      "mean": 0.7984385983962258,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 153,
+      "evaluations": 188,
+      "best": 0.7994962800578921,
+      "mean": 0.7986114537924243,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 154,
+      "evaluations": 189,
+      "best": 0.7994962800578921,
+      "mean": 0.798094068775825,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 155,
+      "evaluations": 189,
+      "best": 0.7994962800578921,
+      "mean": 0.7980471524327049,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 156,
+      "evaluations": 190,
+      "best": 0.7994962800578921,
+      "mean": 0.7979113907871535,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 157,
+      "evaluations": 190,
+      "best": 0.7994962800578921,
+      "mean": 0.7944003929789816,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 158,
+      "evaluations": 191,
+      "best": 0.7994962800578921,
+      "mean": 0.7874607340710146,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 159,
+      "evaluations": 193,
+      "best": 0.7994962800578921,
+      "mean": 0.7911052518801084,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 160,
+      "evaluations": 193,
+      "best": 0.7994962800578921,
+      "mean": 0.798392893898135,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 161,
+      "evaluations": 193,
+      "best": 0.7994962800578921,
+      "mean": 0.7984188447288065,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 162,
+      "evaluations": 194,
+      "best": 0.7994962800578921,
+      "mean": 0.7933457739614143,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 163,
+      "evaluations": 195,
+      "best": 0.7994962800578921,
+      "mean": 0.7974707191743183,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 164,
+      "evaluations": 195,
+      "best": 0.7994962800578921,
+      "mean": 0.7942868651624474,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 165,
+      "evaluations": 195,
+      "best": 0.7994962800578921,
+      "mean": 0.7947187569061507,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 166,
+      "evaluations": 196,
+      "best": 0.7994962800578921,
+      "mean": 0.7947699040001666,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 167,
+      "evaluations": 197,
+      "best": 0.7994962800578921,
+      "mean": 0.7936598945511004,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 168,
+      "evaluations": 197,
+      "best": 0.7994962800578921,
+      "mean": 0.7985239648421953,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 169,
+      "evaluations": 197,
+      "best": 0.7994962800578921,
+      "mean": 0.7977078120907275,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 170,
+      "evaluations": 197,
+      "best": 0.7994962800578921,
+      "mean": 0.7984777108150171,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 171,
+      "evaluations": 197,
+      "best": 0.7994962800578921,
+      "mean": 0.7966204881323048,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 172,
+      "evaluations": 197,
+      "best": 0.7994962800578921,
+      "mean": 0.7951102495308897,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 173,
+      "evaluations": 197,
+      "best": 0.7994962800578921,
+      "mean": 0.7907696837684569,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 174,
+      "evaluations": 197,
+      "best": 0.7994962800578921,
+      "mean": 0.7948060672748445,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 175,
+      "evaluations": 197,
+      "best": 0.7994962800578921,
+      "mean": 0.7977092735463047,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 176,
+      "evaluations": 197,
+      "best": 0.7994962800578921,
+      "mean": 0.7946305237666255,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 177,
+      "evaluations": 197,
+      "best": 0.7994962800578921,
+      "mean": 0.7989289367839145,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 178,
+      "evaluations": 198,
+      "best": 0.7994962800578921,
+      "mean": 0.7966537573978034,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 179,
+      "evaluations": 198,
+      "best": 0.7994962800578921,
+      "mean": 0.7948490307790588,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 180,
+      "evaluations": 198,
+      "best": 0.7994962800578921,
+      "mean": 0.7985688351388193,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 181,
+      "evaluations": 200,
+      "best": 0.7994962800578921,
+      "mean": 0.7899380999266948,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     }
+    ]
+   },
+   {
+    "seed": 3,
+    "best": [
+     4,
+     2,
+     7,
+     4
+    ],
+    "best_fitness": 0.7994962800578921,
+    "evaluations": 200,
+    "history": [
+     {
+      "generation": 0,
+      "evaluations": 10,
+      "best": 0.7945030521667169,
+      "mean": 0.760526268264389,
+      "best_chromosome": [
+       6,
+       4,
+       7,
+       3
+      ]
+     },
+     {
+      "generation": 1,
+      "evaluations": 14,
+      "best": 0.7973833214998061,
+      "mean": 0.7841700781178242,
+      "best_chromosome": [
+       2,
+       1,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 2,
+      "evaluations": 21,
+      "best": 0.7973833214998061,
+      "mean": 0.7923798329930849,
+      "best_chromosome": [
+       2,
+       1,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 3,
+      "evaluations": 27,
+      "best": 0.797827555111463,
+      "mean": 0.7924516956123736,
+      "best_chromosome": [
+       5,
+       2,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 4,
+      "evaluations": 32,
+      "best": 0.797827555111463,
+      "mean": 0.796220935848517,
+      "best_chromosome": [
+       5,
+       2,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 5,
+      "evaluations": 38,
+      "best": 0.797827555111463,
+      "mean": 0.7916097925153284,
+      "best_chromosome": [
+       5,
+       2,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 6,
+      "evaluations": 44,
+      "best": 0.798150470651781,
+      "mean": 0.7883663459352617,
+      "best_chromosome": [
+       4,
+       1,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 7,
+      "evaluations": 48,
+      "best": 0.7983553275409553,
+      "mean": 0.797007335196032,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 8,
+      "evaluations": 52,
+      "best": 0.7983553275409553,
+      "mean": 0.7971165709678826,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 9,
+      "evaluations": 56,
+      "best": 0.7985235854454713,
+      "mean": 0.7939108237818269,
+      "best_chromosome": [
+       3,
+       1,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 10,
+      "evaluations": 56,
+      "best": 0.7985235854454713,
+      "mean": 0.7983530276693609,
+      "best_chromosome": [
+       3,
+       1,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 11,
+      "evaluations": 58,
+      "best": 0.7985235854454713,
+      "mean": 0.7973461935651176,
+      "best_chromosome": [
+       3,
+       1,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 12,
+      "evaluations": 61,
+      "best": 0.7985235854454713,
+      "mean": 0.7970014711227197,
+      "best_chromosome": [
+       3,
+       1,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 13,
+      "evaluations": 62,
+      "best": 0.7985235854454713,
+      "mean": 0.7948050446162165,
+      "best_chromosome": [
+       3,
+       1,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 14,
+      "evaluations": 64,
+      "best": 0.7985235854454713,
+      "mean": 0.7980761491532513,
+      "best_chromosome": [
+       3,
+       1,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 15,
+      "evaluations": 65,
+      "best": 0.7985235854454713,
+      "mean": 0.7978823710469187,
+      "best_chromosome": [
+       3,
+       1,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 16,
+      "evaluations": 67,
+      "best": 0.7985235854454713,
+      "mean": 0.7969981246814591,
+      "best_chromosome": [
+       3,
+       1,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 17,
+      "evaluations": 67,
+      "best": 0.7985235854454713,
+      "mean": 0.7974763836346861,
+      "best_chromosome": [
+       3,
+       1,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 18,
+      "evaluations": 69,
+      "best": 0.7985235854454713,
+      "mean": 0.7916951524542453,
+      "best_chromosome": [
+       3,
+       1,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 19,
+      "evaluations": 70,
+      "best": 0.7985235854454713,
+      "mean": 0.7937561028177591,
+      "best_chromosome": [
+       3,
+       1,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 20,
+      "evaluations": 70,
+      "best": 0.7985235854454713,
+      "mean": 0.7979274790779217,
+      "best_chromosome": [
+       3,
+       1,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 21,
+      "evaluations": 71,
+      "best": 0.7985235854454713,
+      "mean": 0.7969343723375382,
+      "best_chromosome": [
+       3,
+       1,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 22,
+      "evaluations": 72,
+      "best": 0.7985235854454713,
+      "mean": 0.7971357315829042,
+      "best_chromosome": [
+       3,
+       1,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 23,
+      "evaluations": 72,
+      "best": 0.7985235854454713,
+      "mean": 0.797888864942277,
+      "best_chromosome": [
+       3,
+       1,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 24,
+      "evaluations": 72,
+      "best": 0.7985235854454713,
+      "mean": 0.7979391847422239,
+      "best_chromosome": [
+       3,
+       1,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 25,
+      "evaluations": 73,
+      "best": 0.7985235854454713,
+      "mean": 0.7964057139562184,
+      "best_chromosome": [
+       3,
+       1,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 26,
+      "evaluations": 75,
+      "best": 0.7985235854454713,
+      "mean": 0.797201884648724,
+      "best_chromosome": [
+       3,
+       1,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 27,
+      "evaluations": 76,
+      "best": 0.7985235854454713,
+      "mean": 0.7944608911501948,
+      "best_chromosome": [
+       3,
+       1,
+       7,
+       6
+      ]
+     },
+     {
+      "generation": 28,
+      "evaluations": 78,
+      "best": 0.7985248515388772,
+      "mean": 0.7982114826258752,
+      "best_chromosome": [
+       5,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 29,
+      "evaluations": 78,
+      "best": 0.7985248515388772,
+      "mean": 0.7976181820107636,
+      "best_chromosome": [
+       5,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 30,
+      "evaluations": 83,
+      "best": 0.7988218712122959,
+      "mean": 0.7932990033065946,
+      "best_chromosome": [
+       5,
+       0,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 31,
+      "evaluations": 87,
+      "best": 0.7988218712122959,
+      "mean": 0.7972823898048073,
+      "best_chromosome": [
+       5,
+       0,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 32,
+      "evaluations": 90,
+      "best": 0.7988218712122959,
+      "mean": 0.7976104187944506,
+      "best_chromosome": [
+       5,
+       0,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 33,
+      "evaluations": 91,
+      "best": 0.7988218712122959,
+      "mean": 0.7977953731498342,
+      "best_chromosome": [
+       5,
+       0,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 34,
+      "evaluations": 92,
+      "best": 0.7988218712122959,
+      "mean": 0.798564031246441,
+      "best_chromosome": [
+       5,
+       0,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 35,
+      "evaluations": 94,
+      "best": 0.7988218712122959,
+      "mean": 0.7985226947066477,
+      "best_chromosome": [
+       5,
+       0,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 36,
+      "evaluations": 94,
+      "best": 0.7988218712122959,
+      "mean": 0.7986612017778638,
+      "best_chromosome": [
+       5,
+       0,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 37,
+      "evaluations": 95,
+      "best": 0.7988218712122959,
+      "mean": 0.798475411706097,
+      "best_chromosome": [
+       5,
+       0,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 38,
+      "evaluations": 98,
+      "best": 0.7988218712122959,
+      "mean": 0.7976908540551094,
+      "best_chromosome": [
+       5,
+       0,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 39,
+      "evaluations": 98,
+      "best": 0.7988218712122959,
+      "mean": 0.7978392978101292,
+      "best_chromosome": [
+       5,
+       0,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 40,
+      "evaluations": 101,
+      "best": 0.7988218712122959,
+      "mean": 0.7902892502212625,
+      "best_chromosome": [
+       5,
+       0,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 41,
+      "evaluations": 102,
+      "best": 0.7994962800578921,
+      "mean": 0.798695536377354,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 42,
+      "evaluations": 103,
+      "best": 0.7994962800578921,
+      "mean": 0.7970230784748689,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 43,
+      "evaluations": 105,
+      "best": 0.7994962800578921,
+      "mean": 0.7942785039108745,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 44,
+      "evaluations": 105,
+      "best": 0.7994962800578921,
+      "mean": 0.7987183313558673,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 45,
+      "evaluations": 105,
+      "best": 0.7994962800578921,
+      "mean": 0.7985469711247364,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 46,
+      "evaluations": 107,
+      "best": 0.7994962800578921,
+      "mean": 0.795010278208379,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 47,
+      "evaluations": 108,
+      "best": 0.7994962800578921,
+      "mean": 0.7941268831795217,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 48,
+      "evaluations": 112,
+      "best": 0.7994962800578921,
+      "mean": 0.7932571681232492,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 49,
+      "evaluations": 114,
+      "best": 0.7994962800578921,
+      "mean": 0.7983799793286119,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 50,
+      "evaluations": 116,
+      "best": 0.7994962800578921,
+      "mean": 0.7951267521907748,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 51,
+      "evaluations": 118,
+      "best": 0.7994962800578921,
+      "mean": 0.7976900141676131,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 52,
+      "evaluations": 120,
+      "best": 0.7994962800578921,
+      "mean": 0.7982096397737365,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 53,
+      "evaluations": 121,
+      "best": 0.7994962800578921,
+      "mean": 0.7910585667646138,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 54,
+      "evaluations": 121,
+      "best": 0.7994962800578921,
+      "mean": 0.7979953312804442,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 55,
+      "evaluations": 122,
+      "best": 0.7994962800578921,
+      "mean": 0.7981002186620721,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 56,
+      "evaluations": 123,
+      "best": 0.7994962800578921,
+      "mean": 0.79783910851476,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 57,
+      "evaluations": 126,
+      "best": 0.7994962800578921,
+      "mean": 0.797570966079485,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 58,
+      "evaluations": 129,
+      "best": 0.7994962800578921,
+      "mean": 0.7984579680318541,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 59,
+      "evaluations": 131,
+      "best": 0.7994962800578921,
+      "mean": 0.7949539464514112,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 60,
+      "evaluations": 132,
+      "best": 0.7994962800578921,
+      "mean": 0.7936310245561108,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 61,
+      "evaluations": 134,
+      "best": 0.7994962800578921,
+      "mean": 0.797580829723315,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 62,
+      "evaluations": 135,
+      "best": 0.7994962800578921,
+      "mean": 0.7984765692929156,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 63,
+      "evaluations": 136,
+      "best": 0.7994962800578921,
+      "mean": 0.7977531976802559,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 64,
+      "evaluations": 136,
+      "best": 0.7994962800578921,
+      "mean": 0.7987088877685916,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 65,
+      "evaluations": 136,
+      "best": 0.7994962800578921,
+      "mean": 0.798809749895625,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 66,
+      "evaluations": 137,
+      "best": 0.7994962800578921,
+      "mean": 0.7978507641153367,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 67,
+      "evaluations": 138,
+      "best": 0.7994962800578921,
+      "mean": 0.7952456446040691,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 68,
+      "evaluations": 138,
+      "best": 0.7994962800578921,
+      "mean": 0.7978553829550064,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 69,
+      "evaluations": 140,
+      "best": 0.7994962800578921,
+      "mean": 0.7978974258488464,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 70,
+      "evaluations": 141,
+      "best": 0.7994962800578921,
+      "mean": 0.7988925893902848,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 71,
+      "evaluations": 141,
+      "best": 0.7994962800578921,
+      "mean": 0.7977354382119864,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 72,
+      "evaluations": 141,
+      "best": 0.7994962800578921,
+      "mean": 0.7940057468668826,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 73,
+      "evaluations": 141,
+      "best": 0.7994962800578921,
+      "mean": 0.798548933524674,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 74,
+      "evaluations": 143,
+      "best": 0.7994962800578921,
+      "mean": 0.7907585433204577,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 75,
+      "evaluations": 144,
+      "best": 0.7994962800578921,
+      "mean": 0.7907527291769146,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 76,
+      "evaluations": 144,
+      "best": 0.7994962800578921,
+      "mean": 0.7985707830240713,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 77,
+      "evaluations": 146,
+      "best": 0.7994962800578921,
+      "mean": 0.7969171612394568,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 78,
+      "evaluations": 149,
+      "best": 0.7994962800578921,
+      "mean": 0.7928678729364071,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 79,
+      "evaluations": 149,
+      "best": 0.7994962800578921,
+      "mean": 0.7966976932069413,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 80,
+      "evaluations": 151,
+      "best": 0.7994962800578921,
+      "mean": 0.7981040193932509,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 81,
+      "evaluations": 152,
+      "best": 0.7994962800578921,
+      "mean": 0.798534877746157,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 82,
+      "evaluations": 152,
+      "best": 0.7994962800578921,
+      "mean": 0.7985227471905622,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 83,
+      "evaluations": 152,
+      "best": 0.7994962800578921,
+      "mean": 0.7982697411385926,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 84,
+      "evaluations": 153,
+      "best": 0.7994962800578921,
+      "mean": 0.7982282593330019,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 85,
+      "evaluations": 153,
+      "best": 0.7994962800578921,
+      "mean": 0.7985173281764165,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 86,
+      "evaluations": 153,
+      "best": 0.7994962800578921,
+      "mean": 0.7985656499970248,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 87,
+      "evaluations": 154,
+      "best": 0.7994962800578921,
+      "mean": 0.7910939968575005,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 88,
+      "evaluations": 155,
+      "best": 0.7994962800578921,
+      "mean": 0.790627325470527,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 89,
+      "evaluations": 155,
+      "best": 0.7994962800578921,
+      "mean": 0.7988955377810405,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 90,
+      "evaluations": 156,
+      "best": 0.7994962800578921,
+      "mean": 0.7944927351723431,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 91,
+      "evaluations": 156,
+      "best": 0.7994962800578921,
+      "mean": 0.7972201736049536,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 92,
+      "evaluations": 158,
+      "best": 0.7994962800578921,
+      "mean": 0.7979915672504493,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 93,
+      "evaluations": 159,
+      "best": 0.7994962800578921,
+      "mean": 0.7988850001858173,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 94,
+      "evaluations": 161,
+      "best": 0.7994962800578921,
+      "mean": 0.7976530055314022,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 95,
+      "evaluations": 161,
+      "best": 0.7994962800578921,
+      "mean": 0.7982763206139291,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 96,
+      "evaluations": 162,
+      "best": 0.7994962800578921,
+      "mean": 0.7981408280979494,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 97,
+      "evaluations": 164,
+      "best": 0.7994962800578921,
+      "mean": 0.7977539552227805,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 98,
+      "evaluations": 165,
+      "best": 0.7994962800578921,
+      "mean": 0.7938880717402742,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 99,
+      "evaluations": 165,
+      "best": 0.7994962800578921,
+      "mean": 0.7972086994274126,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 100,
+      "evaluations": 165,
+      "best": 0.7994962800578921,
+      "mean": 0.7984720728190441,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 101,
+      "evaluations": 165,
+      "best": 0.7994962800578921,
+      "mean": 0.7988760259556501,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 102,
+      "evaluations": 166,
+      "best": 0.7994962800578921,
+      "mean": 0.7989682389935698,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 103,
+      "evaluations": 166,
+      "best": 0.7994962800578921,
+      "mean": 0.799311103944861,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 104,
+      "evaluations": 167,
+      "best": 0.7994962800578921,
+      "mean": 0.7951770028193351,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 105,
+      "evaluations": 167,
+      "best": 0.7994962800578921,
+      "mean": 0.7953002952178508,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 106,
+      "evaluations": 167,
+      "best": 0.7994962800578921,
+      "mean": 0.7946539231562436,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 107,
+      "evaluations": 167,
+      "best": 0.7994962800578921,
+      "mean": 0.797524599037311,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 108,
+      "evaluations": 168,
+      "best": 0.7994962800578921,
+      "mean": 0.7980481293787278,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 109,
+      "evaluations": 170,
+      "best": 0.7994962800578921,
+      "mean": 0.7912607178329538,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 110,
+      "evaluations": 170,
+      "best": 0.7994962800578921,
+      "mean": 0.7978863267699545,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 111,
+      "evaluations": 170,
+      "best": 0.7994962800578921,
+      "mean": 0.7981185202038741,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 112,
+      "evaluations": 170,
+      "best": 0.7994962800578921,
+      "mean": 0.7946106335086995,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 113,
+      "evaluations": 170,
+      "best": 0.7994962800578921,
+      "mean": 0.7941698295234441,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 114,
+      "evaluations": 172,
+      "best": 0.7994962800578921,
+      "mean": 0.7949347859868783,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 115,
+      "evaluations": 173,
+      "best": 0.7994962800578921,
+      "mean": 0.795441700499464,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 116,
+      "evaluations": 174,
+      "best": 0.7994962800578921,
+      "mean": 0.793949791745154,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 117,
+      "evaluations": 175,
+      "best": 0.7994962800578921,
+      "mean": 0.7947471363836286,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 118,
+      "evaluations": 176,
+      "best": 0.7994962800578921,
+      "mean": 0.7969986702661134,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 119,
+      "evaluations": 176,
+      "best": 0.7994962800578921,
+      "mean": 0.7982434944068647,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 120,
+      "evaluations": 178,
+      "best": 0.7994962800578921,
+      "mean": 0.7980599132030287,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 121,
+      "evaluations": 178,
+      "best": 0.7994962800578921,
+      "mean": 0.799084829076365,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 122,
+      "evaluations": 179,
+      "best": 0.7994962800578921,
+      "mean": 0.7978765402855462,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 123,
+      "evaluations": 179,
+      "best": 0.7994962800578921,
+      "mean": 0.7985720480433606,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 124,
+      "evaluations": 179,
+      "best": 0.7994962800578921,
+      "mean": 0.7948253988980636,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 125,
+      "evaluations": 179,
+      "best": 0.7994962800578921,
+      "mean": 0.7983222791107913,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 126,
+      "evaluations": 179,
+      "best": 0.7994962800578921,
+      "mean": 0.798614070398413,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 127,
+      "evaluations": 180,
+      "best": 0.7994962800578921,
+      "mean": 0.7979797514548512,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 128,
+      "evaluations": 180,
+      "best": 0.7994962800578921,
+      "mean": 0.7977442209679044,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 129,
+      "evaluations": 180,
+      "best": 0.7994962800578921,
+      "mean": 0.7941319222761065,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 130,
+      "evaluations": 180,
+      "best": 0.7994962800578921,
+      "mean": 0.797655068030626,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 131,
+      "evaluations": 180,
+      "best": 0.7994962800578921,
+      "mean": 0.799111728574173,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 132,
+      "evaluations": 180,
+      "best": 0.7994962800578921,
+      "mean": 0.7984564207198158,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 133,
+      "evaluations": 180,
+      "best": 0.7994962800578921,
+      "mean": 0.7980645094317813,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 134,
+      "evaluations": 181,
+      "best": 0.7994962800578921,
+      "mean": 0.7939804911206583,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 135,
+      "evaluations": 182,
+      "best": 0.7994962800578921,
+      "mean": 0.7968208879662901,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 136,
+      "evaluations": 183,
+      "best": 0.7994962800578921,
+      "mean": 0.7941140891764876,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 137,
+      "evaluations": 183,
+      "best": 0.7994962800578921,
+      "mean": 0.7981131510918409,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 138,
+      "evaluations": 183,
+      "best": 0.7994962800578921,
+      "mean": 0.7965933377489273,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 139,
+      "evaluations": 183,
+      "best": 0.7994962800578921,
+      "mean": 0.7946371283327942,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 140,
+      "evaluations": 184,
+      "best": 0.7994962800578921,
+      "mean": 0.7873626191195344,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 141,
+      "evaluations": 185,
+      "best": 0.7994962800578921,
+      "mean": 0.7905590227042213,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 142,
+      "evaluations": 185,
+      "best": 0.7994962800578921,
+      "mean": 0.7971592457924689,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 143,
+      "evaluations": 185,
+      "best": 0.7994962800578921,
+      "mean": 0.797411780734657,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 144,
+      "evaluations": 186,
+      "best": 0.7994962800578921,
+      "mean": 0.7912793265967234,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 145,
+      "evaluations": 186,
+      "best": 0.7994962800578921,
+      "mean": 0.7949706265511851,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 146,
+      "evaluations": 186,
+      "best": 0.7994962800578921,
+      "mean": 0.7955463355846892,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 147,
+      "evaluations": 186,
+      "best": 0.7994962800578921,
+      "mean": 0.7911828133430718,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 148,
+      "evaluations": 186,
+      "best": 0.7994962800578921,
+      "mean": 0.7916812101528755,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 149,
+      "evaluations": 186,
+      "best": 0.7994962800578921,
+      "mean": 0.7946324789113233,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 150,
+      "evaluations": 186,
+      "best": 0.7994962800578921,
+      "mean": 0.7980106366100301,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 151,
+      "evaluations": 186,
+      "best": 0.7994962800578921,
+      "mean": 0.798189104478775,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 152,
+      "evaluations": 186,
+      "best": 0.7994962800578921,
+      "mean": 0.7911158221647712,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 153,
+      "evaluations": 186,
+      "best": 0.7994962800578921,
+      "mean": 0.7944390424531281,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 154,
+      "evaluations": 186,
+      "best": 0.7994962800578921,
+      "mean": 0.7973975085320925,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 155,
+      "evaluations": 187,
+      "best": 0.7994962800578921,
+      "mean": 0.797293058245427,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 156,
+      "evaluations": 187,
+      "best": 0.7994962800578921,
+      "mean": 0.7983409334977941,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 157,
+      "evaluations": 187,
+      "best": 0.7994962800578921,
+      "mean": 0.7981025072250355,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 158,
+      "evaluations": 187,
+      "best": 0.7994962800578921,
+      "mean": 0.7952635834717102,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 159,
+      "evaluations": 187,
+      "best": 0.7994962800578921,
+      "mean": 0.798385923963239,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 160,
+      "evaluations": 187,
+      "best": 0.7994962800578921,
+      "mean": 0.7952053598543154,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 161,
+      "evaluations": 187,
+      "best": 0.7994962800578921,
+      "mean": 0.7991433193305396,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 162,
+      "evaluations": 188,
+      "best": 0.7994962800578921,
+      "mean": 0.7937428620519369,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 163,
+      "evaluations": 188,
+      "best": 0.7994962800578921,
+      "mean": 0.7947041340409119,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 164,
+      "evaluations": 189,
+      "best": 0.7994962800578921,
+      "mean": 0.793809206666592,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 165,
+      "evaluations": 189,
+      "best": 0.7994962800578921,
+      "mean": 0.7980022857729525,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 166,
+      "evaluations": 189,
+      "best": 0.7994962800578921,
+      "mean": 0.7914752861471224,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 167,
+      "evaluations": 190,
+      "best": 0.7994962800578921,
+      "mean": 0.7938719002533878,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 168,
+      "evaluations": 190,
+      "best": 0.7994962800578921,
+      "mean": 0.7974993493456529,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 169,
+      "evaluations": 190,
+      "best": 0.7994962800578921,
+      "mean": 0.7981674710807842,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 170,
+      "evaluations": 190,
+      "best": 0.7994962800578921,
+      "mean": 0.7936964862119462,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 171,
+      "evaluations": 190,
+      "best": 0.7994962800578921,
+      "mean": 0.7978985119704929,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 172,
+      "evaluations": 190,
+      "best": 0.7994962800578921,
+      "mean": 0.7942894063056917,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 173,
+      "evaluations": 191,
+      "best": 0.7994962800578921,
+      "mean": 0.7979185993138997,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 174,
+      "evaluations": 191,
+      "best": 0.7994962800578921,
+      "mean": 0.7983969361741515,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 175,
+      "evaluations": 192,
+      "best": 0.7994962800578921,
+      "mean": 0.7932248796206341,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 176,
+      "evaluations": 193,
+      "best": 0.7994962800578921,
+      "mean": 0.7942434728597056,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 177,
+      "evaluations": 193,
+      "best": 0.7994962800578921,
+      "mean": 0.7989784901656003,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 178,
+      "evaluations": 193,
+      "best": 0.7994962800578921,
+      "mean": 0.7980524501327475,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 179,
+      "evaluations": 193,
+      "best": 0.7994962800578921,
+      "mean": 0.7951557822917235,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 180,
+      "evaluations": 193,
+      "best": 0.7994962800578921,
+      "mean": 0.79799146148169,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 181,
+      "evaluations": 193,
+      "best": 0.7994962800578921,
+      "mean": 0.7945108547454481,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 182,
+      "evaluations": 193,
+      "best": 0.7994962800578921,
+      "mean": 0.7989417043360163,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 183,
+      "evaluations": 193,
+      "best": 0.7994962800578921,
+      "mean": 0.7955231086189565,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 184,
+      "evaluations": 194,
+      "best": 0.7994962800578921,
+      "mean": 0.7943022901083336,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 185,
+      "evaluations": 194,
+      "best": 0.7994962800578921,
+      "mean": 0.7988142531642888,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 186,
+      "evaluations": 195,
+      "best": 0.7994962800578921,
+      "mean": 0.7971415009328977,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 187,
+      "evaluations": 195,
+      "best": 0.7994962800578921,
+      "mean": 0.7946993060736175,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 188,
+      "evaluations": 195,
+      "best": 0.7994962800578921,
+      "mean": 0.7938506627658058,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 189,
+      "evaluations": 195,
+      "best": 0.7994962800578921,
+      "mean": 0.7950449214579829,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 190,
+      "evaluations": 197,
+      "best": 0.7994962800578921,
+      "mean": 0.7904792016599184,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 191,
+      "evaluations": 197,
+      "best": 0.7994962800578921,
+      "mean": 0.7945077684434934,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 192,
+      "evaluations": 197,
+      "best": 0.7994962800578921,
+      "mean": 0.7945475347633217,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 193,
+      "evaluations": 197,
+      "best": 0.7994962800578921,
+      "mean": 0.7974829173014382,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 194,
+      "evaluations": 197,
+      "best": 0.7994962800578921,
+      "mean": 0.7947270987493017,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 195,
+      "evaluations": 197,
+      "best": 0.7994962800578921,
+      "mean": 0.7983368201262058,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 196,
+      "evaluations": 198,
+      "best": 0.7994962800578921,
+      "mean": 0.7951079961405892,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 197,
+      "evaluations": 199,
+      "best": 0.7994962800578921,
+      "mean": 0.7951348857600848,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 198,
+      "evaluations": 199,
+      "best": 0.7994962800578921,
+      "mean": 0.7987513312159297,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 199,
+      "evaluations": 199,
+      "best": 0.7994962800578921,
+      "mean": 0.7987610861983454,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     },
+     {
+      "generation": 200,
+      "evaluations": 200,
+      "best": 0.7994962800578921,
+      "mean": 0.7952512740777827,
+      "best_chromosome": [
+       4,
+       2,
+       7,
+       4
+      ]
+     }
+    ]
+   }
+  ],
+  "random": [
+   {
+    "seed": 1,
+    "best": [
+     6,
+     1,
+     7,
+     5
+    ],
+    "best_fitness": 0.7989668900968132,
+    "evaluations": 200,
+    "history": [
+     {
+      "evaluations": 1,
+      "best": 0.7546684350130112
+     },
+     {
+      "evaluations": 2,
+      "best": 0.7578164573991056
+     },
+     {
+      "evaluations": 3,
+      "best": 0.7578164573991056
+     },
+     {
+      "evaluations": 4,
+      "best": 0.7578164573991056
+     },
+     {
+      "evaluations": 5,
+      "best": 0.7578164573991056
+     },
+     {
+      "evaluations": 6,
+      "best": 0.7578164573991056
+     },
+     {
+      "evaluations": 7,
+      "best": 0.7578164573991056
+     },
+     {
+      "evaluations": 8,
+      "best": 0.7578164573991056
+     },
+     {
+      "evaluations": 9,
+      "best": 0.7578164573991056
+     },
+     {
+      "evaluations": 10,
+      "best": 0.7609197299010138
+     },
+     {
+      "evaluations": 11,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 12,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 13,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 14,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 15,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 16,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 17,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 18,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 19,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 20,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 21,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 22,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 23,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 24,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 25,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 26,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 27,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 28,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 29,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 30,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 31,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 32,
+      "best": 0.7948830005022307
+     },
+     {
+      "evaluations": 33,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 34,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 35,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 36,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 37,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 38,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 39,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 40,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 41,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 42,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 43,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 44,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 45,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 46,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 47,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 48,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 49,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 50,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 51,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 52,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 53,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 54,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 55,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 56,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 57,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 58,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 59,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 60,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 61,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 62,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 63,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 64,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 64,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 65,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 66,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 67,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 68,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 69,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 70,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 71,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 72,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 73,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 74,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 75,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 76,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 76,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 77,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 78,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 79,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 80,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 81,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 82,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 83,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 84,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 85,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 85,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 86,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 87,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 88,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 89,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 90,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 91,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 92,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 93,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 94,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 95,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 96,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 97,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 98,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 99,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 100,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 101,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 102,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 102,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 103,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 103,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 104,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 105,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 106,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 107,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 108,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 109,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 110,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 111,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 112,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 113,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 114,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 115,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 116,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 117,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 118,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 119,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 120,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 121,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 122,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 123,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 124,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 125,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 126,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 127,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 128,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 129,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 130,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 131,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 132,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 133,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 134,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 135,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 136,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 137,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 138,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 139,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 140,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 141,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 142,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 143,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 144,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 145,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 146,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 147,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 148,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 149,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 150,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 151,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 152,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 153,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 154,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 155,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 156,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 157,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 158,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 159,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 160,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 161,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 162,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 163,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 164,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 165,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 166,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 167,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 168,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 169,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 170,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 171,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 172,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 173,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 174,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 175,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 176,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 177,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 178,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 178,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 179,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 180,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 181,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 182,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 183,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 184,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 185,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 186,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 187,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 188,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 189,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 190,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 191,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 192,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 193,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 194,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 195,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 196,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 197,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 198,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 199,
+      "best": 0.7989668900968132
+     },
+     {
+      "evaluations": 200,
+      "best": 0.7989668900968132
+     }
+    ]
+   },
+   {
+    "seed": 2,
+    "best": [
+     4,
+     1,
+     7,
+     3
+    ],
+    "best_fitness": 0.7993653884806006,
+    "evaluations": 200,
+    "history": [
+     {
+      "evaluations": 1,
+      "best": 0.7541016671556288
+     },
+     {
+      "evaluations": 2,
+      "best": 0.7580625197940063
+     },
+     {
+      "evaluations": 3,
+      "best": 0.7580625197940063
+     },
+     {
+      "evaluations": 4,
+      "best": 0.7580625197940063
+     },
+     {
+      "evaluations": 5,
+      "best": 0.7580625197940063
+     },
+     {
+      "evaluations": 6,
+      "best": 0.7580625197940063
+     },
+     {
+      "evaluations": 7,
+      "best": 0.7580625197940063
+     },
+     {
+      "evaluations": 8,
+      "best": 0.7580625197940063
+     },
+     {
+      "evaluations": 9,
+      "best": 0.7887267319580277
+     },
+     {
+      "evaluations": 10,
+      "best": 0.7887267319580277
+     },
+     {
+      "evaluations": 11,
+      "best": 0.7887267319580277
+     },
+     {
+      "evaluations": 12,
+      "best": 0.792127761763949
+     },
+     {
+      "evaluations": 13,
+      "best": 0.792127761763949
+     },
+     {
+      "evaluations": 14,
+      "best": 0.792127761763949
+     },
+     {
+      "evaluations": 15,
+      "best": 0.792127761763949
+     },
+     {
+      "evaluations": 16,
+      "best": 0.792127761763949
+     },
+     {
+      "evaluations": 17,
+      "best": 0.792127761763949
+     },
+     {
+      "evaluations": 18,
+      "best": 0.792127761763949
+     },
+     {
+      "evaluations": 19,
+      "best": 0.792127761763949
+     },
+     {
+      "evaluations": 20,
+      "best": 0.792127761763949
+     },
+     {
+      "evaluations": 21,
+      "best": 0.792127761763949
+     },
+     {
+      "evaluations": 22,
+      "best": 0.792127761763949
+     },
+     {
+      "evaluations": 23,
+      "best": 0.792127761763949
+     },
+     {
+      "evaluations": 24,
+      "best": 0.792127761763949
+     },
+     {
+      "evaluations": 25,
+      "best": 0.792127761763949
+     },
+     {
+      "evaluations": 26,
+      "best": 0.792127761763949
+     },
+     {
+      "evaluations": 27,
+      "best": 0.792127761763949
+     },
+     {
+      "evaluations": 28,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 29,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 30,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 31,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 32,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 33,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 33,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 34,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 35,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 36,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 37,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 38,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 38,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 39,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 40,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 41,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 42,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 43,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 44,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 45,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 46,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 47,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 48,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 49,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 50,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 51,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 52,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 53,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 54,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 55,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 56,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 57,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 58,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 59,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 60,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 61,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 62,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 63,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 64,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 65,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 66,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 67,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 68,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 69,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 70,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 70,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 71,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 72,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 73,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 74,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 75,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 76,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 77,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 78,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 79,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 80,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 81,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 82,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 83,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 84,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 85,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 86,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 87,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 88,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 89,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 90,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 91,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 92,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 93,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 94,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 95,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 96,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 97,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 98,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 99,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 100,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 100,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 101,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 102,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 103,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 104,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 105,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 106,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 107,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 108,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 109,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 110,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 110,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 111,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 112,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 113,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 114,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 115,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 116,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 117,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 118,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 119,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 120,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 121,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 122,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 123,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 124,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 124,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 125,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 126,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 127,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 128,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 129,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 130,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 131,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 132,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 133,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 134,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 135,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 136,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 137,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 138,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 139,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 140,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 141,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 142,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 143,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 144,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 145,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 146,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 147,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 148,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 149,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 150,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 151,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 152,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 153,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 154,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 155,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 156,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 157,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 158,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 159,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 160,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 160,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 161,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 162,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 163,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 164,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 165,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 166,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 167,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 167,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 168,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 168,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 169,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 170,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 171,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 172,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 173,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 174,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 175,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 176,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 177,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 178,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 179,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 180,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 181,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 182,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 183,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 184,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 185,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 186,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 187,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 188,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 189,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 190,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 191,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 192,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 193,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 194,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 195,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 196,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 197,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 197,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 198,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 199,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 199,
+      "best": 0.7993653884806006
+     },
+     {
+      "evaluations": 200,
+      "best": 0.7993653884806006
+     }
+    ]
+   },
+   {
+    "seed": 3,
+    "best": [
+     6,
+     1,
+     7,
+     6
+    ],
+    "best_fitness": 0.798697427031455,
+    "evaluations": 200,
+    "history": [
+     {
+      "evaluations": 1,
+      "best": 0.7485966232257817
+     },
+     {
+      "evaluations": 2,
+      "best": 0.7615469581513981
+     },
+     {
+      "evaluations": 3,
+      "best": 0.7615469581513981
+     },
+     {
+      "evaluations": 4,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 5,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 6,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 7,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 8,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 9,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 10,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 11,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 12,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 13,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 14,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 15,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 16,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 17,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 18,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 19,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 20,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 21,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 22,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 23,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 24,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 25,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 26,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 27,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 28,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 29,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 30,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 31,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 32,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 33,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 34,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 35,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 36,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 37,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 38,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 39,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 40,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 41,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 42,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 43,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 44,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 45,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 46,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 47,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 48,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 49,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 50,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 51,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 52,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 53,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 54,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 55,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 56,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 57,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 58,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 59,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 60,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 61,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 62,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 63,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 64,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 65,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 66,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 67,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 68,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 69,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 70,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 71,
+      "best": 0.7984368496510479
+     },
+     {
+      "evaluations": 72,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 73,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 74,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 75,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 76,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 77,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 78,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 79,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 80,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 81,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 82,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 83,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 84,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 85,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 86,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 87,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 88,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 89,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 90,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 91,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 92,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 93,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 94,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 95,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 96,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 97,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 98,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 99,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 100,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 101,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 102,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 103,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 104,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 105,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 106,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 107,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 107,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 108,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 109,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 110,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 111,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 112,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 113,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 114,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 115,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 116,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 117,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 117,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 118,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 119,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 120,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 121,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 122,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 123,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 124,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 125,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 126,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 127,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 128,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 129,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 130,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 131,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 132,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 133,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 134,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 135,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 136,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 136,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 137,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 138,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 139,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 140,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 141,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 142,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 143,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 143,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 144,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 145,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 146,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 147,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 148,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 149,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 150,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 151,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 152,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 153,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 154,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 155,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 156,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 157,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 158,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 159,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 160,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 161,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 162,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 163,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 164,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 165,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 166,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 167,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 168,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 169,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 170,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 171,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 172,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 173,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 174,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 175,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 176,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 177,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 178,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 179,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 180,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 180,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 181,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 181,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 182,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 183,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 184,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 185,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 185,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 186,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 187,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 188,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 189,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 189,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 190,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 191,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 192,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 193,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 194,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 195,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 196,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 197,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 198,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 199,
+      "best": 0.798697427031455
+     },
+     {
+      "evaluations": 200,
+      "best": 0.798697427031455
+     }
+    ]
+   }
+  ]
+ }
+}
