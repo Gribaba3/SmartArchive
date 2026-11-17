@@ -177,10 +177,10 @@ def test_c12_volumes(tmp_path):
     assert read_archive(vols, PW)["big.bin"] == big                  # довільний порядок
     with pytest.raises(ArchiveError) as e:
         read_archive(vols[1:], PW)
-    assert e.value.code == "E_VOLUME"                                # відсутній том
+    assert e.value.code == "E_VOLUMES"                                # відсутній том
     with pytest.raises(ArchiveError) as e:
         read_archive(vols + vols[:1], PW)
-    assert e.value.code == "E_VOLUME"                                # дубльований том
+    assert e.value.code == "E_VOLUMES"                                # дубльований том
     ref = read_archive(sorted(str(p) for p in REF.glob("ref_06*.arc")), "algo2026")
     assert len(ref) == 14                                            # еталонні архіви
 

@@ -81,7 +81,7 @@ def test_repeated_nonce_rejected(tmp_path):
     f2, b2 = stored_file("b.txt", b"two")
     v0 = write_volume(tmp_path / "0.arc", [f1], [b1], index=0, count=2, nonce=bytes(12))
     v1 = write_volume(tmp_path / "1.arc", [f2], [b2], index=1, count=2, nonce=bytes(12))
-    assert code_of(read_archive, [v0, v1], PASSWORD) == "E_VOLUME"
+    assert code_of(read_archive, [v0, v1], PASSWORD) == "E_VOLUMES"
 
 
 def test_missing_input_file(tmp_path):
