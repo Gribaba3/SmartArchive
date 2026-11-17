@@ -18,6 +18,7 @@
 | 2026-11-17 | Claude (Anthropic), Claude Opus 5.5 | Модуль атаки: навчальний XOR-шифр, модель тексту, пошук ключа ГА (мутація reset у sarc/ga.py), контроль на справжньому архіві з PIN, випадкові пошкодження архіву, експерименти й тести | `attack/*.py`, `sarc/ga.py`, `experiments/run_attack.py`, `tests/test_attack.py`, `docs/ATTACK_RESULTS.md`, `docs/DECISIONS.md`, `README.md` |
 | 2026-11-17 | Claude (Anthropic), Claude Opus 5.5 | Вимір залежності типу файлу від позиції зразка і рішення лишити перші 16 КБ | `experiments/sample_position.py`, `docs/DECISIONS.md` |
 | 2026-11-17 | Claude (Anthropic), Claude Opus 5.5 | Чернетка звіту за розділом 8 методички; перегенерація результатів на фінальному main | `docs/REPORT.md`, `docs/RESULTS.md`, `docs/GA_RESULTS.md`, `experiments/results/ga_runs.json` |
+| 2026-11-17 | Claude (Anthropic), Claude Opus 5.5 | Графічний інтерфейс на tkinter (оболонка над create_archive/extract, фоновий потік), команда `sarc gui`, тести | `sarc/gui.py`, `sarc/cli.py`, `tests/test_gui.py`, `README.md`, `docs/DECISIONS.md` |
 
 Перевірку виконано автоматичними тестами: усі еталонні архіви `data/reference/ref_*.arc`
 розпаковуються з правильними CRC32, усі `bad_*.arc` дають очікувані коди з `expected_failures.json`.

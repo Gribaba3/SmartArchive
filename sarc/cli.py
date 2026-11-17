@@ -5,6 +5,7 @@
     python -m sarc extract -o ПАПКА том0.arc [том1.arc ...]
     python -m sarc extract -o ПАПКА "архів.part*.arc"     # шаблон розгортає сама програма
     python -m sarc extract -o ПАПКА папка_з_томами/        # усі *.arc у папці
+    python -m sarc gui                                     # графічний інтерфейс
 
 Пароль (у порядку пріоритету):
     змінна середовища SARC_PASSWORD -> інтерактивний запит.
@@ -89,6 +90,8 @@ def main(argv=None) -> int:
     ar.add_argument("--min-match", type=int, default=lz.min_match, help="мінімальна довжина збігу (>= 3)")
     ar.add_argument("--max-chain", type=int, default=lz.max_chain, help="глибина пошуку збігів")
 
+    sub.add_parser("gui", help="відкрити графічний інтерфейс")
+
     ex = sub.add_parser("extract", help="розпакувати архів")
     ex.add_argument("volumes", nargs="+", help="томи, шаблон (*.arc) або папка; порядок довільний")
     ex.add_argument("-o", "--out", default=".", help="папка для файлів")
@@ -96,6 +99,9 @@ def main(argv=None) -> int:
     ex.add_argument("-f", "--force", action="store_true", help="перезаписувати наявні файли")
 
     args = ap.parse_args(argv)
+    if args.cmd == "gui":
+        from .gui import main as gui_main  # tkinter імпортується лише тут: CLI працює і без нього
+        return gui_main()
     if args.cmd == "archive":
         if not 1 <= args.window <= WINDOW:
             ap.error(f"--window має бути від 1 до {WINDOW} (межа формату)")
