@@ -15,8 +15,9 @@ from .codec import MAX_MATCH, MIN_MATCH, WINDOW
 
 @dataclass(frozen=True)
 class LZParams:
-    window: int = 16384      # максимальна відстань посилання
-    min_match: int = 3       # коротші збіги не беремо (формат дозволяє від 3)
+    # window і min_match підібрав ГА (docs/GA_RESULTS.md, DECISIONS Р17); до ГА було 16384 і 3
+    window: int = 4096       # максимальна відстань посилання
+    min_match: int = 5       # коротші збіги не беремо (формат дозволяє від 3)
     max_chain: int = 64      # глибина пошуку в хеш-ланцюжку
     lazy_gain: int = 1       # лінивий розбір: наскільки довшим має бути збіг у i+1
 

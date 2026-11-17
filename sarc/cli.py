@@ -84,9 +84,10 @@ def main(argv=None) -> int:
     ar.add_argument("--parser", choices=["lazy", "greedy"], default="lazy", help="розбір LZ77")
     ar.add_argument("--packer", choices=["dp", "dp-weight", "greedy"], default="dp",
                     help="рюкзак: ДП за цінністю, ДП за вагою або жадібний")
-    ar.add_argument("--window", type=int, default=16384, help="вікно пошуку збігів")
-    ar.add_argument("--min-match", type=int, default=3, help="мінімальна довжина збігу (>= 3)")
-    ar.add_argument("--max-chain", type=int, default=64, help="глибина пошуку збігів")
+    lz = LZParams()   # типові значення беремо з одного місця (lz77.py), там їх підібрав ГА
+    ar.add_argument("--window", type=int, default=lz.window, help="вікно пошуку збігів")
+    ar.add_argument("--min-match", type=int, default=lz.min_match, help="мінімальна довжина збігу (>= 3)")
+    ar.add_argument("--max-chain", type=int, default=lz.max_chain, help="глибина пошуку збігів")
 
     ex = sub.add_parser("extract", help="розпакувати архів")
     ex.add_argument("volumes", nargs="+", help="томи, шаблон (*.arc) або папка; порядок довільний")
