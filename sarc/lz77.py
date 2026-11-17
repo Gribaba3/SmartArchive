@@ -38,38 +38,34 @@ class MatchFinder:
         self.prev = [-1] * len(data)
         self.inserted = 0  # позиції < inserted уже додані в ланцюжки
 
-    def _hash(self, i: int) -> int:
-        d = self.data
-        return (d[i] << 16) | (d[i + 1] << 8) | d[i + 2]   # самі три байти — без колізій
-
-    def insert_until(self, end: int) -> None:
-        """Додати в ланцюжки всі позиції до end (не включно)."""
-        last = len(self.data) - 2
-        i = self.inserted
-        while i < end:
-            if i < last:
-                h = self._hash(i)
-                self.prev[i] = self.head.get(h, -1)
-                self.head[h] = i
-            i += 1
-        self.inserted = max(self.inserted, end)
-
     def longest(self, i: int) -> tuple[int, int]:
-        """Найдовший збіг для позиції i серед попередніх позицій: (довжина, відстань)."""
+        """Найдовший збіг для позиції i серед попередніх позицій: (довжина, відстань).
+
+        Функція викликається для кожної позиції (на корпусі ~130 тис. разів), тому тут важить не
+        алгоритм, а накладні витрати Python на виклики: додавання позицій у ланцюжки і хеш
+        вбудовані сюди, а атрибути об'єкта скопійовані в локальні змінні (вони читаються швидше).
+        """
         d = self.data
         n = len(d)
         if i + MIN_MATCH > n:
             return 0, 0
-        self.insert_until(i)
+        head, prev = self.head, self.prev
+        # додаємо в ланцюжки всі позиції до i (не включно); хеш = самі три байти, без колізій
+        if self.inserted < i:
+            for j in range(self.inserted, min(i, n - 2)):
+                h = (d[j] << 16) | (d[j + 1] << 8) | d[j + 2]
+                prev[j] = head.get(h, -1)
+                head[h] = j
+            self.inserted = i
         limit = min(MAX_MATCH, n - i)
         best_len, best_dist = 0, 0
-        cand = self.head.get(self._hash(i), -1)
+        cand = head.get((d[i] << 16) | (d[i + 1] << 8) | d[i + 2], -1)
         chain = self.p.max_chain
-        while cand >= 0 and chain > 0 and i - cand <= self.p.window:
+        window = self.p.window
+        while cand >= 0 and chain > 0 and i - cand <= window:
             # швидка перевірка: кандидат може дати довший збіг, лише якщо в нього збігається
             # і байт на позиції best_len (інакше його збіг точно не довший за поточний)
-            could_be_longer = best_len < limit and d[cand + best_len] == d[i + best_len]
-            if could_be_longer:
+            if best_len < limit and d[cand + best_len] == d[i + best_len]:
                 k = 0
                 while k < limit and d[cand + k] == d[i + k]:
                     k += 1
@@ -77,7 +73,7 @@ class MatchFinder:
                     best_len, best_dist = k, i - cand
                     if k == limit:
                         break
-            cand = self.prev[cand]
+            cand = prev[cand]
             chain -= 1
         if best_len < max(self.p.min_match, MIN_MATCH):
             return 0, 0
