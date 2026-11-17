@@ -12,6 +12,7 @@ GUI — лише оболонка: усю роботу роблять ті са�
     результат потік кладе в чергу, а вікно раз на 100 мс перевіряє чергу (tkinter не можна чіпати з
     іншого потоку — лише з головного).
 """
+import os
 import queue
 import threading
 
@@ -21,6 +22,7 @@ from .errors import E_INPUT, ArchiveError
 from .extract import extract
 
 DEFAULT_VOLUME = Options().max_volume
+DEFAULT_NAME = "archive.arc"
 
 
 # ---------- дії (без tkinter) ----------
@@ -32,6 +34,8 @@ def archive_action(inputs: list[str], out_path: str, password: str, confirm: str
         raise ArchiveError(E_INPUT, "не вибрано жодного файлу чи папки")
     if not out_path:
         raise ArchiveError(E_INPUT, "не вказано, куди зберегти архів")
+    if os.path.isdir(out_path):            # вибрали лише папку — архів у ній під типовим іменем
+        out_path = os.path.join(out_path, DEFAULT_NAME)
     if not password:
         raise ArchiveError(E_INPUT, "пароль порожній")
     if password != confirm:
@@ -124,14 +128,16 @@ def main() -> int:
             ttk.Button(btns, text="Додати файли", command=self._add_files).pack(side="left")
             ttk.Button(btns, text="Додати папку", command=self._add_folder).pack(side="left", padx=4)
             ttk.Button(btns, text="Очистити", command=self._clear_inputs).pack(side="left")
-            self._row(f, 2, "Зберегти як", self.a_out, self._choose_out)
-            self._row(f, 3, "Пароль", self.a_pw, show="•")
-            self._row(f, 4, "Пароль ще раз", self.a_pw2, show="•")
-            self._row(f, 5, "Розмір тому, байт", self.a_size)
+            self._row(f, 2, "Зберегти в", self.a_out, self._choose_out)
+            ttk.Label(f, text=f"папка (архів буде {DEFAULT_NAME}) або повний шлях до файлу .arc",
+                      foreground="gray").grid(row=3, column=1, sticky="w")
+            self._row(f, 4, "Пароль", self.a_pw, show="•")
+            self._row(f, 5, "Пароль ще раз", self.a_pw2, show="•")
+            self._row(f, 6, "Розмір тому, байт", self.a_size)
             ttk.Checkbutton(f, text="Перезаписати наявні томи", variable=self.a_force).grid(
-                row=6, column=1, sticky="w")
+                row=7, column=1, sticky="w")
             go = ttk.Button(f, text="Архівувати", command=self._do_archive)
-            go.grid(row=7, column=1, sticky="e", pady=8)
+            go.grid(row=8, column=1, sticky="e", pady=8)
             return f
 
         def _add_files(self):
@@ -154,10 +160,10 @@ def main() -> int:
                                    self.a_inputs[0] if n == 1 else f"{self.a_inputs[0]} і ще {n - 1}")
 
         def _choose_out(self):
-            p = filedialog.asksaveasfilename(title="Зберегти архів", defaultextension=".arc",
-                                             filetypes=[("Архів SARC", "*.arc")])
-            if p:
-                self.a_out.set(p)
+            """Достатньо вибрати папку: архів у ній отримає типове ім'я (його можна змінити в полі)."""
+            d = filedialog.askdirectory(title="Папка для архіву")
+            if d:
+                self.a_out.set(os.path.join(d, DEFAULT_NAME))
 
         def _do_archive(self):
             self._start(archive_action, list(self.a_inputs), self.a_out.get(), self.a_pw.get(),

@@ -39,6 +39,13 @@ def test_archive_input_errors(args, msg):
     assert not ok and text.startswith("E_INPUT") and msg in text
 
 
+def test_folder_as_destination_uses_default_name(folder, tmp_path):
+    dest = tmp_path / "dest"
+    dest.mkdir()
+    ok, text = run_safely(archive_action, [str(folder)], str(dest), "pw", "pw", "65536", False)
+    assert ok and (dest / "archive.arc").exists()
+
+
 def test_wrong_password_shows_code(folder, tmp_path):
     run_safely(archive_action, [str(folder)], str(tmp_path / "a.arc"), "pw", "pw", "65536", False)
     ok, text = run_safely(extract_action, [str(tmp_path / "a.arc")], "nope", str(tmp_path / "out"), False)
